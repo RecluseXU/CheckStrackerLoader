@@ -62,9 +62,9 @@ class Util(object):
         return location
 
     @staticmethod
-    def get_file_MD5(file_location, file_name):
+    def get_file_MD5(file_location):
         try:
-            with open(file_location + '\\' + file_name, 'rb')as f:
+            with open(file_location, 'rb')as f:
                 file_bytes = f.read()
             md5_str = hashlib.md5(file_bytes).hexdigest()
             Util.info_print(md5_str, 2)

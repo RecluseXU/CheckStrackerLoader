@@ -56,7 +56,7 @@ class Conf_ini(object):
         now = int(time.mktime(now.timetuple()))
         config.set("StrackerLoader", "last_spide_time", str(now))
         self.write_conf()
-    
+
     def is_safe_to_spide(self):
         '''
         @summary: 根据爬虫间隔，返回是否应爬虫
@@ -84,6 +84,12 @@ class Conf_ini(object):
         config.set('NexusAccount', 'user_name', user_name)
         config.set('NexusAccount', 'user_password', user_password)
         self.write_conf()
+
+    def get_installed_mod_ddl_md5(self):
+        '''
+        @summary: 得到已经安装了的前置MOD的 dll 的MD5
+        '''
+        return config.get('StrackerLoader', 'installed_mod_ddl_md5')
 
     def write_conf(self):
         '''

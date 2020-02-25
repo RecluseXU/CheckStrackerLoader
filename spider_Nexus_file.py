@@ -182,18 +182,19 @@ def spider_download_file(file_id, game_id):
             "fid": file_id,
             "game_id": game_id,
         }
-    
+    ajax_head = headers.copy()
+    ajax_head['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8'
+    ajax_head['Origin'] = 'https://www.nexusmods.com'
     try:
         url = "https://www.nexusmods.com/Core/Libs/Common/Managers/Downloads?GenerateDownloadUrl"
-        response = my_session.post(url=url, headers=headers, data=data)
-        download_url_dict = response.content.decode()
-        print(download_url_dict)
-        download_url = json.loads(download_url_dict)['url']
+        response = my_session.post(url=url, headers=ajax_head, data=data, cookies=get_cookies_from_file())
+        download_url_str = response.content.decode("utf-8")
+        download_url = json.loads(download_url_str)['url']
         file_type = re.search(r'\.[a-z]+\?', download_url).group()[1:-1]
 
         location = Util.get_resources_folder() + "download_file_url.json"
         with open(location, 'w', encoding='utf-8')as f:
-            f.write(file_type+" = "+download_url)
+            f.write(file_type+"="+download_url)
         
         return download_url, file_type
     except Exception as e:
@@ -205,16 +206,14 @@ def downloadFile(url, file_type):
     @summary: 下载MOD文件
     '''
     Util.info_print("开始下载\t", 2)
-    response = requests.get(url, stream=True, headers=headers)
-    content_length = response.headers['content-length']
-    i = 0
+    download_head = headers.copy()
+    download_head['Host'] = 'cf-files.nexusmods.com'
+
+    response = requests.get(url, stream=True, verify=False, headers=download_head, cookies=get_cookies_from_file())
+
     location = Util.get_resources_folder() + 'StrackerLoader.' + file_type
     with open(location, 'wb')as f:
-        for chunk in response.iter_content(chunk_size=1024):  # 边下载边存硬盘
-            if chunk:
-                i = i+1
-                print(1024*i/content_length)
-                f.write(chunk)
+        f.write(response.content)
     Util.info_print("文件已保存为\t" + 'resources/StrackerLoader.'+file_type, 3)
     time.sleep(1)
 
@@ -227,8 +226,7 @@ def run():
     Util.info_print('尝试获取当前目录', 1)
     run_folder_location = Util.get_run_folder()
     Util.info_print('尝试获取 StrackerLoader-dinput8.dll 的 MD5', 1)
-    dinput8_dll_md5 = Util.get_file_MD5(MHW_Install_Address, 'dinput8.dll')
-
+    dinput8_dll_md5 = Util.get_file_MD5(MHW_Install_Address, 'dinput8.dll') 
     Util.info_print('尝试获取 conf.ini信息', 1)
     if not Util.is_file_exists(run_folder_location+'conf.ini'):
         Util.info_print('conf.ini不存在,创建conf.ini', 2)
@@ -273,6 +271,15 @@ def run():
     downloaded_mod_unpack_location = Util.get_resources_folder() + 'StrackerLoade\\'
     if file_type == 'zip':
         Util.unzip_all(downloaded_mod_location, downloaded_mod_unpack_location, '')
+
+    Util.info_print('尝试获取刚下载的"Stracker\'s Loader" 文件MD5', 1)
+    download_dll_location = Util.get_resources_folder + '\\StrackerLoade\\dinput8.dll'
+    download_dll_md5 = Util.get_file_MD5(download_dll_location)
+    Util.info_print('刚下载的"Stracker\'s Loader" dll-MD5:' + download_dll_md5, 2)
+
+    Util.info_print('匹配刚下载的DLL文件 与 已经安装的DLL文件MD5', 1)
+    if conf_ini.get_installed_mod_ddl_md5() == download_dll_md5:
+        Util.info_print('刚下载MD5 与 已安装MD5一致', 2)
 
 if __name__ == "__main__":
     run()
