@@ -15,6 +15,7 @@ import winreg
 import hashlib
 import os
 import time
+import zipfile
 
 
 class Util(object):
@@ -25,7 +26,8 @@ class Util(object):
         '''
         try:
             aReg = winreg.ConnectRegistry(None, winreg.HKEY_LOCAL_MACHINE)
-            aKey = winreg.OpenKey(aReg, r"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 582010")
+            aKey = winreg.OpenKey(
+                aReg, r"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 582010")
             data = winreg.QueryValueEx(aKey, "InstallLocation")[0]
             Util.info_print(data, 2)
             return data
@@ -40,15 +42,23 @@ class Util(object):
         @return: :bool
         '''
         return os.path.exists(file_path)
-    
+
     @staticmethod
     def get_run_folder():
         '''
         @staticmethod
         @return: 返回程序运行的目录:str
         '''
-        location = os.path.abspath(os.curdir)
-        Util.info_print(location, 2)
+        location = os.path.abspath(os.curdir)+"\\"
+        return location
+
+    @staticmethod
+    def get_resources_folder():
+        '''
+        @staticmethod
+        @return: 返回程序运行目录下的资源目录:str
+        '''
+        location = Util.get_run_folder()+'resources\\'
         return location
 
     @staticmethod
@@ -62,7 +72,7 @@ class Util(object):
         except Exception as e:
             print("->失败", e)
             Util.warning_and_exit(1)
-    
+
     @staticmethod
     def info_print(info, space=0):
         '''
@@ -71,7 +81,7 @@ class Util(object):
         for i in range(space):
             print('\t', end="")
         print(info)
-    
+
     @staticmethod
     def warning_and_exit(statue_code=0):
         '''
@@ -81,10 +91,36 @@ class Util(object):
         time.sleep(10)
         exit(statue_code)
 
+    @staticmethod
+    def unzip_single(src_file, dest_dir, password):
+        ''' 
+        @summary: 从zip压缩包中解压单个文件到目标文件夹。
+        '''
+        if password:
+            password = password.encode()
+        zf = zipfile.ZipFile(src_file)
+        try:
+            zf.extractall(path=dest_dir, pwd=password)
+        except RuntimeError as e:
+            print(e)
+        zf.close()
+
+    @staticmethod
+    def unzip_all(source_dir, dest_dir, password):
+        '''
+        @summary: 从zip压缩包中解压多个文件
+        '''
+        if not os.path.isdir(source_dir):    # 如果是单一文件
+            Util.unzip_single(source_dir, dest_dir, password)
+        else:
+            it = os.scandir(source_dir)
+            for entry in it:
+                if entry.is_file() and os.path.splitext(entry.name)[1] == '.zip':
+                    Util.unzip_single(entry.path, dest_dir, password)
 
 
 if __name__ == "__main__":
-    lacate = Util.get_run_folder() + '\\utils\\ini.py'
+    lacate = Util.get_run_folder()
     print(lacate)
-    a = Util.is_file_exists(lacate)
+    a = Util.get_resources_folder()
     print(a)

@@ -14,7 +14,7 @@
 <meta name="msapplication-wide310x150logo" content="https://www.nexusmods.com/Contents/Images/favicons/favicon_ReskinOrange/mstile-310x150.png" />
 <meta name="msapplication-square310x310logo" content="https://www.nexusmods.com/Contents/Images/favicons/favicon_ReskinOrange/mstile-310x310.png" />
 <meta property="og:site_name" content="Nexus Mods :: Monster Hunter: World" />
-<meta property="og:url" content="https://www.nexusmods.com/monsterhunterworld/mods/1982?tab=files" />
+<meta property="og:url" content="https://www.nexusmods.com/monsterhunterworld/mods/1982?tab=files&file_id=9908" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="Stracker's Loader" />
 <meta property="og:description" content="Restores full nativePC functionality." />
@@ -22,7 +22,7 @@
 <meta property="twitter:label1" content="Version" />
 <meta property="twitter:data1" content="1.5" />
 <meta property="twitter:label2" content="Total Views" />
-<meta property="twitter:data2" content="1073528" />
+<meta property="twitter:data2" content="1077069" />
 
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,300" />
 <link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://www.nexusmods.com/Contents/Images/favicons/favicon_ReskinOrange/apple-touch-icon-60x60.png" />
@@ -41,10 +41,17 @@
 <link rel="shortcut icon" type="image/svg+xml" href="https://www.nexusmods.com/Contents/Images/favicons/favicon_ReskinOrange/favicon.ico" />
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-<link href="https://www.nexusmods.com/Contents/Styles/BBoC-general-1582557121.css" rel="stylesheet" type="text/css" />
+<link href="https://www.nexusmods.com/Contents/Styles/BBoC-general-1582619502.css" rel="stylesheet" type="text/css" />
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.0.0/papaparse.min.js"></script>
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayer','GTM-W8QDTPT');</script>
+
 <script>
 			var actionLogOffset = new Array();
 			var notifications_game_id = 2531;
@@ -56,8 +63,8 @@
             window.current_game_id = 2531;
             var user_service_url = '';
 		</script>
-<link href="https://www.nexusmods.com/Contents/Styles/BBoC-general-1582557121.css" rel="stylesheet" type="text/css" />
-<script src="https://www.nexusmods.com/Contents/Scripts/BBoC-1582557121.js" type="text/javascript"></script>
+<link href="https://www.nexusmods.com/Contents/Styles/BBoC-general-1582619502.css" rel="stylesheet" type="text/css" />
+<script src="https://www.nexusmods.com/Contents/Scripts/BBoC-1582619502.js" type="text/javascript"></script>
 <script src="https://www.nexusmods.com/Contents/Scripts/advert.js" type="text/javascript"></script>
 <script>
 			checkAB();
@@ -66,7 +73,7 @@
             $(document).data('nexus.game_id', 2531 );
             $(document).data('nexus.blocked_tags', "");
             $(document).data('nexus.blocked_authors', "");
-            $(document).data('nexus.include_adult', 1);
+            $(document).data('nexus.include_adult', 0);
         </script>
 <script>
             (function(h,o,t,j,a,r){
@@ -114,7 +121,7 @@
             </div>
         </noscript>
 
-<body class="site-nexusmods-b scheme-theme-ReskinOrange game-theme-2531  apage modpage new-head">
+<body class="site-nexusmods-b scheme-theme-ReskinOrange game-theme-2531 logged-out apage modpage new-head">
 
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8QDTPT"
             height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -237,29 +244,9 @@ Support <i class="nmicon-chevron-down"></i>
 </button>
 <div id="gsearch_results" class="hidden" style="display: none" tabindex="0"></div>
 </form>
-<div class="rj-user-nav">
-<a class="rj-btn rj-button-outline rj-upload">Upload <i class="nmicon-chevron-down"></i></a>
-<div class="nav-interact-buttons">
-<div class="nav-interact rj-upload">
-<div class="ni-background"></div>
-<i class="nmicon-upload"></i>
-</div>
-<div class="nav-interact rj-notifications">
-<div class="ni-background"></div>
-<i class="nmicon-notification"></i>
-<div class="bubble">1</div>
-</div>
-<a class="nav-interact rj-messages" target="_blank" href="http://forums.nexusmods.com/index.php?app=members&module=messaging" title="View forum messages">
-<div class="ni-background"></div>
-<i class="material-icons">email</i>
-</a>
-<div class="nav-interact rj-profile">
-<div class="ni-background"></div>
-<div class="rj-profile-pic">
-<img alt="Profile image" src="https://forums.nexusmods.com/uploads/profile/photo-thumb-6748232.png?r_=1567779779">
-</div>
-</div>
-</div>
+<div class="rj-login-nav">
+<a id="login" class="rj-btn rj-btn-clear" href="https://users.nexusmods.com/auth/continue?client_id=nexus&redirect_uri=https://www.nexusmods.com/oauth/callback&response_type=code&referrer=%2F%2Fwww.nexusmods.com%2Fmonsterhunterworld%2Fmods%2F1982%3Ftab%3Dfiles%26file_id%3D9908" title="Log in to Nexus Mods" tabindex="0">Log in</a>
+<a class="rj-btn rj-btn-standard" href="https://users.nexusmods.com/register">Register</a>
 </div>
 </div>
 </div>
@@ -268,24 +255,18 @@ Support <i class="nmicon-chevron-down"></i>
 <div class="rj-header-tray-content rj-header-tray-game">
 <div class="rj-game-content-labels">
 <div class="my-games"><i class="material-icons">videogame_asset</i> My games</div>
+<div class="rj-game-content-message">When logged in, you can choose up to 12 games that will be displayed as favourites in this menu.</div>
+
+<div style="width:104px;"></div>
 </div>
 <div class="rj-game-scroller-wrapper">
-<div class="rj-game-content-games rj-grid-12">
-<a class="rj-game col-1-12" data-gameid="1151" style="background-image: url('https://staticdelivery.nexusmods.com/Images/games/4_3/tile_1151.jpg')" href="https://www.nexusmods.com/fallout4">
-<div class="hover-overlay"></div>
-<div class="rj-game-remove">×</div>
-<div class="rj-game-name">Fallout 4</div>
-</a>
-<a class="rj-game col-1-12" data-gameid="2531" style="background-image: url('https://staticdelivery.nexusmods.com/Images/games/4_3/tile_2531.jpg')" href="https://www.nexusmods.com/monsterhunterworld">
-<div class="hover-overlay"></div>
-<div class="rj-game-remove">×</div>
-<div class="rj-game-name">Monster Hunter: World</div>
-</a>
-<a class="rj-game col-1-12" data-gameid="110" style="background-image: url('https://staticdelivery.nexusmods.com/Images/games/4_3/tile_110.jpg')" href="https://www.nexusmods.com/skyrim">
-<div class="hover-overlay"></div>
-<div class="rj-game-remove">×</div>
-<div class="rj-game-name">Skyrim</div>
-</a>
+<div class="rj-game-content-games rj-grid-12 rj-mobile-hide">
+<div class="rj-game rj-game-empty col-1-12" style="background-image: url('https://staticdelivery.nexusmods.com/Images/games/4_3/tile_empty.png'); border: 2px dashed white">
+</div>
+<div class="rj-game rj-game-empty col-1-12" style="background-image: url('https://staticdelivery.nexusmods.com/Images/games/4_3/tile_empty.png'); border: 2px dashed white">
+</div>
+<div class="rj-game rj-game-empty col-1-12" style="background-image: url('https://staticdelivery.nexusmods.com/Images/games/4_3/tile_empty.png'); border: 2px dashed white">
+</div>
 <div class="rj-game rj-game-empty col-1-12" style="background-image: url('https://staticdelivery.nexusmods.com/Images/games/4_3/tile_empty.png'); border: 2px dashed white">
 </div>
 <div class="rj-game rj-game-empty col-1-12" style="background-image: url('https://staticdelivery.nexusmods.com/Images/games/4_3/tile_empty.png'); border: 2px dashed white">
@@ -324,12 +305,20 @@ Support <i class="nmicon-chevron-down"></i>
 <span class="pip">900</span>
 </a>
 </div>
+<div class="rj-mobile-menu-logged-out-games">
+<div class="catalog-view">
+<div class="empty-tile-1" style="background-image: url('https://staticdelivery.nexusmods.com/Images/games/4_3/tile_empty.png')"></div>
+<div class="empty-tile-2" style="background-image: url('https://staticdelivery.nexusmods.com/Images/games/4_3/tile_empty.png')"></div>
+<div class="empty-tile-3" style="background-image: url('https://staticdelivery.nexusmods.com/Images/games/4_3/tile_empty.png')"></div>
+</div>
+<div class="logged-out-text">
+<p><a href="https://users.nexusmods.com/auth/continue?client_id=nexus&redirect_uri=https://www.nexusmods.com/oauth/callback&response_type=code&referrer=%2F%2Fwww.nexusmods.com%2Fmonsterhunterworld%2Fmods%2F1982%3Ftab%3Dfiles%26file_id%3D9908">Log in</a> to view your list of favourite games.</p>
+<p class="view-all-games"><a href="/games"><strong>View all games</strong> (900)</a></p>
+</div>
+</div>
 <script>
     (function () {
         const favouritesToSet = [];
-            favouritesToSet.push(GameFavourite.create(1151, "https://staticdelivery.nexusmods.com/Images/games/4_3/tile_1151.jpg", "Fallout 4", "https://www.nexusmods.com/fallout4"));
-            favouritesToSet.push(GameFavourite.create(2531, "https://staticdelivery.nexusmods.com/Images/games/4_3/tile_2531.jpg", "Monster Hunter: World", "https://www.nexusmods.com/monsterhunterworld"));
-            favouritesToSet.push(GameFavourite.create(110, "https://staticdelivery.nexusmods.com/Images/games/4_3/tile_110.jpg", "Skyrim", "https://www.nexusmods.com/skyrim"));
             GameFavouriteState.setInitialFavourites(favouritesToSet);
             GameFavouriteState.setCurrentGame(2531, "https://staticdelivery.nexusmods.com/Images/games/4_3/tile_2531.jpg", "Monster Hunter: World", "https://www.nexusmods.com/monsterhunterworld");
         })();
@@ -407,46 +396,7 @@ Support <i class="nmicon-chevron-down"></i>
 </div>
 </a>
 </li>
-<li class="rj-mobile-menu-subsection rj-mobile-menu-link-section">
-<a href="https://www.nexusmods.com/monsterhunterworld/mods/trackingcentre">
-<div>
-<span>Tracked mods</span>
-<i class="material-icons">chevron_right</i>
-</div>
-</a>
-</li>
 <li class="transparent">.</li>
-<li class="transparent">.</li>
-<li class="transparent">.</li>
-</ul>
-</div>
-<div class="rj-mods-activity">
-<ul class="rj-mobile-menu-subsections">
-<li class="header"><a href="https://www.nexusmods.com/monsterhunterworld/users/myaccount?tab=files">My mods <i class="material-icons">chevron_right</i></a></li>
-<li class="rj-mobile-menu-subsection rj-mobile-menu-link-section rj-mobile-menu-only">
-<a href="https://www.nexusmods.com/monsterhunterworld/users/myaccount?tab=files">
-<div>
-<span>My mods</span>
-<i class="material-icons">chevron_right</i>
-</div>
-</a>
-</li>
-<li class="rj-mobile-menu-subsection rj-mobile-menu-link-section">
-<a href="/modrewards/#mods">
-<div>
-<span>Mod rewards</span>
-<i class="material-icons">chevron_right</i>
-</div>
-</a>
-</li>
-<li class="rj-mobile-menu-subsection rj-mobile-menu-link-section">
-<a href="https://www.nexusmods.com/monsterhunterworld/users/myaccount?tab=download+history">
-<div>
-<span>Download history</span>
-<i class="material-icons">chevron_right</i>
-</div>
-</a>
- </li>
 <li class="transparent">.</li>
 <li class="transparent">.</li>
 <li class="transparent">.</li>
@@ -509,14 +459,6 @@ Support <i class="nmicon-chevron-down"></i>
 </div>
 </a>
 </li>
-<li class="rj-mobile-menu-subsection rj-mobile-menu-link-section">
-<a href="https://www.nexusmods.com/monsterhunterworld/users/myaccount?tab=images">
-<div>
-<span>My images</span>
-<i class="material-icons">chevron_right</i>
-</div>
-</a>
-</li>
 <li class="rj-mobile-menu-subsection rj-mobile-menu-link-section rj-mobile-hide">
 <a href="https://www.nexusmods.com/monsterhunterworld/images/add">
 <div>
@@ -551,14 +493,6 @@ Support <i class="nmicon-chevron-down"></i>
 <a href="https://www.nexusmods.com/monsterhunterworld/videos/mostendorsed">
 <div>
 <span>Most endorsed</span>
-<i class="material-icons">chevron_right</i>
-</div>
-</a>
-</li>
-<li class="rj-mobile-menu-subsection rj-mobile-menu-link-section">
-<a href="https://www.nexusmods.com/monsterhunterworld/users/myaccount?tab=videos">
-<div>
-<span>My videos</span>
 <i class="material-icons">chevron_right</i>
 </div>
 </a>
@@ -855,11 +789,11 @@ Support <i class="nmicon-chevron-down"></i>
 <div class="section-content">
 <div class="profile-pic-wrapper">
 <div class="rj-profile-pic">
-<img alt="Profile image" src="https://forums.nexusmods.com/uploads/profile/photo-thumb-6748232.png?r_=1567779779">
+<img alt="Profile image" src="">
 </div>
 </div>
 <div>
-<div title="zxccxzzxcasdq">zxccxzzxcasdq</div>
+<div title="guest">guest</div>
 <div><a class="rj-orange" href="https://users.nexusmods.com/register/memberships">Upgrade to premium <i class="material-icons">chevron_right</i></a></div>
 </div>
 </div>
@@ -869,7 +803,7 @@ Support <i class="nmicon-chevron-down"></i>
 </div>
 </li>
 <li class="rj-tray-section section-dark link-section">
-<a href="/users/6748232">
+<a href="/users/0">
 <div class="section-content">
 <i class="material-icons">person</i> My profile
 </div>
@@ -891,7 +825,7 @@ Support <i class="nmicon-chevron-down"></i>
 </li>
 <li class="rj-tray-section section-dark" style="height:68px;">
 <div class="section-button">
-<a class="rj-btn rj-btn-outline rj-btn-full" href="https://www.nexusmods.com/monsterhunterworld/Sessions/?Logout&uri=%2F%2Fwww.nexusmods.com%2Fmonsterhunterworld%2Fmods%2F1982%3Ftab%3Dfiles" style="font-weight:400;">Sign out</a>
+<a class="rj-btn rj-btn-outline rj-btn-full" href="https://users.nexusmods.com/auth/continue?client_id=nexus&redirect_uri=https://www.nexusmods.com/oauth/callback&response_type=code&referrer=%2F%2Fwww.nexusmods.com%2Fmonsterhunterworld%2Fmods%2F1982%3Ftab%3Dfiles%26file_id%3D9908" style="font-weight:400;">Sign out</a>
 </div>
 </li>
 </ul>
@@ -970,7 +904,7 @@ Support <i class="nmicon-chevron-down"></i>
 </button>
 <button class="rj-expand-profile">
 <i class="material-icons">person</i>
-<div class="bubble">1</div>
+<div class="bubble" style="display:none;">0</div>
 </button>
 </div>
 </div>
@@ -994,27 +928,21 @@ Support <i class="nmicon-chevron-down"></i>
 <span>Games</span>
 <i class="nmicon-chevron-down"></i>
 </button>
-<div class="logged-in">
+<div class="logged-out">
 <div class="rj-game-content-labels">
 <div class="my-games"><i class="material-icons">videogame_asset</i> My games</div>
+<div class="rj-game-content-message">When logged in, you can choose up to 12 games that will be displayed as favourites in this menu.</div>
+
+<div style="width:104px;"></div>
 </div>
 <div class="rj-game-scroller-wrapper">
-<div class="rj-game-content-games rj-grid-12">
-<a class="rj-game col-1-12" data-gameid="1151" style="background-image: url('https://staticdelivery.nexusmods.com/Images/games/4_3/tile_1151.jpg')" href="https://www.nexusmods.com/fallout4">
-<div class="hover-overlay"></div>
-<div class="rj-game-remove">×</div>
-<div class="rj-game-name">Fallout 4</div>
-</a>
-<a class="rj-game col-1-12" data-gameid="2531" style="background-image: url('https://staticdelivery.nexusmods.com/Images/games/4_3/tile_2531.jpg')" href="https://www.nexusmods.com/monsterhunterworld">
-<div class="hover-overlay"></div>
-<div class="rj-game-remove">×</div>
-<div class="rj-game-name">Monster Hunter: World</div>
-</a>
-<a class="rj-game col-1-12" data-gameid="110" style="background-image: url('https://staticdelivery.nexusmods.com/Images/games/4_3/tile_110.jpg')" href="https://www.nexusmods.com/skyrim">
-<div class="hover-overlay"></div>
-<div class="rj-game-remove">×</div>
-<div class="rj-game-name">Skyrim</div>
-</a>
+<div class="rj-game-content-games rj-grid-12 rj-mobile-hide">
+<div class="rj-game rj-game-empty col-1-12" style="background-image: url('https://staticdelivery.nexusmods.com/Images/games/4_3/tile_empty.png'); border: 2px dashed white">
+</div>
+<div class="rj-game rj-game-empty col-1-12" style="background-image: url('https://staticdelivery.nexusmods.com/Images/games/4_3/tile_empty.png'); border: 2px dashed white">
+</div>
+<div class="rj-game rj-game-empty col-1-12" style="background-image: url('https://staticdelivery.nexusmods.com/Images/games/4_3/tile_empty.png'); border: 2px dashed white">
+</div>
 <div class="rj-game rj-game-empty col-1-12" style="background-image: url('https://staticdelivery.nexusmods.com/Images/games/4_3/tile_empty.png'); border: 2px dashed white">
 </div>
 <div class="rj-game rj-game-empty col-1-12" style="background-image: url('https://staticdelivery.nexusmods.com/Images/games/4_3/tile_empty.png'); border: 2px dashed white">
@@ -1053,17 +981,24 @@ Support <i class="nmicon-chevron-down"></i>
 <span class="pip">900</span>
 </a>
 </div>
+<div class="rj-mobile-menu-logged-out-games">
+<div class="catalog-view">
+<div class="empty-tile-1" style="background-image: url('https://staticdelivery.nexusmods.com/Images/games/4_3/tile_empty.png')"></div>
+<div class="empty-tile-2" style="background-image: url('https://staticdelivery.nexusmods.com/Images/games/4_3/tile_empty.png')"></div>
+<div class="empty-tile-3" style="background-image: url('https://staticdelivery.nexusmods.com/Images/games/4_3/tile_empty.png')"></div>
+</div>
+<div class="logged-out-text">
+<p><a href="https://users.nexusmods.com/auth/continue?client_id=nexus&redirect_uri=https://www.nexusmods.com/oauth/callback&response_type=code&referrer=%2F%2Fwww.nexusmods.com%2Fmonsterhunterworld%2Fmods%2F1982%3Ftab%3Dfiles%26file_id%3D9908">Log in</a> to view your list of favourite games.</p>
+<p class="view-all-games"><a href="/games"><strong>View all games</strong> (900)</a></p>
+</div>
+</div>
 <script>
     (function () {
         const favouritesToSet = [];
-            favouritesToSet.push(GameFavourite.create(1151, "https://staticdelivery.nexusmods.com/Images/games/4_3/tile_1151.jpg", "Fallout 4", "https://www.nexusmods.com/fallout4"));
-            favouritesToSet.push(GameFavourite.create(2531, "https://staticdelivery.nexusmods.com/Images/games/4_3/tile_2531.jpg", "Monster Hunter: World", "https://www.nexusmods.com/monsterhunterworld"));
-            favouritesToSet.push(GameFavourite.create(110, "https://staticdelivery.nexusmods.com/Images/games/4_3/tile_110.jpg", "Skyrim", "https://www.nexusmods.com/skyrim"));
             GameFavouriteState.setInitialFavourites(favouritesToSet);
             GameFavouriteState.setCurrentGame(2531, "https://staticdelivery.nexusmods.com/Images/games/4_3/tile_2531.jpg", "Monster Hunter: World", "https://www.nexusmods.com/monsterhunterworld");
         })();
-</script> <a class="rj-btn rj-btn-outline rj-btn-full" href="/games">See all games</a>
-</div>
+</script> </div>
 </li>
 <li class="rj-mobile-menu-section has-children">
 <button class="section-content">
@@ -1143,46 +1078,7 @@ Support <i class="nmicon-chevron-down"></i>
 </div>
 </a>
 </li>
-<li class="rj-mobile-menu-subsection rj-mobile-menu-link-section">
-<a href="https://www.nexusmods.com/monsterhunterworld/mods/trackingcentre">
-<div>
-<span>Tracked mods</span>
-<i class="material-icons">chevron_right</i>
-</div>
-</a>
-</li>
 <li class="transparent">.</li>
-<li class="transparent">.</li>
-<li class="transparent">.</li>
-</ul>
-</div>
-<div class="rj-mods-activity">
-<ul class="rj-mobile-menu-subsections">
-<li class="header"><a href="https://www.nexusmods.com/monsterhunterworld/users/myaccount?tab=files">My mods <i class="material-icons">chevron_right</i></a></li>
-<li class="rj-mobile-menu-subsection rj-mobile-menu-link-section rj-mobile-menu-only">
-<a href="https://www.nexusmods.com/monsterhunterworld/users/myaccount?tab=files">
-<div>
-<span>My mods</span>
-<i class="material-icons">chevron_right</i>
-</div>
-</a>
-</li>
-<li class="rj-mobile-menu-subsection rj-mobile-menu-link-section">
-<a href="/modrewards/#mods">
-<div>
-<span>Mod rewards</span>
-<i class="material-icons">chevron_right</i>
-</div>
-</a>
-</li>
-<li class="rj-mobile-menu-subsection rj-mobile-menu-link-section">
-<a href="https://www.nexusmods.com/monsterhunterworld/users/myaccount?tab=download+history">
-<div>
-<span>Download history</span>
-<i class="material-icons">chevron_right</i>
-</div>
-</a>
-</li>
 <li class="transparent">.</li>
 <li class="transparent">.</li>
 <li class="transparent">.</li>
@@ -1251,14 +1147,6 @@ Support <i class="nmicon-chevron-down"></i>
 </div>
 </a>
 </li>
-<li class="rj-mobile-menu-subsection rj-mobile-menu-link-section">
-<a href="https://www.nexusmods.com/monsterhunterworld/users/myaccount?tab=images">
-<div>
-<span>My images</span>
-<i class="material-icons">chevron_right</i>
-</div>
-</a>
-</li>
 <li class="rj-mobile-menu-subsection rj-mobile-menu-link-section rj-mobile-hide">
 <a href="https://www.nexusmods.com/monsterhunterworld/images/add">
 <div>
@@ -1293,14 +1181,6 @@ Support <i class="nmicon-chevron-down"></i>
 <a href="https://www.nexusmods.com/monsterhunterworld/videos/mostendorsed">
 <div>
 <span>Most endorsed</span>
-<i class="material-icons">chevron_right</i>
-</div>
-</a>
-</li>
-<li class="rj-mobile-menu-subsection rj-mobile-menu-link-section">
-<a href="https://www.nexusmods.com/monsterhunterworld/users/myaccount?tab=videos">
-<div>
-<span>My videos</span>
 <i class="material-icons">chevron_right</i>
 </div>
 </a>
@@ -1367,7 +1247,7 @@ Support <i class="nmicon-chevron-down"></i>
 <img class="icon" alt="Twitter" src="/assets/images/footer/Twitter.svg">
 </a>
 <a target="_blank" href="https://www.facebook.com/pages/Nexus-sites/71629282833" title="Like us on Facebook">
-<img class="icon" alt="Facebook" src="/assets/images/footer/Facebook.svg">
+ <img class="icon" alt="Facebook" src="/assets/images/footer/Facebook.svg">
 </a>
 </div>
 </li>
@@ -1665,11 +1545,9 @@ Support <i class="nmicon-chevron-down"></i>
 <div class="rj-game-selector-dropdown">
 <ul class="rj-game-selector-games ">
 <li class="all-games"><button><span>Search all games</span> <i class="material-icons">chevron_right</i></button></li>
-<li class="header">Favourite games</li>
-<li class="game-select"><button data-gameid="1151" data-gameindex="https://www.nexusmods.com/fallout4/search/">Fallout 4</button></li>
-<li class="game-select"><button data-gameid="2531" data-gameindex="https://www.nexusmods.com/monsterhunterworld/search/">Monster Hunter: World</button></li>
-<li class="game-select"><button data-gameid="110" data-gameindex="https://www.nexusmods.com/skyrim/search/">Skyrim</button></li>
 <li class="header">Popular games</li>
+<li class="game-select"><button data-gameid="110" data-gameindex="https://www.nexusmods.com/skyrim/search/">Skyrim</button></li>
+<li class="game-select"><button data-gameid="1151" data-gameindex="https://www.nexusmods.com/fallout4/search/">Fallout 4</button></li>
 <li class="game-select"><button data-gameid="1704" data-gameindex="https://www.nexusmods.com/skyrimspecialedition/search/">Skyrim Special Edition</button></li>
 <li class="game-select"><button data-gameid="130" data-gameindex="https://www.nexusmods.com/newvegas/search/">Fallout New Vegas</button></li>
 <li class="game-select"><button data-gameid="101" data-gameindex="https://www.nexusmods.com/oblivion/search/">Oblivion</button></li>
@@ -1678,98 +1556,87 @@ Support <i class="nmicon-chevron-down"></i>
 <li class="game-select"><button data-gameid="140" data-gameindex="https://www.nexusmods.com/dragonage/search/">Dragon Age</button></li>
 <li class="game-select"><button data-gameid="1303" data-gameindex="https://www.nexusmods.com/stardewvalley/search/">Stardew Valley</button></li>
 <li class="game-select"><button data-gameid="100" data-gameindex="https://www.nexusmods.com/morrowind/search/">Morrowind</button></li>
+<li class="game-select"><button data-gameid="728" data-gameindex="https://www.nexusmods.com/dragonageinquisition/search/">Dragon Age: Inquisition</button></li>
 </ul>
 </div>
 <div class="rj-mobile-menu-profile">
 <div class="rj-mobile-menu-header">
-<div class="rj-mobile-profile-identity">
-<div class="profile-pic-wrapper">
-<div class="rj-profile-pic">
-<img alt="Profile image" src="https://forums.nexusmods.com/uploads/profile/photo-thumb-6748232.png?r_=1567779779">
+<div class="rj-mobile-menu-spacer"></div>
+<div class="rj-mobile-menu-game">
+<div class="rj-logo-center">
+<a class="headlogo" href="/" alt="Nexus Mods" title="Nexus Mods">
+<svg xmlns="http://www.w3.org/2000/svg" style="width:148px; height:35px;" version="1.1" x="0px" y="0px" viewBox="0 0 698.3 162.5">
+<g>
+<g>
+<g>
+<path d="M44.4,162.5c-0.6,0-1.3,0-1.9-0.1c-1.5-0.2-2.9-0.5-4.5-1c-2.8-0.9-5.2-2.2-6.9-3.2c-3.8-2.2-7.7-4.9-11.8-8.3 c-1.8-1.5-3.6-3.1-5.3-4.7l-1.4-1.4c-1-0.9-1.9-1.9-2.6-3c-1.3-2-2.4-4.6-2.5-8c-0.1-1.1-0.2-2.2-0.2-3.4c0-2.4,0.1-5,0.5-7.5 c0.7-5.2,2.4-9.8,3.7-13.3c0.1-0.3,0.2-0.6,0.3-0.9c-0.4-0.9-0.7-1.9-1.1-2.9C8.9,99.6,7.7,93.8,7.1,88 c-0.6-6.1-0.4-12.3,0.5-18.4c0.2-1.3,0.4-2.6,0.7-3.8C5.9,62.3,2.9,57.3,1,51.5l0-0.1c-0.4-1.2-1.4-4.2-0.8-8 c0.2-1.4,0.5-2.8,1-4.3c0.9-2.8,2.2-5.1,3.2-6.8c2.2-3.8,4.9-7.6,8.2-11.7c1.5-1.8,3-3.6,4.6-5.2l1.4-1.4 c0.7-0.8,1.5-1.5,2.4-2.1c2-1.5,4.8-2.8,8.6-2.9c1.2-0.1,2.5-0.2,3.8-0.2h0.1c2.5,0,5.2,0.2,7.8,0.6c4,0.6,7.6,1.7,10.8,2.9 c2.1-0.9,4.3-1.7,6.6-2.5C64.1,8,69.9,6.8,75.7,6.4C81.8,5.9,88,6.2,93.9,7.2c1.4,0.2,2.8,0.5,4.2,0.8c4.7-3.2,9-5.5,13.5-6.9 l0.1,0c1-0.4,3.2-1.1,6.1-1.1c0.6,0,1.3,0,1.9,0.1c1.5,0.2,2.9,0.5,4.5,1c2.8,0.9,5.2,2.2,6.9,3.2c3.8,2.2,7.7,4.9,11.8,8.3 c1.8,1.5,3.6,3.1,5.3,4.7l1.4,1.4c0.7,0.6,1.4,1.3,1.9,2.1c1.8,2.3,3.2,5.6,3.3,10.2c0.1,1.6,0.1,3.3,0,5 c-0.2,3.7-0.7,7.2-1.6,10.4c-0.7,2.4-1.5,4.8-2.4,7.2c1.8,4.5,3.1,9.1,4,13.8c1.8,9.9,1.6,20.1-0.6,29.9c1.3,1.9,2.5,3.7,3.5,5.5 c1.7,3,3.1,6.1,4.1,9.3c0.4,1.2,1.3,4.2,0.7,8.2c-0.2,1.4-0.6,2.7-1.1,4.2c-1.8,5.1-4.6,9.3-7.1,12.8c-2.7,3.8-5.8,7.5-9,10.9 l-1.2,1.2c-0.7,0.8-1.5,1.5-2.4,2.2c-2,1.5-4.8,2.7-8.6,2.9c-1.2,0.1-2.5,0.2-3.8,0.2h-0.1c-2.7,0-5.4-0.2-8.2-0.7 c-4.5-0.7-8.5-2.1-12.1-3.5c-1.9,0.8-3.9,1.5-5.8,2.1c-5.6,1.7-11.5,2.8-17.4,3.1c-6.1,0.4-12.3-0.1-18.3-1.2 c-0.7-0.1-1.5-0.3-2.2-0.4c-5.2,3.7-9.8,6.1-14.6,7.7l-0.1,0C49.5,161.7,47.3,162.5,44.4,162.5L44.4,162.5z M24.6,134.1l10.6,3.7 c0.9-2.6,1-5.4,0.4-8c0,0.2,0,0.5,0.1,0.7c0,0.3,0.1,0.7,0.1,1.1c-0.1-2-0.8-4.6-2.6-7c-0.7-0.9-1.5-1.7-2.4-2.4l0.5,0.4l0.9,0.9 c-0.8-0.8-1.7-1.6-2.7-2.3L24.6,134.1L24.6,134.1z M123.7,129.4c-0.8,0.8-1.6,1.6-2.3,2.7l11.9,4.6l0-11.1c0,0,0,0,0,0 c-1.1,0-2.2,0.1-3.2,0.4c0.2,0,0.4,0,0.6,0c0.3,0,0.7-0.1,1.1-0.1c-1.8,0.1-4.2,0.7-6.4,2.1c-1.2,0.8-2.2,1.7-3.1,2.9l0.4-0.5 L123.7,129.4L123.7,129.4z M35.8,126.8c0.5,0.4,1,0.8,1.5,1.3c2.6,2.2,5,3.9,7.2,5.2c1.4-0.7,3-1.7,4.7-3 c0.5-0.3,0.9-0.7,1.4-1.1c0.3-0.2,0.5-0.5,0.8-0.7c0.1-0.1,0.3-0.3,0.4-0.4l6.2-6.3l8.4,2.9c0.3,0.1,0.6,0.2,0.8,0.3 c1.8,0.6,3.6,1,5.4,1.4c3.7,0.7,7.6,1,11.4,0.7c3.6-0.2,7.3-0.9,10.7-1.9c1.7-0.5,3.4-1.1,5-1.9c0.8-0.3,1.6-0.7,2.3-1.1 c2-1,4.3-1.6,6.6-1.6c3.6,0,6.3,1.3,7.6,2c0.4,0.2,0.8,0.4,1.3,0.5c2.5,1,5.4,2.2,8,2.6c0.4,0.1,0.9,0.1,1.3,0.2 c1.5-1.7,2.9-3.5,4.2-5.3c0.8-1.1,1.6-2.2,2.3-3.3c-0.1-0.2-0.2-0.4-0.4-0.7c-0.7-1.2-1.5-2.4-2.5-3.9c-0.3-0.5-0.7-0.9-1.1-1.4 c-0.2-0.2-0.3-0.4-0.5-0.6c-4.1-4-5.5-9.7-3.6-15.1c0.1-0.3,0.2-0.6,0.3-0.8c2.3-7.2,2.7-14.9,1.4-22.3c-0.7-3.5-1.7-7-3.2-10.3 c-0.1-0.3-0.3-0.6-0.4-0.9c-3.3-6.1-1.9-11.3-0.7-13.8c0.5-1,0.9-2.1,1.3-3.1c0.8-1.9,1.4-3.9,2-5.7c0.2-0.9,0.4-1.8,0.5-2.9 c-0.5-0.4-1-0.8-1.5-1.3c-2.7-2.2-5-3.9-7.2-5.2c-1.4,0.8-3,1.8-4.8,3c-0.5,0.4-1,0.8-1.5,1.2c-0.1,0.1-0.3,0.2-0.4,0.4 c-2.7,2.6-6.3,4-10,4c-1.8,0-3.5-0.3-5.2-1c-0.4-0.1-0.8-0.3-1.2-0.4c-1.8-0.5-3.6-1-5.5-1.3c-3.7-0.6-7.6-0.8-11.4-0.5 c-3.6,0.3-7.2,1-10.6,2.1c-1.7,0.5-3.3,1.2-4.9,1.9c-0.8,0.3-1.5,0.7-2.3,1.1L59.5,40c-2.1,1.2-4.6,1.8-7,1.8 c-2.2,0-4.4-0.5-6.5-1.5c-0.5-0.2-0.9-0.4-1.4-0.6c-2.4-1-5.3-2.1-7.8-2.4c-0.4-0.1-0.8-0.1-1.1-0.2c-0.4,0.5-0.8,1-1.2,1.4 c-2.2,2.7-3.9,5-5.2,7.3c0.7,1.4,1.7,2.9,2.9,4.7c0.3,0.5,0.7,1,1.1,1.4c0.2,0.3,0.5,0.5,0.7,0.8l5.8,6.1l-2.5,8 c-0.2,0.5-0.3,1-0.5,1.5c-0.5,1.8-0.9,3.7-1.2,5.6c-0.6,3.8-0.7,7.6-0.3,11.5c0.3,3.6,1.1,7.2,2.3,10.6c0.6,1.7,1.3,3.3,2,4.9 c0.1,0.2,0.2,0.4,0.3,0.6c2.1,4.3,2.1,9.1-0.1,13.4c-0.2,0.4-0.4,0.8-0.5,1.2c-0.4,1-0.9,2-1.3,3c-0.8,2.2-1.8,4.8-2.1,7.1 C35.9,126.3,35.8,126.6,35.8,126.8L35.8,126.8z M129.9,38.8c0.8,0.8,1.7,1.6,2.8,2.4l4.9-12.9L127,24.6c-0.9,2.6-1,5.4-0.4,8 c0-0.1,0-0.2,0-0.3c0-0.3,0-0.8,0-1.3v-0.1c0,1.5,0.5,4,2.1,6.4c0.8,1.1,1.7,2.1,2.8,3l-0.5-0.4L129.9,38.8L129.9,38.8z  M29.3,26.3l0,11.1c1.1,0,2.2-0.1,3.2-0.4c-0.2,0-0.4,0-0.6,0c-0.3,0-0.7,0.1-1.1,0.1c1.8-0.1,4.2-0.7,6.4-2.1 c1.2-0.8,2.2-1.7,3.1-2.9l-0.4,0.5l-0.9,1c0.8-0.8,1.6-1.7,2.3-2.7L29.3,26.3L29.3,26.3z" />
+</g>
+</g>
+<g>
+<g>
+<g>
+<path class="theme-secondary" d="M56.3,88.4l0.7,28.3l-7-5.7c-7.8,12.7-10.3,25-6.6,34.1l1.3,3.2l-3.2-1.4c-7.3-3.2-13.9-7.7-19.4-13.5 l-0.3-0.3l-0.1-0.5c-0.4-3.5-0.2-7.3,0.7-11.2l0-0.1c1.3-4.9,3.2-9.8,5.6-14.7c1.5-3.1,3.3-6.2,5.3-9.2l-6.1-5L56.3,88.4z" />
+</g>
+</g>
+<g>
+<g>
+<path class="theme-secondary" d="M105.9,74.1l-0.7-28.3l7,5.7c7.8-12.7,10.3-25,6.6-34.1l-1.3-3.2l3.2,1.4c7.3,3.2,13.9,7.7,19.4,13.5 l0.3,0.3l0.1,0.5c0.4,3.5,0.2,7.3-0.7,11.2l0,0.1c-1.3,4.9-3.2,9.8-5.6,14.7c-1.5,3.1-3.3,6.2-5.3,9.2l6.1,5L105.9,74.1z" />
+</g>
+</g>
+<g>
+<g>
+<path class="theme-secondary" d="M88.5,105.4l28.3-0.7l-5.7,7c12.7,7.8,25,10.3,34.1,6.6l3.2-1.3l-1.4,3.2c-3.2,7.3-7.7,13.9-13.5,19.4 l-0.3,0.3l-0.5,0.1c-3.5,0.4-7.3,0.2-11.2-0.7l-0.1,0c-4.9-1.3-9.8-3.2-14.7-5.6c-3.1-1.5-6.2-3.3-9.2-5.3l-5,6.1L88.5,105.4z" />
+</g>
+</g>
+<g>
+<g>
+<path class="theme-secondary" d="M74.1,57.6l-28.3,0.7l5.7-7c-12.7-7.8-25-10.3-34.1-6.6L14.3,46l1.4-3.2c3.2-7.3,7.7-13.9,13.5-19.4 l0.3-0.3L30,23c3.5-0.4,7.3-0.2,11.2,0.7l0.1,0c4.9,1.3,9.8,3.2,14.7,5.6c3.1,1.5,6.2,3.3,9.2,5.3l5-6.1L74.1,57.6z" />
+</g>
+</g>
+<g>
+<g>
+<circle class="theme-primary" cx="81.4" cy="80.8" r="60.5" />
+</g>
+</g>
+<g>
+<path style="fill:#ffffff" d="M59.3,59.5c-3.5-1.6-6.1-3.2-8.7-5.1c-4-2.8-7.7-5.9-10.8-9.2c-7.6-7.7-11.6-15.6-10.5-22.1L27,25.6 c-5.5,5.8-12.8,16-12.9,20.4c0.1,0.5,0.1,0.5,0.1,0.5c1,3.4,2.6,6.8,4.9,10.1l0,0.1c3,4.8,8.9,12.7,29.9,21.9l-3.7,7l28.3-7.6 L63.5,51.5L59.3,59.5z" />
+</g>
+<g>
+<path style="fill:#ffffff" d="M103.3,103.5c3.5,1.6,6.1,3.2,8.7,5.1c4,2.8,7.7,5.9,10.8,9.2c7.6,7.7,11.6,15.6,10.5,22.1l2.3-2.4 c5.5-5.8,12.8-16,12.9-20.4c-0.1-0.5-0.1-0.5-0.1-0.5c-1-3.4-2.6-6.8-4.9-10.1l0-0.1c-3-4.8-8.9-12.7-29.9-21.9l3.7-7l-28.3,7.6 l10.2,26.2L103.3,103.5z" />
+</g>
+<g>
+<path style="fill:#ffffff" d="M104,59.3c1.6-3.5,3.2-6.1,5.1-8.7c2.8-4,5.9-7.7,9.2-10.8c7.7-7.6,15.6-11.6,22.1-10.5L138,27 c-5.8-5.5-16-12.8-20.4-12.9c-0.5,0.1-0.5,0.1-0.5,0.1c-3.4,1-6.8,2.6-10.1,4.9l-0.1,0c-4.8,3-12.7,8.9-21.9,29.9l-7-3.7 l7.6,28.3L112,63.6L104,59.3z" />
+</g>
+<g>
+<path style="fill:#ffffff" d="M58.2,103.2c-1.6,3.5-3.2,6.1-5.1,8.7c-2.8,4-5.9,7.7-9.2,10.8c-7.7,7.6-15.6,11.6-22.1,10.5l2.4,2.3 c5.8,5.5,16,12.8,20.4,12.9c0.5-0.1,0.5-0.1,0.5-0.1c3.4-1,6.8-2.6,10.1-4.9l0.1,0c4.8-3,12.7-8.9,21.9-29.9l7,3.7l-7.6-28.3 L50.3,98.9L58.2,103.2z" />
+</g>
+</g>
+</g>
+<g class="logo-brand-name">
+<path style="fill:#ffffff" d="M198.6,131.3h-6V31.9h8.5l29.8,83.9V31.9h6v99.4h-7.2l-31.1-88.6V131.3z" />
+<path style="fill:#ffffff" d="M281.1,77.9v6h-27.1v41.5h32.7v6h-39.2V31.9h39.2v6h-32.7v40H281.1z" />
+<path style="fill:#ffffff" d="M321.8,85l-20.2,46.3h-6.4l22.4-51.5l-20.9-47.8h6.8l18.7,42.7l18.9-42.7h6.2l-20.9,47.8l22.3,51.5h-7 L321.8,85z" />
+<path style="fill:#ffffff" d="M364.5,107.3c0,10.6,4,18.9,14.9,18.9s14.9-8.2,14.9-18.9V31.9h6.1V107c0,14.2-6,25.1-21.2,25.1 c-15.2,0-21.3-10.9-21.3-25.1V31.9h6.5V107.3z" />
+<path style="fill:#ffffff" d="M452.8,55.9v2.1h-6.2v-2.6c0-10.5-4-18.5-14.8-18.5c-10.8,0-14.8,7.8-14.8,18.3c0,24.1,35.9,24.6,35.9,52 c0,14.3-6.2,24.8-21.4,24.8s-21.4-10.5-21.4-24.8v-5.1h6.2v5.5c0,10.6,4.1,18.3,15,18.3s15-7.7,15-18.3c0-23.9-35.9-24.3-35.9-52 c0-14.9,6.5-24.6,21.2-24.7C446.7,31.1,452.8,41.6,452.8,55.9z" />
+<path class="theme-primary" d="M495.8,102.5l10.6-70.6h21.7v99.4h-14.8V60.1l-10.8,71.3h-14.8l-11.6-70.3v70.3h-13.6V31.9h21.7L495.8,102.5z" />
+<path class="theme-primary" d="M537.6,55.8c0-15.9,8.4-25,23.7-25c15.3,0,23.7,9.1,23.7,25v51.7c0,15.9-8.4,25-23.7,25 c-15.3,0-23.7-9.1-23.7-25V55.8z M553.2,108.5c0,7.1,3.1,9.8,8.1,9.8s8.1-2.7,8.1-9.8V54.8c0-7.1-3.1-9.8-8.1-9.8s-8.1,2.7-8.1,9.8 V108.5z" />
+<path class="theme-primary" d="M594.4,31.9h24.7c15.6,0,23.3,8.7,23.3,24.6v50.3c0,15.9-7.7,24.6-23.3,24.6h-24.7V31.9z M610,46.1v71h8.8 c5,0,7.9-2.6,7.9-9.7V55.8c0-7.1-3-9.7-7.9-9.7H610z" />
+<path class="theme-primary" d="M672.6,30.8c15.2,0,23,9.1,23,25v3.1h-14.8v-4.1c0-7.1-2.8-9.8-7.8-9.8c-5,0-7.8,2.7-7.8,9.8 c0,20.4,30.5,24.3,30.5,52.7c0,15.9-8,25-23.3,25c-15.3,0-23.3-9.1-23.3-25v-6.1h14.8v7.1c0,7.1,3.1,9.7,8.1,9.7s8.1-2.6,8.1-9.7 c0-20.4-30.5-24.3-30.5-52.7C649.6,39.9,657.4,30.8,672.6,30.8z" />
+</g>
+</svg> </a>
 </div>
 </div>
-<div class="profile-name-wrapper">
-<div>zxccxzzxcasdq</div>
-<div><a class="rj-orange" href="https://users.nexusmods.com/register/memberships" style="display:flex;align-items:center;font-weight:400;">Go premium <i class="material-icons" style="font-size:20px;">chevron_right</i></a></div>
-</div>
-</div>
-<button class="rj-mobile-profile-notifications">
-<i class="nmicon-notification"></i>
-<div class="bubble">1</div>
-</button>
-<a class="rj-mobile-profile-messages rj-mobile-btn" href="http://forums.nexusmods.com/index.php?app=members&module=messaging">
-<i class="material-icons">email</i>
-</a>
 <button class="rj-mobile-profile-close">
 <i class="material-icons">close</i>
 </button>
 </div>
-<div class="rj-mobile-menu-header account-settings flex-container rj-open" style="padding:0;">
-<a class="rj-btn-round" href="https://users.nexusmods.com">Account settings</a>
-</div>
 <div class="rj-mobile-menu-body">
-<ul class="rj-mobile-menu-sections">
-<div class="rj-mobile-menu-notifications">
-<div class="notifications-header">
-<div class="notifications-header-left">
-<i class="nmicon-notification"></i>
-<span>Notifications</span>
-<a href="https://www.nexusmods.com/monsterhunterworld/notifications">See all</a>
+<div class="please-log-in">
+<h1>Please log in or register</h1>
+<p>To enjoy the benefits of Nexus Mods, please log in or register a new account</p>
+<a class="rj-btn rj-btn-outline rj-btn-full" href="https://users.nexusmods.com/auth/continue?client_id=nexus&redirect_uri=https://www.nexusmods.com/oauth/callback&response_type=code&referrer=%2F%2Fwww.nexusmods.com%2Fmonsterhunterworld%2Fmods%2F1982%3Ftab%3Dfiles%26file_id%3D9908">Log in</a>
+<a class="rj-btn rj-btn-standard rj-btn-full" href="https://users.nexusmods.com/register">Register</a>
 </div>
-<div class="notifications-header-right">
-<a class="notifications-clear">Mark all (<span class="total-count">0</span>) as read</a>
-</div>
-</div>
-<div class="notifications-body">
-<div class="notifications-list">
-<ul>
-</ul>
-<div class="no-notifications">
-<i class="nmicon-notification"></i>
-<p>No unread notifications right now</p>
-<span>You're up to date</span>
-</div>
-</div>
-<div class="notification-load-more">
-<a class="rj-btn rj-btn-full notifications-load-more">Load more</a>
-</div>
-</div>
- </div>
-<li class="rj-mobile-menu-section rj-mobile-menu-link-section">
-<a href="/users/6748232">
-<div class="section-content">
-<i class="material-icons">person</i>
-<span>My profile</span>
-<i class="material-icons">chevron_right</i>
-</div>
-</a>
-</li>
-<li class="rj-mobile-menu-section rj-mobile-menu-link-section">
-<a href="/modrewards#/wallet">
-<div class="section-content">
-<i class="material-icons">account_balance_wallet</i>
-<span>My wallet</span>
-<i class="material-icons">chevron_right</i>
-</div>
-</a>
-</li>
-<li class="rj-mobile-menu-section rj-mobile-menu-link-section">
-<a href="/users/myaccount">
-<div class="section-content">
-<i class="material-icons">settings</i>
-<span>Site preferences</span>
-<i class="material-icons">chevron_right</i>
-</div>
-</a>
-</li>
-<li class="rj-mobile-menu-section rj-mobile-menu-link-section">
-<div class="section-content">
-<a href="https://www.nexusmods.com/monsterhunterworld/Sessions/?Logout&uri=%2F%2Fwww.nexusmods.com%2Fmonsterhunterworld%2Fmods%2F1982%3Ftab%3Dfiles" class="rj-btn rj-btn-outline rj-btn-full">
-<span style="font-weight:400;">Sign out</span>
-</a>
-</div>
-</li>
-</ul>
 <div class="rj-mobile-menu-footer">
 <div class="rj-mobile-menu-footer-logo">
 <a class="headlogo" href="/" alt="Nexus Mods" title="Nexus Mods">
@@ -1842,7 +1709,38 @@ Support <i class="nmicon-chevron-down"></i>
 </div>
 </div>
 </div>
-</header><div class="wrapper"> <script src="https://code.highcharts.com/stock/js/highstock.js"></script>
+</header><div class="wrapper">
+<div class="agroup clearfix">
+<div class="ads">
+<script>
+			$(document).ready(function() {
+				if(window.innerWidth < 1012) {
+					$('.demo-billboard').remove()
+				}
+
+				if(window.innerWidth >= 1012 && window.innerWidth < 1460) {
+					$('.demo-mrec').remove()
+				}
+			});
+		</script>
+<div class="ad demo-billboard ad-unit">
+<div id=div-gpt-ad-1561413483341-4></div>
+
+</div>
+<div class="ad demo-mrec ad-unit">
+<div id=div-gpt-ad-1561413483341-1></div>
+
+</div>
+</div>
+<script>
+	if ( areAdsBlocked() === true )
+	{
+		$('.ads').remove();
+		document.write('<div class="areplacer"> <div class="areplacer-left"> :( </div> <div class="areplacer-center"> <span class="ahighl">No one likes ads.</span> We know that. But without ads this site simply could not exist.<br /> Please be fair to us and others and consider turning them on.<br /> Alternatively, for £1.55 ($2) you can <a href="https://forums.nexusmods.com/index.php?/store/category/2-supporter-membership/">turn off ads permanently</a> (one-off payment!) </div> </div>');
+	}
+	</script>
+</div>
+<script src="https://code.highcharts.com/stock/js/highstock.js"></script>
 <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/highcharts.css" />
 <link rel="stylesheet" type="text/css" href="../../../assets/stylesheets/highstock/overrides.css" />
 <script src="../../../assets/javascripts/highcharts.flag.grouping.js"></script>
@@ -1880,7 +1778,7 @@ Tools &amp; Utilities </a>
 <li class="stat-endorsements">
 <svg title="" class="icon-stat icon-stat-endorsements"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-stat-endorsements"></use></svg> <div class="statitem">
 <div class="titlestat">Endorsements</div>
-<div class="stat"><a title="See who endorsed this mod" class="popup-btn-ajax inline-flex" href="/Core/Libs/Common/Widgets/EndorsersPopUp?game_id=2531&object_id=1982&object_type=1" data-effect="mfp-zoom-in">6,652</a></div>
+<div class="stat"><a title="See who endorsed this mod" class="popup-btn-ajax inline-flex" href="/Core/Libs/Common/Widgets/EndorsersPopUp?game_id=2531&object_id=1982&object_type=1" data-effect="mfp-zoom-in">6,685</a></div>
 </div>
 </li>
 <li class="stat-uniquedls">
@@ -1898,7 +1796,7 @@ Tools &amp; Utilities </a>
 <li class="stat-totalviews">
 <svg title="" class="icon-stat icon-stat-totalviews"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-stat-totalviews"></use></svg> <div class="statitem">
 <div class="titlestat">Total views</div>
-<div class="stat">1,073,528</div>
+<div class="stat">1,077,069</div>
 </div>
 </li>
 <li class="stat-version">
@@ -1909,53 +1807,8 @@ Tools &amp; Utilities </a>
 </li>
 </ul>
 <ul class="modactions clearfix">
-<li id="action-media">
-<div class="drop-down">
-<div class="btn inline-flex">
-<svg title="" class="icon icon-media"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-media"></use></svg> <span class="flex-label">Add media</span>
-<svg title="" class="icon icon-arrow"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-arrow"></use></svg> </div>
-<div class="subnav">
-<ul class="sublist clearfix">
-<li>
-<a class="open-add-media" href="?tab=images" data-target="/Core/Libs/Common/Widgets/ModImagesTab?show_upload=true&id=1982&game_id=2531">Add images</a>
-</li>
-</ul>
-</div>
-</div>
-</li>
-<li id="action-track-2531-1982" style="">
-<a class="btn inline-flex toggle-track-mod" data-mod-id="1982" data-game-id="2531" data-do-track="1" data-source-page="mod">
-<svg title="" class="icon icon-track"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-track"></use></svg> <span class="flex-label">Track</span>
-</a>
-</li>
-<li id="action-untrack-2531-1982" style="display:none;">
-<a class="btn inline-flex btn-active toggle-track-mod" data-mod-id="1982" data-game-id="2531" data-do-track="0" data-source-page="mod" title="Click to stop tracking this mod">
-<svg title="" class="icon icon-track"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-track"></use></svg> <span class="flex-label">Tracking</span>
-</a>
-</li>
-<li id="action-endorse-2531-1982" style="">
-<a class="btn inline-flex endorse-mod" data-mod-id="1982" data-game-id="2531" data-positive="1" data-source-page="modPage">
-<svg title="" class="icon icon-endorse"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-endorse"></use></svg> <span class="flex-label">Endorse</span>
-</a>
-</li>
-<li id="action-unendorse-2531-1982" style="display:none;">
-<a class="btn btn-active inline-flex endorse-mod" title="Click to remove your endorsement" data-mod-id="1982" data-game-id="2531" data-positive="0" data-source-page="modPage">
-<svg title="" class="icon icon-endorse"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-endorse"></use></svg> <span class="flex-label">Endorsed</span>
-</a>
-</li>
-<li>
-<a class="btn inline-flex btn-inactive" title="You either haven't downloaded this mod, or the mod was already voted Mod of the Month in the past.">
-<svg title="" class="icon icon-vote"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-vote"></use></svg> <span class="flex-label">Vote</span>
-</a>
-</li>
 <li class="dllabel">
 Download:
-</li>
-<li id="action-nmm">
-<a class="btn inline-flex" href="https://www.nexusmods.com/monsterhunterworld/mods/1982?tab=files&file_id=9908&nmm=1">
-<img class="icon icon-nmm" src="/assets/images/white_vortex.svg">
-<span class="flex-label">Vortex</span>
-</a>
 </li>
 <li id="action-manual">
 <a class="btn inline-flex" href="https://www.nexusmods.com/monsterhunterworld/mods/1982?tab=files&file_id=9908">
@@ -1994,16 +1847,16 @@ Download:
 <h2>File information</h2>
 <div class="sideitem timestamp">
 <h3>Last updated</h3>
-<time datetime="2020-02-21 06:16">
-<span class="date">21 February 2020</span>
-<span class="time">6:16AM</span>
+<time datetime="2020-02-20 22:16">
+<span class="date">20 February 2020</span>
+<span class="time">10:16PM</span>
 </time>
 </div>
 <div class="sideitem timestamp">
 <h3>Original upload</h3>
-<time datetime="2020-01-20 04:26">
-<span class="date">20 January 2020</span>
-<span class="time">4:26AM</span>
+<time datetime="2020-01-19 20:26">
+<span class="date">19 January 2020</span>
+<span class="time">8:26PM</span>
 </time>
 </div>
 <div class="sideitem">
@@ -2082,7 +1935,7 @@ Safe to use </span>
 </li> <li id="mod-page-tab-bugs">
 <a href="/monsterhunterworld/mods/1982?tab=bugs" data-target="/Core/Libs/Common/Widgets/ModBugsTab?id=1982&game_id=2531">
 <span class="tab-label">Bugs</span>
-<span class="alert">144</span>
+<span class="alert">145</span>
 </a>
 </li> <li id="mod-page-tab-actions">
 <a href="/monsterhunterworld/mods/1982?tab=logs" data-target="/Core/Libs/Common/Widgets/ModActionLogTab?id=1982&game_id=2531">
@@ -2104,1032 +1957,431 @@ Safe to use </span>
 </ul>
 </div>
 <div class="tabcontent tabcontent-mod-page" aria-live="assertive" role="status">
-<div class="premium-banner container">
-<i class="material-icons-outlined">info</i>
-<span>Downloads for non-premium members are capped at 2MB/s</span>
-<a class="btn" href="https://users.nexusmods.com/register/memberships">
-<span>Upgrade now</span>
-</a>
+<div class="container">
+<div class="page-layout">
+<div class="back-wrapper">
+<a href="https://www.nexusmods.com/monsterhunterworld/mods/1982?tab=files"><i class="material-icons">chevron_left</i><span>Back to files</span></a>
+</div>
+<div class="header">Stracker's Loader-1982-1-5-1582236976.zip<br><span>(Stracker's Loader)</span><br><i class="material-icons" style="position:relative;top:5px;">folder</i> <span>151KB</span></div>
+<div class="hr"></div>
+<div class="subheader">Choose from the options below</div>
+<div class="table">
+<table>
+<thead>
+<tr>
+<th>Choose download type</th>
+<th>Free</th>
+<th>Premium</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border">
+<td colspan="3"></td>
+</tr>
+<tr>
+<td>Multi-threaded downloads</td>
+<td><i class="material-icons">close</i></td>
+<td><i class="material-icons">check</i></td>
+</tr>
+<tr class="border">
+<td colspan="3"></td>
+</tr>
+<tr>
+<td>Download speeds</td>
+<td>1MB</td>
+<td>MAX</td>
+</tr>
+<tr class="border">
+<td colspan="3"></td>
+</tr>
+<tr>
+<td>No advertising</td>
+<td><i class="material-icons">close</i></td>
+<td><i class="material-icons">check</i></td>
+</tr>
+<tr class="border">
+<td colspan="3"></td>
+</tr>
+<tr>
+<td>Automatic downloads</td>
+<td><i class="material-icons">close</i></td>
+<td><i class="material-icons">check</i></td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td colspan="3" style="text-align:center;">
+<span>You must be logged in to download files. <a class="replaced-login-link" href="https://users.nexusmods.com/auth/continue?client_id=nexus&redirect_uri=https://www.nexusmods.com/oauth/callback&response_type=code&referrer=//www.nexusmods.com/monsterhunterworld/mods/1982?tab=files&file_id=9908">Log in here</a>.</span>
+</td>
+</tr>
+</tfoot>
+</table>
+</div>
+<div class="donation-wrapper">
+<p>Your download will start in <span class="timer">5</span> seconds...</p>
 </div>
-<div id="mod_files" data-game-id="2531" data-mod-id="1982" class="container tab-files condensed fill-file-stats">
-<div class="tabbed-section tabbed-block files-tabs" id="file-container-main-files">
-<div class="file-category-header">
-<h2>Main files</h2>
-<div>
-<label>Sort by</label>
-<select class="select-custom mod-files-sort" id="file-sort-by-main-files" name="file_sort_by" data-suffix="main-files">
-<option value="name">Name</option>
-<option value="date">Date uploaded</option>
-<option value="udl">Unique DLs</option>
-<option value="totdl">Total DLs</option>
-<option value="version">Version</option>
-<option value="size">Size</option>
-</select>
-<select class="select-custom mod-files-sort" id="file-sort-dir-main-files" name="file_sort_dir" data-suffix="main-files">
-<option value="asc">Asc</option>
-<option value="desc">Desc</option>
-</select>
 </div>
 </div>
-<div class="accordionitems">
-<dl class="accordion">
-<dt id="file-expander-header-9908" class="clearfix accopen" data-id="9908" data-name="Stracker's Loader" data-size="151" data-version="1.5" data-date="1582236976">
-<span><div class="result safe inline-flex">
-
-<a href="https://www.virustotal.com/file/698493435ef76d2e57bd81dc8a39f23135f865f4783ee10ee84b570711d82a46/analysis/1582236988/" class="flex-label expander-true-link" target="_blank">
-<span class="tooltip" title="Safe to use (click to see report)">
-<svg title="" class="icon icon-ticksafe"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-ticksafe"></use></svg> </span>
-</a>
-</div></span>
-<span>Stracker's Loader</span>
-<span class="acc-status">
-<svg title="" class="icon icon-arrow"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-arrow"></use></svg> </span>
-<span>
-<div class="file-download-stats clearfix">
-<ul class="stats clearfix">
-<li class="stat-uploaddate">
-<div class="statitem">
-<div class="titlestat">Date uploaded</div>
-<div class="stat">21 Feb 2020, 6:16AM</div>
-</div>
-</li>
-<li class="stat-filesize">
-<div class="statitem">
-<div class="titlestat">File size</div>
-<div class="stat">151KB</div>
-</div>
-</li>
-<li class="stat-uniquedls">
-<div class="statitem">
-<div class="titlestat">Unique DLs</div>
-<div class="stat"> - </div>
-</div>
-</li>
-<li class="stat-totaldls">
-<div class="statitem">
-<div class="titlestat">Total DLs</div>
-<div class="stat"> - </div>
-</div>
-</li>
-<li class="stat-version">
-<div class="statitem">
-<div class="titlestat">Version</div>
-<div class="stat">
-1.5 </div>
-</div>
-</li>
-</ul>
-</div>
-</span>
-</dt>
-<dd class="clearfix open" data-id="9908" style="overflow: hidden; ">
-<div class="tabbed-block files-description">
-<p>Update for MHW update 11.50.01<br /><br />Attempt no3</p>
-</div>
-<div class="tabbed-block">
-
-<ul class="accordion-downloads clearfix">
-<li>
-<a class="btn inline-flex" href="https://www.nexusmods.com/monsterhunterworld/mods/1982?tab=files&file_id=9908&nmm=1">
-<svg title="" class="icon icon-nmm"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-nmm"></use></svg> <span class="flex-label">Mod manager download</span>
-</a>
-</li>
-<li>
-</li>
-<li>
-<a class="btn inline-flex" href="https://www.nexusmods.com/monsterhunterworld/mods/1982?tab=files&file_id=9908">
-<svg title="" class="icon icon-manual"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-manual"></use></svg> <span class="flex-label">Manual download</span>
-</a>
-</li>
-</ul>
-</div>
-<div class="tabbed-block">
-<a class="btn-ajax-content-preview" data-gid="2531" data-mid="1982" data-url="Stracker's Loader-1982-1-5-1582236976.zip">Preview file contents</a>
-</div>
-</dd>
-</dl>
-</div><script>$( function(){Accordion.Load();});</script></div> <div class="tabbed-section tabbed-block files-tabs" id="file-container-old-files">
-<div class="file-category-header">
-<h2>Old files</h2>
-<div>
-<label>Sort by</label>
-<select class="select-custom mod-files-sort" id="file-sort-by-old-files" name="file_sort_by" data-suffix="old-files">
-<option value="name">Name</option>
-<option value="date">Date uploaded</option>
-<option value="udl">Unique DLs</option>
-<option value="totdl">Total DLs</option>
-<option value="version">Version</option>
-<option value="size">Size</option>
-</select>
-<select class="select-custom mod-files-sort" id="file-sort-dir-old-files" name="file_sort_dir" data-suffix="old-files">
-<option value="asc">Asc</option>
-<option value="desc">Desc</option>
-</select>
-</div>
-</div>
-<div class="accordionitems">
-<dl class="accordion">
-<dt id="file-expander-header-7432" class="clearfix " data-id="7432" data-name="Stracker's Loader" data-size="63" data-version="0.11.1" data-date="1579474977">
-<span><div class="result safe inline-flex">
-
-<a href="https://www.virustotal.com/file/a4c8d81da2860e046b5b4ec5770b8a6d0e938b89ca1f1b9b3811a41da6cb0adc/analysis/1579474983/" class="flex-label expander-true-link" target="_blank">
-<span class="tooltip" title="Safe to use (click to see report)">
-<svg title="" class="icon icon-ticksafe"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-ticksafe"></use></svg> </span>
-</a>
-</div></span>
-<span>Stracker's Loader</span>
-<span class="acc-status">
-<svg title="" class="icon icon-arrow"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-arrow"></use></svg> </span>
-<span>
-<div class="file-download-stats clearfix">
-<ul class="stats clearfix">
-<li class="stat-uploaddate">
-<div class="statitem">
-<div class="titlestat">Date uploaded</div>
-<div class="stat">20 Jan 2020, 7:02AM</div>
-</div>
-</li>
-<li class="stat-filesize">
-<div class="statitem">
-<div class="titlestat">File size</div>
-<div class="stat">63KB</div>
-</div>
-</li>
-<li class="stat-uniquedls">
-<div class="statitem">
-<div class="titlestat">Unique DLs</div>
-<div class="stat"> - </div>
-</div>
-</li>
-<li class="stat-totaldls">
-<div class="statitem">
-<div class="titlestat">Total DLs</div>
-<div class="stat"> - </div>
-</div>
-</li>
-<li class="stat-version">
-<div class="statitem">
-<div class="titlestat">Version</div>
-<div class="stat">
-0.11.1 </div>
-</div>
-</li>
-</ul>
-</div>
-</span>
-</dt>
-<dd class="clearfix " data-id="7432" style="overflow: hidden; display: none;">
-<div class="tabbed-block files-description">
-<p>Fix crash with no nativePC<br />Fix crash when game initialization takes too long</p>
-</div>
-<div class="tabbed-block">
-
-<ul class="accordion-downloads clearfix">
-<li>
-<a class="btn inline-flex" href="https://www.nexusmods.com/monsterhunterworld/mods/1982?tab=files&file_id=7432">
-<svg title="" class="icon icon-manual"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-manual"></use></svg> <span class="flex-label">Manual download</span>
-</a>
-</li>
-</ul>
-</div>
-<div class="tabbed-block">
-<a class="btn-ajax-content-preview" data-gid="2531" data-mid="1982" data-url="Stracker's Loader-1982-0-11-1-1579474977.zip">Preview file contents</a>
-</div>
-</dd>
-<dt id="file-expander-header-7748" class="clearfix " data-id="7748" data-name="Stracker's Loader" data-size="64" data-version="0.12.2" data-date="1579722882">
-<span><div class="result safe inline-flex">
-
-<a href="https://www.virustotal.com/file/3b52100d703fc88be2e179848f2e62d38aa1e48eb6e3720e8711852c95fd3030/analysis/1579722948/" class="flex-label expander-true-link" target="_blank">
-<span class="tooltip" title="Safe to use (click to see report)">
-<svg title="" class="icon icon-ticksafe"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-ticksafe"></use></svg> </span>
-</a>
-</div></span>
-<span>Stracker's Loader</span>
-<span class="acc-status">
-<svg title="" class="icon icon-arrow"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-arrow"></use></svg> </span>
-<span>
-<div class="file-download-stats clearfix">
-<ul class="stats clearfix">
-<li class="stat-uploaddate">
-<div class="statitem">
-<div class="titlestat">Date uploaded</div>
-<div class="stat">23 Jan 2020, 3:54AM</div>
-</div>
-</li>
-<li class="stat-filesize">
-<div class="statitem">
-<div class="titlestat">File size</div>
-<div class="stat">64KB</div>
-</div>
-</li>
-<li class="stat-uniquedls">
-<div class="statitem">
-<div class="titlestat">Unique DLs</div>
-<div class="stat"> - </div>
-</div>
-</li>
-<li class="stat-totaldls">
-<div class="statitem">
-<div class="titlestat">Total DLs</div>
-<div class="stat"> - </div>
-</div>
-</li>
-<li class="stat-version">
-<div class="statitem">
-<div class="titlestat">Version</div>
-<div class="stat">
-0.12.2 </div>
-</div>
-</li>
-</ul>
-</div>
-</span>
-</dt>
-<dd class="clearfix " data-id="7748" style="overflow: hidden; display: none;">
-<div class="tabbed-block files-description">
-<p>Add error messagebox for exceptions during injection</p>
-</div>
-<div class="tabbed-block">
-
-<ul class="accordion-downloads clearfix">
-<li>
-<a class="btn inline-flex" href="https://www.nexusmods.com/monsterhunterworld/mods/1982?tab=files&file_id=7748&nmm=1">
-<svg title="" class="icon icon-nmm"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-nmm"></use></svg> <span class="flex-label">Mod manager download</span>
-</a>
-</li>
-<li>
-</li>
-<li>
-<a class="btn inline-flex" href="https://www.nexusmods.com/monsterhunterworld/mods/1982?tab=files&file_id=7748">
-<svg title="" class="icon icon-manual"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-manual"></use></svg> <span class="flex-label">Manual download</span>
-</a>
-</li>
-</ul>
-</div>
-<div class="tabbed-block">
-<a class="btn-ajax-content-preview" data-gid="2531" data-mid="1982" data-url="Stracker's Loader-1982-0-12-2-1579722882.zip">Preview file contents</a>
-</div>
-</dd>
-<dt id="file-expander-header-8279" class="clearfix " data-id="8279" data-name="Stracker's Loader" data-size="62" data-version="1.1" data-date="1580327667">
-<span><div class="result safe inline-flex">
-
-<a href="https://www.virustotal.com/file/49984ccbf8091bc9a2e5e5bd0bf3b9f2bc222dd8cd0ec0fddc533f2d75d2fe0b/analysis/1580327673/" class="flex-label expander-true-link" target="_blank">
-<span class="tooltip" title="Safe to use (click to see report)">
-<svg title="" class="icon icon-ticksafe"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-ticksafe"></use></svg> </span>
-</a>
-</div></span>
-<span>Stracker's Loader</span>
-<span class="acc-status">
-<svg title="" class="icon icon-arrow"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-arrow"></use></svg> </span>
-<span>
-<div class="file-download-stats clearfix">
-<ul class="stats clearfix">
-<li class="stat-uploaddate">
-<div class="statitem">
-<div class="titlestat">Date uploaded</div>
-<div class="stat">30 Jan 2020, 3:54AM</div>
-</div>
-</li>
-<li class="stat-filesize">
-<div class="statitem">
-<div class="titlestat">File size</div>
-<div class="stat">62KB</div>
-</div>
-</li>
-<li class="stat-uniquedls">
-<div class="statitem">
-<div class="titlestat">Unique DLs</div>
-<div class="stat"> - </div>
-</div>
-</li>
-<li class="stat-totaldls">
-<div class="statitem">
-<div class="titlestat">Total DLs</div>
-<div class="stat"> - </div>
-</div>
-</li>
-<li class="stat-version">
-<div class="statitem">
-<div class="titlestat">Version</div>
-<div class="stat">
-1.1 </div>
-</div>
-</li>
-</ul>
-</div>
-</span>
-</dt>
-<dd class="clearfix " data-id="8279" style="overflow: hidden; display: none;">
-<div class="tabbed-block files-description">
-<p>Fix gameload bug that happened with more than 20 custom quests were added<br />Added option to disable quest loader in config<br /></p>
-</div>
-<div class="tabbed-block">
-
-<ul class="accordion-downloads clearfix">
-<li>
-<a class="btn inline-flex" href="https://www.nexusmods.com/monsterhunterworld/mods/1982?tab=files&file_id=8279&nmm=1">
-<svg title="" class="icon icon-nmm"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-nmm"></use></svg> <span class="flex-label">Mod manager download</span>
-</a>
-</li>
-<li>
-</li>
-<li>
-<a class="btn inline-flex" href="https://www.nexusmods.com/monsterhunterworld/mods/1982?tab=files&file_id=8279">
-<svg title="" class="icon icon-manual"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-manual"></use></svg> <span class="flex-label">Manual download</span>
-</a>
-</li>
-</ul>
-</div>
-<div class="tabbed-block">
-<a class="btn-ajax-content-preview" data-gid="2531" data-mid="1982" data-url="Stracker's Loader-1982-1-1-1580327667.zip">Preview file contents</a>
-</div>
-</dd>
-<dt id="file-expander-header-9565" class="clearfix " data-id="9565" data-name="Stracker's Loader" data-size="150" data-version="1.4.0" data-date="1581781270">
-<span><div class="result safe inline-flex">
-
-<a href="https://www.virustotal.com/file/1446827077b7535f457b6090329ad16282642491a1203b3ec7d8401be026f459/analysis/1581781276/" class="flex-label expander-true-link" target="_blank">
-<span class="tooltip" title="Safe to use (click to see report)">
-<svg title="" class="icon icon-ticksafe"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-ticksafe"></use></svg> </span>
-</a>
-</div></span>
-<span>Stracker's Loader</span>
-<span class="acc-status">
-<svg title="" class="icon icon-arrow"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-arrow"></use></svg> </span>
-<span>
-<div class="file-download-stats clearfix">
-<ul class="stats clearfix">
-<li class="stat-uploaddate">
-<div class="statitem">
-<div class="titlestat">Date uploaded</div>
-<div class="stat">15 Feb 2020, 11:41PM</div>
-</div>
-</li>
-<li class="stat-filesize">
-<div class="statitem">
-<div class="titlestat">File size</div>
-<div class="stat">150KB</div>
-</div>
-</li>
-<li class="stat-uniquedls">
-<div class="statitem">
-<div class="titlestat">Unique DLs</div>
-<div class="stat"> - </div>
-</div>
-</li>
-<li class="stat-totaldls">
-<div class="statitem">
-<div class="titlestat">Total DLs</div>
-<div class="stat"> - </div>
-</div>
-</li>
-<li class="stat-version">
-<div class="statitem">
-<div class="titlestat">Version</div>
-<div class="stat">
-1.4.0 </div>
-</div>
-</li>
-</ul>
-</div>
-</span>
-</dt>
-<dd class="clearfix " data-id="9565" style="overflow: hidden; display: none;">
-<div class="tabbed-block files-description">
-<p>Implement pluging dll system</p>
-</div>
-<div class="tabbed-block">
-
-<ul class="accordion-downloads clearfix">
-<li>
-<a class="btn inline-flex" href="https://www.nexusmods.com/monsterhunterworld/mods/1982?tab=files&file_id=9565&nmm=1">
-<svg title="" class="icon icon-nmm"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-nmm"></use></svg> <span class="flex-label">Mod manager download</span>
-</a>
-</li>
-<li>
-</li>
-<li>
-<a class="btn inline-flex" href="https://www.nexusmods.com/monsterhunterworld/mods/1982?tab=files&file_id=9565">
-<svg title="" class="icon icon-manual"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-manual"></use></svg> <span class="flex-label">Manual download</span>
-</a>
-</li>
-</ul>
-</div>
-<div class="tabbed-block">
-<a class="btn-ajax-content-preview" data-gid="2531" data-mid="1982" data-url="Stracker's Loader-1982-1-4-0-1581781270.zip">Preview file contents</a>
-</div>
-</dd>
-<dt id="file-expander-header-7528" class="clearfix " data-id="7528" data-name="Stracker's Loader" data-size="64" data-version="0.12" data-date="1579537879">
-<span><div class="result safe inline-flex">
-
-<a href="https://www.virustotal.com/file/f22dc63af06502274540b2c6eb936d83b1cd596ceba67c37f899700474bde827/analysis/1579537953/" class="flex-label expander-true-link" target="_blank">
-<span class="tooltip" title="Safe to use (click to see report)">
-<svg title="" class="icon icon-ticksafe"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-ticksafe"></use></svg> </span>
-</a>
-</div></span>
-<span>Stracker's Loader</span>
-<span class="acc-status">
-<svg title="" class="icon icon-arrow"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-arrow"></use></svg> </span>
-<span>
-<div class="file-download-stats clearfix">
-<ul class="stats clearfix">
-<li class="stat-uploaddate">
-<div class="statitem">
-<div class="titlestat">Date uploaded</div>
-<div class="stat">21 Jan 2020, 12:31AM</div>
-</div>
-</li>
-<li class="stat-filesize">
-<div class="statitem">
-<div class="titlestat">File size</div>
-<div class="stat">64KB</div>
-</div>
-</li>
-<li class="stat-uniquedls">
-<div class="statitem">
-<div class="titlestat">Unique DLs</div>
-<div class="stat"> - </div>
-</div>
-</li>
-<li class="stat-totaldls">
-<div class="statitem">
-<div class="titlestat">Total DLs</div>
-<div class="stat"> - </div>
-</div>
-</li>
-<li class="stat-version">
-<div class="statitem">
-<div class="titlestat">Version</div>
-<div class="stat">
-0.12 </div>
-</div>
-</li>
-</ul>
-</div>
-</span>
-</dt>
-<dd class="clearfix " data-id="7528" style="overflow: hidden; display: none;">
-<div class="tabbed-block files-description">
-<p>Remove cmd window and file logging (I think those were the cause of some crashes and other issues, you can reenable them in the config file)<br />nativePC files now don&#039;t need to be case sensitive</p>
-</div>
-<div class="tabbed-block">
-
-<ul class="accordion-downloads clearfix">
-<li>
-<a class="btn inline-flex" href="https://www.nexusmods.com/monsterhunterworld/mods/1982?tab=files&file_id=7528&nmm=1">
-<svg title="" class="icon icon-nmm"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-nmm"></use></svg> <span class="flex-label">Mod manager download</span>
-</a>
-</li>
-<li>
-</li>
-<li>
-<a class="btn inline-flex" href="https://www.nexusmods.com/monsterhunterworld/mods/1982?tab=files&file_id=7528">
-<svg title="" class="icon icon-manual"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-manual"></use></svg> <span class="flex-label">Manual download</span>
-</a>
-</li>
-</ul>
-</div>
-<div class="tabbed-block">
-<a class="btn-ajax-content-preview" data-gid="2531" data-mid="1982" data-url="Stracker's Loader-1982-0-12-1579537879.zip">Preview file contents</a>
-</div>
-</dd>
-<dt id="file-expander-header-9859" class="clearfix " data-id="9859" data-name="Stracker's Loader" data-size="151" data-version="1.4.1" data-date="1582136722">
-<span><div class="result safe inline-flex">
-
-<a href="https://www.virustotal.com/file/fb5d734505275a622585a96d8ae2b7fc99aab713e3fc8f4b69fc0c48058eb110/analysis/1582136728/" class="flex-label expander-true-link" target="_blank">
-<span class="tooltip" title="Safe to use (click to see report)">
-<svg title="" class="icon icon-ticksafe"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-ticksafe"></use></svg> </span>
-</a>
-</div></span>
-<span>Stracker's Loader</span>
-<span class="acc-status">
-<svg title="" class="icon icon-arrow"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-arrow"></use></svg> </span>
-<span>
-<div class="file-download-stats clearfix">
-<ul class="stats clearfix">
-<li class="stat-uploaddate">
-<div class="statitem">
-<div class="titlestat">Date uploaded</div>
-<div class="stat">20 Feb 2020, 2:25AM</div>
-</div>
-</li>
-<li class="stat-filesize">
-<div class="statitem">
-<div class="titlestat">File size</div>
-<div class="stat">151KB</div>
-</div>
-</li>
-<li class="stat-uniquedls">
-<div class="statitem">
-<div class="titlestat">Unique DLs</div>
-<div class="stat"> - </div>
-</div>
-</li>
-<li class="stat-totaldls">
-<div class="statitem">
-<div class="titlestat">Total DLs</div>
-<div class="stat"> - </div>
-</div>
-</li>
-<li class="stat-version">
-<div class="statitem">
-<div class="titlestat">Version</div>
-<div class="stat">
-1.4.1 </div>
-</div>
-</li>
-</ul>
-</div>
-</span>
-</dt>
-<dd class="clearfix " data-id="9859" style="overflow: hidden; display: none;">
-<div class="tabbed-block files-description">
-<p>Fix story progression issues</p>
-</div>
-<div class="tabbed-block">
-
-<ul class="accordion-downloads clearfix">
-<li>
-<a class="btn inline-flex" href="https://www.nexusmods.com/monsterhunterworld/mods/1982?tab=files&file_id=9859&nmm=1">
-<svg title="" class="icon icon-nmm"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-nmm"></use></svg> <span class="flex-label">Mod manager download</span>
-</a>
-</li>
-<li>
-</li>
-<li>
-<a class="btn inline-flex" href="https://www.nexusmods.com/monsterhunterworld/mods/1982?tab=files&file_id=9859">
-<svg title="" class="icon icon-manual"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-manual"></use></svg> <span class="flex-label">Manual download</span>
-</a>
-</li>
-</ul>
-</div>
-<div class="tabbed-block">
-<a class="btn-ajax-content-preview" data-gid="2531" data-mid="1982" data-url="Stracker's Loader-1982-1-4-1-1582136722.zip">Preview file contents</a>
-</div>
-</dd>
-<dt id="file-expander-header-8840" class="clearfix " data-id="8840" data-name="Stracker's Loader" data-size="62" data-version="1.2" data-date="1581014224">
-<span><div class="result safe inline-flex">
-
-<a href="https://www.virustotal.com/file/b24e9935b80b8a7e15c47a6957d95fddcaa2803787fdc8958541483e33c945ec/analysis/1581014228/" class="flex-label expander-true-link" target="_blank">
-<span class="tooltip" title="Safe to use (click to see report)">
-<svg title="" class="icon icon-ticksafe"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-ticksafe"></use></svg> </span>
-</a>
-</div></span>
-<span>Stracker's Loader</span>
-<span class="acc-status">
-<svg title="" class="icon icon-arrow"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-arrow"></use></svg> </span>
-<span>
-<div class="file-download-stats clearfix">
-<ul class="stats clearfix">
-<li class="stat-uploaddate">
-<div class="statitem">
-<div class="titlestat">Date uploaded</div>
-<div class="stat">07 Feb 2020, 2:37AM</div>
-</div>
-</li>
-<li class="stat-filesize">
-<div class="statitem">
-<div class="titlestat">File size</div>
-<div class="stat">62KB</div>
-</div>
-</li>
-<li class="stat-uniquedls">
-<div class="statitem">
-<div class="titlestat">Unique DLs</div>
-<div class="stat"> - </div>
-</div>
-</li>
-<li class="stat-totaldls">
-<div class="statitem">
-<div class="titlestat">Total DLs</div>
-<div class="stat"> - </div>
-</div>
-</li>
-<li class="stat-version">
-<div class="statitem">
-<div class="titlestat">Version</div>
-<div class="stat">
-1.2 </div>
-</div>
-</li>
-</ul>
-</div>
-</span>
-</dt>
-<dd class="clearfix " data-id="8840" style="overflow: hidden; display: none;">
-<div class="tabbed-block files-description">
-<p>Updated for rajang patch</p>
-</div>
-<div class="tabbed-block">
-
-<ul class="accordion-downloads clearfix">
-<li>
-<a class="btn inline-flex" href="https://www.nexusmods.com/monsterhunterworld/mods/1982?tab=files&file_id=8840&nmm=1">
-<svg title="" class="icon icon-nmm"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-nmm"></use></svg> <span class="flex-label">Mod manager download</span>
-</a>
-</li>
-<li>
-</li>
-<li>
-<a class="btn inline-flex" href="https://www.nexusmods.com/monsterhunterworld/mods/1982?tab=files&file_id=8840">
-<svg title="" class="icon icon-manual"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-manual"></use></svg> <span class="flex-label">Manual download</span>
-</a>
-</li>
-</ul>
-</div>
-<div class="tabbed-block">
-<a class="btn-ajax-content-preview" data-gid="2531" data-mid="1982" data-url="Stracker's Loader-1982-1-2-1581014224.zip">Preview file contents</a>
-</div>
-</dd>
-<dt id="file-expander-header-8075" class="clearfix " data-id="8075" data-name="Stracker's Loader" data-size="62" data-version="1.0" data-date="1580128657">
-<span><div class="result safe inline-flex">
-
-<a href="https://www.virustotal.com/file/73dd3498ccd96c12407cdd5c70a92b47c3ebfa664ad973ef225dc89cd993a506/analysis/1580128683/" class="flex-label expander-true-link" target="_blank">
-<span class="tooltip" title="Safe to use (click to see report)">
-<svg title="" class="icon icon-ticksafe"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-ticksafe"></use></svg> </span>
-</a>
-</div></span>
-<span>Stracker's Loader</span>
-<span class="acc-status">
-<svg title="" class="icon icon-arrow"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-arrow"></use></svg> </span>
-<span>
-<div class="file-download-stats clearfix">
-<ul class="stats clearfix">
-<li class="stat-uploaddate">
-<div class="statitem">
-<div class="titlestat">Date uploaded</div>
-<div class="stat">27 Jan 2020, 8:37PM</div>
-</div>
-</li>
-<li class="stat-filesize">
-<div class="statitem">
-<div class="titlestat">File size</div>
-<div class="stat">62KB</div>
-</div>
-</li>
-<li class="stat-uniquedls">
-<div class="statitem">
-<div class="titlestat">Unique DLs</div>
-<div class="stat"> - </div>
-</div>
-</li>
-<li class="stat-totaldls">
-<div class="statitem">
-<div class="titlestat">Total DLs</div>
-<div class="stat"> - </div>
-</div>
-</li>
-<li class="stat-version">
-<div class="statitem">
-<div class="titlestat">Version</div>
-<div class="stat">
-1.0 </div>
-</div>
-</li>
-</ul>
-</div>
-</span>
-</dt>
-<dd class="clearfix " data-id="8075" style="overflow: hidden; display: none;">
-<div class="tabbed-block files-description">
-<p>Update for MHW 10.12.02<br /><br /><br />Changed nativePC overriding method<br /><br />Removed thread bypassing<br /><br />Implemented Quest Loader (Iceborne required for now)<br /><br />Added anti-crash failsafe</p>
-</div>
-<div class="tabbed-block">
-
-<ul class="accordion-downloads clearfix">
-<li>
-<a class="btn inline-flex" href="https://www.nexusmods.com/monsterhunterworld/mods/1982?tab=files&file_id=8075&nmm=1">
-<svg title="" class="icon icon-nmm"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-nmm"></use></svg> <span class="flex-label">Mod manager download</span>
-</a>
-</li>
-<li>
-</li>
-<li>
-<a class="btn inline-flex" href="https://www.nexusmods.com/monsterhunterworld/mods/1982?tab=files&file_id=8075">
-<svg title="" class="icon icon-manual"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-manual"></use></svg> <span class="flex-label">Manual download</span>
-</a>
-</li>
-</ul>
-</div>
-<div class="tabbed-block">
-<a class="btn-ajax-content-preview" data-gid="2531" data-mid="1982" data-url="Stracker's Loader-1982-1-0-1580128657.zip">Preview file contents</a>
-</div>
-</dd>
-<dt id="file-expander-header-9417" class="clearfix " data-id="9417" data-name="Stracker's Loader" data-size="62" data-version="1.3" data-date="1581619417">
-<span><div class="result safe inline-flex">
-
-<a href="https://www.virustotal.com/file/c29bc8afc4887d9241d0f6e15b7f4b71664e94220f45f71fb4f929c847b49051/analysis/1581619420/" class="flex-label expander-true-link" target="_blank">
-<span class="tooltip" title="Safe to use (click to see report)">
-<svg title="" class="icon icon-ticksafe"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-ticksafe"></use></svg> </span>
-</a>
-</div></span>
-<span>Stracker's Loader</span>
-<span class="acc-status">
-<svg title="" class="icon icon-arrow"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-arrow"></use></svg> </span>
-<span>
-<div class="file-download-stats clearfix">
-<ul class="stats clearfix">
-<li class="stat-uploaddate">
-<div class="statitem">
-<div class="titlestat">Date uploaded</div>
-<div class="stat">14 Feb 2020, 2:43AM</div>
-</div>
-</li>
-<li class="stat-filesize">
-<div class="statitem">
-<div class="titlestat">File size</div>
-<div class="stat">62KB</div>
-</div>
-</li>
-<li class="stat-uniquedls">
-<div class="statitem">
-<div class="titlestat">Unique DLs</div>
-<div class="stat"> - </div>
-</div>
-</li>
-<li class="stat-totaldls">
-<div class="statitem">
-<div class="titlestat">Total DLs</div>
-<div class="stat"> - </div>
-</div>
-</li>
-<li class="stat-version">
-<div class="statitem">
-<div class="titlestat">Version</div>
-<div class="stat">
-1.3 </div>
-</div>
-</li>
-</ul>
-</div>
-</span>
-</dt>
-<dd class="clearfix " data-id="9417" style="overflow: hidden; display: none;">
-<div class="tabbed-block files-description">
-<p>Fix missing progress message when attempting to join other people&#039;s custom quests</p>
-</div>
-<div class="tabbed-block">
-
-<ul class="accordion-downloads clearfix">
-<li>
-<a class="btn inline-flex" href="https://www.nexusmods.com/monsterhunterworld/mods/1982?tab=files&file_id=9417&nmm=1">
-<svg title="" class="icon icon-nmm"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-nmm"></use></svg> <span class="flex-label">Mod manager download</span>
-</a>
-</li>
-<li>
-</li>
-<li>
-<a class="btn inline-flex" href="https://www.nexusmods.com/monsterhunterworld/mods/1982?tab=files&file_id=9417">
-<svg title="" class="icon icon-manual"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-manual"></use></svg> <span class="flex-label">Manual download</span>
-</a>
-</li>
-</ul>
-</div>
-<div class="tabbed-block">
-<a class="btn-ajax-content-preview" data-gid="2531" data-mid="1982" data-url="Stracker's Loader-1982-1-3-1581619417.zip">Preview file contents</a>
-</div>
-</dd>
-<dt id="file-expander-header-7639" class="clearfix " data-id="7639" data-name="Stracker's Loader" data-size="64" data-version="0.12.1" data-date="1579602646">
-<span><div class="result safe inline-flex">
-
-<a href="https://www.virustotal.com/file/2059e41d2d07db001c2a9562e713550200b1d8fcd9526e9ddc9e15938ad489ee/analysis/1579602652/" class="flex-label expander-true-link" target="_blank">
-<span class="tooltip" title="Safe to use (click to see report)">
-<svg title="" class="icon icon-ticksafe"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-ticksafe"></use></svg> </span>
-</a>
-</div></span>
-<span>Stracker's Loader</span>
-<span class="acc-status">
-<svg title="" class="icon icon-arrow"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-arrow"></use></svg> </span>
-<span>
-<div class="file-download-stats clearfix">
-<ul class="stats clearfix">
-<li class="stat-uploaddate">
-<div class="statitem">
-<div class="titlestat">Date uploaded</div>
-<div class="stat">21 Jan 2020, 6:30PM</div>
-</div>
-</li>
-<li class="stat-filesize">
-<div class="statitem">
-<div class="titlestat">File size</div>
-<div class="stat">64KB</div>
-</div>
-</li>
-<li class="stat-uniquedls">
-<div class="statitem">
-<div class="titlestat">Unique DLs</div>
-<div class="stat"> - </div>
-</div>
-</li>
-<li class="stat-totaldls">
-<div class="statitem">
-<div class="titlestat">Total DLs</div>
-<div class="stat"> - </div>
-</div>
-</li>
-<li class="stat-version">
-<div class="statitem">
-<div class="titlestat">Version</div>
-<div class="stat">
-0.12.1 </div>
-</div>
-</li>
-</ul>
-</div>
-</span>
-</dt>
-<dd class="clearfix " data-id="7639" style="overflow: hidden; display: none;">
-<div class="tabbed-block files-description">
-<p>Fix crash on launch when config file is missing</p>
-</div>
-<div class="tabbed-block">
-
-<ul class="accordion-downloads clearfix">
-<li>
-<a class="btn inline-flex" href="https://www.nexusmods.com/monsterhunterworld/mods/1982?tab=files&file_id=7639&nmm=1">
-<svg title="" class="icon icon-nmm"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-nmm"></use></svg> <span class="flex-label">Mod manager download</span>
-</a>
-</li>
-<li>
-</li>
-<li>
-<a class="btn inline-flex" href="https://www.nexusmods.com/monsterhunterworld/mods/1982?tab=files&file_id=7639">
-<svg title="" class="icon icon-manual"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-manual"></use></svg> <span class="flex-label">Manual download</span>
-</a>
-</li>
-</ul>
-</div>
-<div class="tabbed-block">
-<a class="btn-ajax-content-preview" data-gid="2531" data-mid="1982" data-url="Stracker's Loader-1982-0-12-1-1579602646.zip">Preview file contents</a>
-</div>
-</dd>
-<dt id="file-expander-header-7417" class="clearfix " data-id="7417" data-name="Stracker's Loader" data-size="63" data-version="0.11" data-date="1579465496">
-<span><div class="result safe inline-flex">
-
-<a href="https://www.virustotal.com/file/462754fbd55d0dd31ac8119ca18757e902c284fe6b1fb1a93339a32f2507d253/analysis/1579465503/" class="flex-label expander-true-link" target="_blank">
-<span class="tooltip" title="Safe to use (click to see report)">
-<svg title="" class="icon icon-ticksafe"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-ticksafe"></use></svg> </span>
-</a>
-</div></span>
-<span>Stracker's Loader</span>
-<span class="acc-status">
-<svg title="" class="icon icon-arrow"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-arrow"></use></svg> </span>
-<span>
-<div class="file-download-stats clearfix">
-<ul class="stats clearfix">
-<li class="stat-uploaddate">
-<div class="statitem">
-<div class="titlestat">Date uploaded</div>
-<div class="stat">20 Jan 2020, 4:24AM</div>
-</div>
-</li>
-<li class="stat-filesize">
-<div class="statitem">
-<div class="titlestat">File size</div>
-<div class="stat">63KB</div>
-</div>
-</li>
-<li class="stat-uniquedls">
-<div class="statitem">
-<div class="titlestat">Unique DLs</div>
-<div class="stat"> - </div>
-</div>
-</li>
-<li class="stat-totaldls">
-<div class="statitem">
-<div class="titlestat">Total DLs</div>
-<div class="stat"> - </div>
-</div>
-</li>
-<li class="stat-version">
-<div class="statitem">
-<div class="titlestat">Version</div>
-<div class="stat">
-0.11 </div>
-</div>
-</li>
-</ul>
-</div>
-</span>
-</dt>
-<dd class="clearfix " data-id="7417" style="overflow: hidden; display: none;">
-<div class="tabbed-block files-description">
-</div>
-<div class="tabbed-block">
-
-<ul class="accordion-downloads clearfix">
-<li>
-<a class="btn inline-flex" href="https://www.nexusmods.com/monsterhunterworld/mods/1982?tab=files&file_id=7417">
-<svg title="" class="icon icon-manual"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-manual"></use></svg> <span class="flex-label">Manual download</span>
-</a>
-</li>
-</ul>
-</div>
-<div class="tabbed-block">
-<a class="btn-ajax-content-preview" data-gid="2531" data-mid="1982" data-url="Stracker's Loader-1982-0-11-1579465496.zip">Preview file contents</a>
-</div>
-</dd>
-<dt id="file-expander-header-9428" class="clearfix " data-id="9428" data-name="Stracker's Loader (Experimental Branch)" data-size="67" data-version="1.3-Experimental" data-date="1581635665">
-<span><div class="result safe inline-flex">
-
-<a href="https://www.virustotal.com/file/3572560ffe185da80781c24828cce9966d429d6a4d165bb77936d15c50b04e3f/analysis/1581635668/" class="flex-label expander-true-link" target="_blank">
-<span class="tooltip" title="Safe to use (click to see report)">
-<svg title="" class="icon icon-ticksafe"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-ticksafe"></use></svg> </span>
-</a>
-</div></span>
-<span>Stracker's Loader (Experimental Branch)</span>
-<span class="acc-status">
-<svg title="" class="icon icon-arrow"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-arrow"></use></svg> </span>
-<span>
-<div class="file-download-stats clearfix">
-<ul class="stats clearfix">
-<li class="stat-uploaddate">
-<div class="statitem">
-<div class="titlestat">Date uploaded</div>
-<div class="stat">14 Feb 2020, 7:14AM</div>
-</div>
-</li>
-<li class="stat-filesize">
-<div class="statitem">
-<div class="titlestat">File size</div>
-<div class="stat">67KB</div>
-</div>
-</li>
-<li class="stat-uniquedls">
-<div class="statitem">
-<div class="titlestat">Unique DLs</div>
-<div class="stat"> - </div>
-</div>
-</li>
-<li class="stat-totaldls">
-<div class="statitem">
-<div class="titlestat">Total DLs</div>
-<div class="stat"> - </div>
-</div>
-</li>
-<li class="stat-version">
-<div class="statitem">
-<div class="titlestat">Version</div>
-<div class="stat">
-1.3-Experimental </div>
-</div>
-</li>
-</ul>
-</div>
-</span>
-</dt>
-<dd class="clearfix " data-id="9428" style="overflow: hidden; display: none;">
-<div class="tabbed-block files-description">
-<p>Experimental clutch claw rework<br />See README for details<br /><br />Moving to its own plugin</p>
-</div>
-<div class="tabbed-block">
-
-<ul class="accordion-downloads clearfix">
-<li>
-<a class="btn inline-flex" href="https://www.nexusmods.com/monsterhunterworld/mods/1982?tab=files&file_id=9428">
-<svg title="" class="icon icon-manual"><use xlink:href="https://www.nexusmods.com/assets/images/icons/icons.svg#icon-manual"></use></svg> <span class="flex-label">Manual download</span>
-</a>
-</li>
-</ul>
-</div>
-<div class="tabbed-block">
-<a class="btn-ajax-content-preview" data-gid="2531" data-mid="1982" data-url="Stracker's Loader (Experimental Branch)-1982-1-3-Experimental-1581635665.zip">Preview file contents</a>
-</div>
-</dd>
-</dl>
-</div><script>$( function(){Accordion.Load();});</script></div> </div>
-<script>
-        $(fillFromFileStaticStats);
-	</script>
 <style>
-		.premium-banner {
-			width: 100%;
-			background: #ddd;
-			display: flex !important;
-			justify-content: center;
-			align-items: center;
-			height: 64px;
-		}
+    .page-layout {
+        display: flex;
+        flex-direction: column;
+        width: 60%;
+        margin: auto;
+        align-items: center;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
 
-		.premium-banner > span {
-			color: black;
-			font-weight: 400;
-			margin: 0 16px 0 8px;
-		}
+    .page-layout .back-wrapper {
+        position: absolute;
+        top: 40px;
+        left: 40px;
+    }
 
-		.premium-banner > i {
-			color: black;
-		}
+    .page-layout .back-wrapper a {
+        display: flex;
+    }
 
-		.premium-banner > a:not(:last-child) {
-			margin-right: 8px;
-		}
-	</style>
+    .page-layout .back-wrapper a span {
+        line-height: 24px;
+        color: #d98f40;
+        transition: color 0.25s;
+    }
+
+    .page-layout .back-wrapper a i {
+        margin-right: 8px;
+        color: #d98f40;
+        transition: color 0.25s;
+    }
+
+    .page-layout .back-wrapper a:hover span,
+    .page-layout .back-wrapper a:hover i {
+        color: white;
+    }
+
+    .page-layout .header {
+        font-size: 28px;
+        font-weight: bold;
+        color: white;
+        text-align: center;
+    }
+
+    .page-layout .header > span {
+        font-size: 16px;
+        font-weight: 300;
+        color: white;
+    }
+
+    .page-layout .hr {
+        width: 80%;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        margin-top: 8px;
+    }
+
+    .page-layout .subheader {
+        padding: 16px 16px 32px;
+    }
+
+    .page-layout table {
+        width: 100%;
+        color: white;
+    }
+
+    .page-layout tbody td:last-child {
+        color: #d98f40;
+    }
+
+    .page-layout tbody td:not(:last-child) {
+        color: rgba(255,255,255,0.8);
+    }
+
+    .page-layout tbody td:not(:first-child) {
+        font-weight: 500;
+    }
+
+    .page-layout th {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .page-layout td {
+        font-size: 14px;
+    }
+
+    .page-layout table th,
+    .page-layout table td {
+        background: none;
+        border: none;
+        padding: 10px;
+        height: 48px;
+    }
+
+    .page-layout table th:hover {
+        background: none;
+        cursor: default;
+    }
+
+    .page-layout table tr.border td {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        padding: 0;
+    }
+
+    .page-layout table tr > :not(:first-child) {
+        text-align: center;
+    }
+
+    .page-layout .table table tfoot a.rj-btn {
+        color: white;
+    }
+
+    .page-layout .table table tfoot a.replaced-login-link,
+    .page-layout .donation-wrapper > p > p > a
+    {
+        color: #d98f40;
+    }
+
+    .page-layout .table table tfoot a.replaced-login-link:hover {
+        color: white;
+    }
+
+    .page-layout .donation-wrapper {
+        display: none;
+    }
+
+    .page-layout .donation-wrapper > p {
+        text-align: center;
+        font-size: 26px;
+        font-weight: bold;
+        margin: 40px 0;
+        transition: opacity 0.1s;
+    }
+
+    .page-layout .donation-wrapper > p > span.timer {
+        color: #d98f40;
+    }
+
+    .page-layout .donation-panel {
+        border: 1px solid #888;
+        background: #222;
+        padding: 24px;
+    }
+
+    .page-layout .author {
+        display: flex;
+        align-items: center;
+        margin-bottom: 16px;
+    }
+
+    .page-layout .profile-img-wrapper {
+        height: 32px;
+        width: 32px;
+        overflow: hidden;
+        border: 1px solid #888;
+        border-radius: 16px;
+        margin-right: 12px;
+    }
+
+    .page-layout .author > span {
+        font-size: 16px;
+        font-weight: 400;
+        color: #d98f40;
+    }
+
+    .page-layout .donation-form > span {
+        font-weight: 500;
+    }
+
+    .page-layout .inner-pannel {
+        display: flex;
+    }
+
+    .page-layout .inner-panel-left {
+        flex: 1;
+        padding-right: 20px;
+    }
+
+    .page-layout .inner-panel-right {
+        width: 200px;
+    }
+
+    .page-layout .donation-wrapper form input[type=text] {
+        padding: 16px 24px;
+        color: #101010;
+        font-weight: 400;
+        width: 100%;
+    }
+
+    .page-layout .donation-wrapper form .form-group {
+        position: relative;
+        width: 100%;
+    }
+
+    .page-layout .donation-wrapper form .form-group > span {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        color: #101010;
+        font-weight: 400;
+    }
+
+    .page-layout .donation-wrapper form label {
+        display: block;
+        margin-bottom: 4px;
+    }
+
+    .page-layout .donation-wrapper form input[type=submit] {
+        width: 100%;
+        height: 40px;
+        background: #d98f40;
+        border: none;
+        font-family: "Roboto", Helvetica, Arial, sans-serif;
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 1.25px;
+        margin-top: 8px;
+    }
+</style>
+<script>
+    $(function () {
+        setTimeout(function () {
+            $(document).scrollTop($('.page-layout').offset().top - 70);
+        }, 500);
+        const file_id = 9908;
+        const game_id = 2531;
+        const timeout = 5;
+        const isNmmDownload = false;
+        const isPremium = false;
+
+        function trackPwClickEvent() {
+            const _paq = window._paq || [];
+
+            _paq.push(['trackEvent', 'Membership', 'Click', 'DownloadPage-FastDownload']);
+        }
+
+        $('#fastDownloadButton').click(trackPwClickEvent);
+
+        $(document).on('mousedown', function (e1) {
+            if (e1.which === 2 && e1.target.hasClass('#fastDownloadButton')) {
+                $(document).one('mouseup', function (e2) {
+                    if (e1.target === e2.target) {
+                        trackPwClickEvent();
+                    }
+                });
+            }
+        });
+
+        $('#slowDownloadButton').click(function () {
+            const downloadUrl = $(this).data('download-url');
+            $('.subheader, .table').hide();
+
+            countdown(timeout, function () {
+                startDownload(downloadUrl);
+            });
+        });
+
+        $('#startDownloadButton').click(function () {
+            const downloadUrl = $(this).data('download-url');
+            startDownload(downloadUrl);
+        });
+
+        function startDownload(downloadUrl) {
+            $('.donation-wrapper').show();
+            if (isNmmDownload) {
+                window.location.href = downloadUrl;
+                $('.donation-wrapper > p').html('<p>Your download has started</p><p>If you are having trouble, <a href="' + downloadUrl + '">click here</a> to download manually</p>');
+            } else {
+                $.ajax(
+                    {
+                        type: "POST",
+                        url: "/Core/Libs/Common/Managers/Downloads?GenerateDownloadUrl",
+                        data: {
+                            fid: file_id,
+                            game_id: game_id,
+                        },
+                        success: function (data) {
+                            if (data && data.url) {
+                                console.log('Success');
+                                window.location.href = data.url;
+                                $('.donation-wrapper > p').html('<p>Your download has started</p><p>If you are having trouble, <a href="' + data.url + '">click here</a> to download manually</p>');
+                            } else {
+                                setError();
+                            }
+                        },
+                        error: function () {
+                            setError();
+                        }
+                    }
+                );
+            }
+        }
+
+        function setError() {
+            console.log('An error occurred');
+            $('.donation-wrapper > p').html('<p>Unfortunately an error occurred while downloading this file</p><p>Please try again later or contact support</p>');
+        }
+
+        function countdown(seconds, callback) {
+            if (seconds == 0) return callback();
+
+            setTimeout(function () {
+                seconds--;
+                $('.timer').text(seconds);
+                if (seconds > 0) {
+                    countdown(seconds, callback);
+                } else {
+                    callback();
+                }
+            }, 1000);
+        }
+    });
+</script>
 </div>
 </div>
 </div>
 </div>
 </div>
 </section>
+<script>
+                    $(document).ready(function() {
+                        if(window.innerWidth < 900) {
+                            $('.video-ad').remove()
+                        }
+                    });
+                </script>
+<div class="video-ad clearfix"><div id=div-gpt-ad-1561413483341-8></div></div>
+<div class="agroup clearfix">
+<div class="ads">
+<script>
+			$(document).ready(function() {
+				if(window.innerWidth < 1012) {
+					$('.demo-billboard').remove()
+				}
+
+				if(window.innerWidth >= 1012 && window.innerWidth < 1460) {
+					$('.demo-mrec').remove()
+				}
+			});
+		</script>
+<div class="ad demo-billboard ad-unit">
+<div id=div-gpt-ad-1561413483341-5></div>
+
+</div>
+<div class="ad demo-mrec ad-unit">
+<div id=div-gpt-ad-1561413483341-2></div>
+
+</div>
+</div>
+<script>
+	if ( areAdsBlocked() === true )
+	{
+		$('.ads').remove();
+		document.write('<div class="areplacer"> <div class="areplacer-left"> :( </div> <div class="areplacer-center"> <span class="ahighl">No one likes ads.</span> We know that. But without ads this site simply could not exist.<br /> Please be fair to us and others and consider turning them on.<br /> Alternatively, for £1.55 ($2) you can <a href="https://forums.nexusmods.com/index.php?/store/category/2-supporter-membership/">turn off ads permanently</a> (one-off payment!) </div> </div>');
+	}
+	</script>
+</div>
 <div id="rj-back-to-top" title="Back to top"><i class="fa fa-chevron-up"></i></div></div><footer id="rj-footer">
 <section id="rj-vortex">
 <div class="content rj-grid-12">
@@ -3201,27 +2453,27 @@ Safe to use </span>
 <ul id="networkstats" class="rj-grid-12 rj-grid-small-gap">
 <li class="col-md-6-12 col-lg-4-12">
 <h4>Members</h4>
-<div class="stat">19,942,019</div>
+<div class="stat">19,951,421</div>
 </li>
 <li class="col-md-pad-6-12 col-md-6-12 col-lg-pad-4-12 col-lg-4-12">
 <h4>Mods</h4>
-<div class="stat">245,364</div>
+<div class="stat">245,392</div>
 </li>
 <li class="row-md-2 col-md-6-12 row-lg-1 col-lg-pad-8-12 col-lg-4-12">
 <h4>Topics</h4>
-<div class="stat">2,422,577</div>
+<div class="stat">2,423,100</div>
 </li>
 <li class="row-md-2 col-md-pad-6-12 col-md-6-12 col-lg-pad-0-12 col-lg-4-12">
 <h4>Kudos given</h4>
-<div class="stat">1,107,547</div>
+<div class="stat">1,107,937</div>
 </li>
 <li class="row-md-3 col-md-6-12 row-lg-2 col-lg-pad-4-12 col-lg-4-12">
 <h4>Posts</h4>
-<div class="stat">22,660,920</div>
+<div class="stat">22,665,750</div>
 </li>
 <li class="row-md-3 col-md-pad-6-12 col-md-6-12 row-lg-2 col-lg-pad-8-12 col-lg-4-12">
 <h4>Page served in</h4>
-<div class="stat">0.197s (rd04)</div>
+<div class="stat">0.131s (rd03)</div>
 </li>
 </ul>
 </div>
@@ -3336,29 +2588,6 @@ Safe to use </span>
 </div>
 <div class="mobile-row">
 <ul id="mobile-primary" class="mobile-nav">
-<li id="mobile-updates" style="display:none;" class="dont-auto-close">
-<div id="mobile-notification-panel" class="subnav">
-<ul id="mobile-notification-list" class="notification-list">
-<li class="notification-loading">
-<div class="loading-wheel" style="display:block;">...</div>
-</li>
-</ul>
-<ul id="mobile-notification-actions" class="clearfix">
-<li class="load-more-updates" style="display:none;">
-<a>Load more</a>
-</li>
-<li class="no-more-updates" style="display:none;">
-<span>No updates</span>
-</li>
-<li class="see-all-updates">
-<a href="https://www.nexusmods.com/monsterhunterworld/updates/">See all</a>
-</li>
-<li class="remove-updates" style="display:none;" data-is-page="0">
-<a>Clear all updates</a>
-</li>
-</ul>
-</div>
-</li>
 <li id="mobile-global">
 <a href="/">
 Nexus Network
@@ -3392,11 +2621,11 @@ Support
 </div>
 <div id="mobile-fav" class="mobile-row">
 <div class="mobile-header">
-<h2>Favourites</h2>
+<h2>Games</h2>
 <a href="https://www.nexusmods.com/monsterhunterworld/games">Full games list (900)</a>
+<div class="btn btnsmall favourite-add-current" data-gameId="2531">Add current game</div>
+<div class="clearfix"></div>
 </div>
-<ul id="mobile-games" class="mobile-nav clearfix">
-</ul>
 </div>
 </nav>
 
