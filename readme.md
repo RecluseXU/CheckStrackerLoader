@@ -35,7 +35,7 @@ github地址：https://github.com/RecluseXU/CheckStrackerLoader
 
 版本信息
 v1.1
-  紧急修复了输入密码后会崩溃的BUG
+  \紧急修复了输入密码后会崩溃的BUG
 
 
 
