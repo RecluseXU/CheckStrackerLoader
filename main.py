@@ -245,6 +245,8 @@ def run():
     if is_installed:
         Util.info_print('尝试获取 StrackerLoader-dinput8.dll 的 MD5', 2)
         dinput8_dll_md5 = Util.get_file_MD5(MHW_Install_Address+'dinput8.dll') 
+    else:
+        dinput8_dll_md5 = ""
 
     Util.info_print('尝试获取 conf.ini信息', 1)
     if not Util.is_file_exists(run_folder_location+'conf.ini'):
