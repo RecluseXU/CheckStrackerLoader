@@ -219,9 +219,14 @@ def downloadFile(url, file_type):
 
 
 def run():
-    # 配置运行环境
-    Util.info_print("配置运行环境")
-    Util.info_print('Selenium配置', 1)
+    print("本程序由Recluse制作")
+    print("本程序用于一键更新前置MOD-StrackerLoader")
+    print("本程序不会用于盗号, 偷取信息 等非法操作")
+    print("但由于源码是公开的, 可能存在被魔改成盗号程序的可能。故建议从github获取本程序。")
+    print("github地址：https://github.com/RecluseXU/CheckStrackerLoader")
+    print("输入任意键开始")
+    input()
+    Util.creat_resources_folder()
 
     # 信息获取
     Util.info_print("获取本地信息")
@@ -318,6 +323,9 @@ def run():
     Util.info_print('更新 已安装版本DLL的MD5 信息', 3)
     conf_ini.set_installed_mod_ddl_md5(download_dll_md5)
 
+    print('程序运行完毕  输入任意键退出   3DM biss')
+    input()
+    
 
 
 if __name__ == "__main__":

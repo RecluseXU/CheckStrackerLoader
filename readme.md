@@ -9,4 +9,9 @@
 
 项目地址：https://github.com/RecluseXU/CheckStrackerLoader
 
+
+
+
+
+自己家里打包代码：F:\Environment\Python\envs\CheckStrackerLoader\Scripts\pyinstaller -F -c -i F:\Workspace\CheckStrackerLoader\1.ico main.py
 2020-2-26 10:12:42

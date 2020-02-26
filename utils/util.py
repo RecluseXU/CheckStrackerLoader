@@ -21,6 +21,15 @@ import datetime
 
 class Util(object):
     @staticmethod
+    def creat_resources_folder():
+        '''
+        @summary: 在程序目录下创建resources文件夹
+        '''
+        location = Util.get_resources_folder()[:-1]
+        if os.path.exists(location) == False:
+            os.mkdir(location)
+
+    @staticmethod
     def get_MHW_Install_Address():
         '''
         @return: MHW目录:str

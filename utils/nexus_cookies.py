@@ -29,6 +29,7 @@ def init_selenium_chrome_driver():
     '''
     @summary: 配置selenium.webdriver   chrome
     '''
+    Util.info_print('正在初始化浏览器', 3)
     chromedriver = Util.get_lib_folder() + "chromedriver.exe"
     drivePath = os.path.join(os.path.dirname(__file__), chromedriver)
     options = webdriver.ChromeOptions()
@@ -54,6 +55,7 @@ def get_cookies_by_selenium_login(user_name, user_password):
     Util.info_print('请在页面中登录N网账户', 3)
     Util.info_print('如果设置在conf.ini的账户密码正确，这个过程会自动完成。', 3)
     Util.info_print('如果不正确，请手动输入账户密码', 3)
+    Util.info_print('每一步操作都设置了30s的可行时间，超过时间程序就会退出', 3)
 
     # 登录界面
     try:
@@ -84,6 +86,7 @@ def get_cookies_by_selenium_login(user_name, user_password):
     # 返回首页后
     while driver.current_url != "https://www.nexusmods.com/":
         time.sleep(1)
+    Util.info_print('等待从首页中获取cookies', 3)
     try:
         WebDriverWait(driver, 30).until(
             EC.presence_of_element_located((By.XPATH, '/html/body/header[1]/div[1]/div[2]/div/div/div[3]/div[2]')))
