@@ -17,9 +17,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium import webdriver
-# from utils.util import Util
+from utils.util import Util
 import json
-from util import Util
+# from util import Util
 import os
 
 cookies_json_location = Util.get_resources_folder()+'Nexus_Cookies.txt'

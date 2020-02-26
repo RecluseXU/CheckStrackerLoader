@@ -222,7 +222,7 @@ def run():
     # 配置运行环境
     Util.info_print("配置运行环境")
     Util.info_print('Selenium配置', 1)
-    
+
     # 信息获取
     Util.info_print("获取本地信息")
     Util.info_print('尝试从注册表获取 MHW 目录', 1)
