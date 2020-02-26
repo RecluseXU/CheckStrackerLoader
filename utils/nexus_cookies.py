@@ -17,18 +17,38 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium import webdriver
-from utils.util import Util
+# from utils.util import Util
 import json
-# from util import Util
+from util import Util
+import os
 
 cookies_json_location = Util.get_resources_folder()+'Nexus_Cookies.txt'
+
+
+def init_selenium_chrome_driver():
+    '''
+    @summary: 配置selenium.webdriver   chrome
+    '''
+    chromedriver = Util.get_lib_folder() + "chromedriver.exe"
+    drivePath = os.path.join(os.path.dirname(__file__), chromedriver)
+    options = webdriver.ChromeOptions()
+    # 禁止图片加载
+    prefs = {"profile.managed_default_content_settings.images": 2}
+    options.add_experimental_option("prefs", prefs)
+    # 不显示图片
+    options.add_argument('--blink-settings=imagesEnabled=false')
+    # 非沙盒模式
+    options.add_argument('no-sandbox')
+    driver = webdriver.Chrome(executable_path=drivePath, chrome_options=options)
+    return driver
 
 def get_cookies_by_selenium_login(user_name, user_password):
     '''
     @summary: 通过selenium获取cookies信息，并记录下来，返回
     @return: cookies:dict
     '''
-    driver = webdriver.Firefox()
+    driver = init_selenium_chrome_driver()
+
     # 登录界面
     driver.get('https://users.nexusmods.com/auth/sign_in')
     Util.info_print('请在页面中登录N网账户', 3)
@@ -90,10 +110,13 @@ def get_cookies_from_file():
     return nexus_cookies
 
 
+
+
 if __name__ == "__main__":
     # host = ".baidu.com"
     # a = get_cookie_from_chrome(host)
     # b = get_cookies_by_selenium_login("", "")
     b = get_cookies_by_selenium_login("444640050@qq.com", "")
 
-    print(b)
+    # print(b)
+

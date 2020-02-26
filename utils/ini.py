@@ -27,9 +27,9 @@ class Conf_ini(object):
 
     def get_installed_SL_upload_date(self):
         '''
-        @return: 获取已经被安装上了的MOD的上传时间
+        @return: 获取已经被安装上了的MOD的上传时间(时间戳):int
         '''
-        return config.get('StrackerLoader', 'installed_mod_upload_date')
+        return int(config.get('StrackerLoader', 'installed_mod_upload_date'))
 
     def set_installed_SL_upload_date(self, the_time: datetime):
         '''
@@ -38,9 +38,6 @@ class Conf_ini(object):
         the_time = int(time.mktime(the_time.timetuple()))
         config.set("StrackerLoader", "installed_mod_upload_date", str(the_time))
         self.write_conf()
-
-    def is_need_to_update_the_mod():
-        pass
 
     def get_last_spide_time(self):
         '''
@@ -90,6 +87,13 @@ class Conf_ini(object):
         @summary: 得到已经安装了的前置MOD的 dll 的MD5
         '''
         return config.get('StrackerLoader', 'installed_mod_ddl_md5')
+    
+    def set_installed_mod_ddl_md5(self, dll_md5):
+        '''
+        @summary: 设置已经安装了的前置MOD的 dll 的MD5
+        '''
+        config.set('StrackerLoader', 'installed_mod_ddl_md5', dll_md5)
+        self.write_conf()
 
     def write_conf(self):
         '''

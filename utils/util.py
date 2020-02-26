@@ -16,24 +16,49 @@ import hashlib
 import os
 import time
 import zipfile
-
+import shutil
+import datetime
 
 class Util(object):
     @staticmethod
     def get_MHW_Install_Address():
         '''
-        @return: MHW目录
+        @return: MHW目录:str
         '''
         try:
             aReg = winreg.ConnectRegistry(None, winreg.HKEY_LOCAL_MACHINE)
             aKey = winreg.OpenKey(
                 aReg, r"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 582010")
             data = winreg.QueryValueEx(aKey, "InstallLocation")[0]
-            Util.info_print(data, 2)
-            return data
+            return data+'\\'
         except Exception as e:
             print("->Fail", e)
             Util.warning_and_exit(1)
+
+    @staticmethod
+    def get_Firefox_Install_Address():
+        '''
+        @return: FireFox目录:str
+        '''
+        try:
+            aReg = winreg.ConnectRegistry(None, winreg.HKEY_LOCAL_MACHINE)
+            aKey = winreg.OpenKey(
+                aReg, r"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall")
+            i = 0
+            while 1:
+                i = i+1
+                keyname = winreg.EnumKey(aKey,i)
+                if(keyname.find('Firefox') != -1):  # 因为firefox在注册表里的键带着一个版本号，所以不能写死，这里通过关键词找到键名
+                    print(keyname)
+                    break
+
+            aKey = winreg.OpenKey(
+                aReg, r"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\\" + keyname)
+            data = winreg.QueryValueEx(aKey, "InstallLocation")[0]
+            return data + '\\'
+        except Exception as e:
+            print("->Fail\t可能此电脑未安装Firefox", e)
+            aKey.close()
 
     @staticmethod
     def is_file_exists(file_path: str):
@@ -56,13 +81,26 @@ class Util(object):
     def get_resources_folder():
         '''
         @staticmethod
-        @return: 返回程序运行目录下的资源目录:str
+        @return: 返回程序运行目录下的resources目录:str
         '''
         location = Util.get_run_folder()+'resources\\'
+        return location
+    
+    @staticmethod
+    def get_lib_folder():
+        '''
+        @staticmethod
+        @return: 返回程序运行目录下的lib目录:str
+        '''
+        location = Util.get_run_folder()+'lib\\'
         return location
 
     @staticmethod
     def get_file_MD5(file_location):
+        '''
+        @staticmethod
+        @return: 返回目标文件的MD5:str
+        '''
         try:
             with open(file_location, 'rb')as f:
                 file_bytes = f.read()
@@ -76,7 +114,8 @@ class Util(object):
     @staticmethod
     def info_print(info, space=0):
         '''
-        @summary: 美化输出
+        @staticmethod
+        @summary: 简单输出
         '''
         for i in range(space):
             print('\t', end="")
@@ -85,6 +124,7 @@ class Util(object):
     @staticmethod
     def warning_and_exit(statue_code=0):
         '''
+        @staticmethod
         @summary: 警告用户这个程序将在10s后退出
         '''
         print('将在 10 秒后自动退出')
@@ -93,7 +133,8 @@ class Util(object):
 
     @staticmethod
     def unzip_single(src_file, dest_dir, password):
-        ''' 
+        '''
+        @staticmethod
         @summary: 从zip压缩包中解压单个文件到目标文件夹。
         '''
         if password:
@@ -108,6 +149,7 @@ class Util(object):
     @staticmethod
     def unzip_all(source_dir, dest_dir, password):
         '''
+        @staticmethod
         @summary: 从zip压缩包中解压多个文件
         '''
         if not os.path.isdir(source_dir):    # 如果是单一文件
@@ -118,9 +160,30 @@ class Util(object):
                 if entry.is_file() and os.path.splitext(entry.name)[1] == '.zip':
                     Util.unzip_single(entry.path, dest_dir, password)
 
+    @staticmethod
+    def copy_file(origin_file_location, copy_file_location):
+        '''
+        @staticmethod
+        @summary: 复制一个文件到目标路径, 若已经存在，则覆盖
+        '''
+        try:
+            shutil.copyfile(origin_file_location, copy_file_location)
+        except Exception as e:
+            print(e)
+            Util.warning_and_exit(1)
+
+    @staticmethod
+    def transform_datetime_to_timeStamp(d_time: datetime):
+        '''
+        @staticmethod
+        @summary: 将datetime对象转换为时间戳，返回
+        @return: timeStamp:int
+        '''
+        timeStamp = int(time.mktime(d_time.timetuple()))
+        return timeStamp
 
 if __name__ == "__main__":
-    lacate = Util.get_run_folder()
-    print(lacate)
-    a = Util.get_resources_folder()
+    # lacate = Util.get_run_folder()
+    # print(lacate)
+    a = Util.get_Firefox_Install_Address()
     print(a)

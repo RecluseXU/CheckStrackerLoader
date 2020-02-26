@@ -219,14 +219,28 @@ def downloadFile(url, file_type):
 
 
 def run():
+    # 配置运行环境
+    Util.info_print("配置运行环境")
+    Util.info_print('Selenium配置', 1)
+    
     # 信息获取
     Util.info_print("获取本地信息")
     Util.info_print('尝试从注册表获取 MHW 目录', 1)
     MHW_Install_Address = Util.get_MHW_Install_Address()
+    Util.info_print('MHW 目录:\t'+MHW_Install_Address, 2)
+
     Util.info_print('尝试获取当前目录', 1)
     run_folder_location = Util.get_run_folder()
-    Util.info_print('尝试获取 StrackerLoader-dinput8.dll 的 MD5', 1)
-    dinput8_dll_md5 = Util.get_file_MD5(MHW_Install_Address, 'dinput8.dll') 
+    Util.info_print('当前目录:\t'+run_folder_location, 2)
+
+    Util.info_print('检查StrackerLoader安装状态', 1)
+    is_installed = Util.is_file_exists(MHW_Install_Address+'dinput8.dll')
+    Util.info_print('安装状态:\t'+str(is_installed), 2)
+
+    if not Util.is_file_exists(run_folder_location+'conf.ini'):
+        Util.info_print('尝试获取 StrackerLoader-dinput8.dll 的 MD5', 2)
+        dinput8_dll_md5 = Util.get_file_MD5(MHW_Install_Address+'dinput8.dll') 
+
     Util.info_print('尝试获取 conf.ini信息', 1)
     if not Util.is_file_exists(run_folder_location+'conf.ini'):
         Util.info_print('conf.ini不存在,创建conf.ini', 2)
@@ -239,7 +253,7 @@ def run():
     Util.info_print('尝试获取 Cookies 信息', 1)
     username, userpwd = conf_ini.get_nexus_account_info()
     get_cookies_info(run_folder_location, username, userpwd)
-
+#
     Util.info_print("获取MOD信息")
     Util.info_print('尝试获取N网 "Stracker\'s Loader" 文件信息页', 1)
     file_page_html, is_spider = get_mod_file_page(conf_ini.is_safe_to_spide())
@@ -250,6 +264,11 @@ def run():
     last_publish_date, last_download_url = analyze_mod_file_page(file_page_html)
     Util.info_print("最新版本上传日期\t" + str(last_publish_date), 2)
     Util.info_print("最新版本下载地址\t" + last_download_url, 2)
+    last_publish_timeStamp = Util.transform_datetime_to_timeStamp(last_publish_date)
+    installed_version_timeStamp = conf_ini.get_installed_SL_upload_date()
+    if is_installed and last_publish_timeStamp == installed_version_timeStamp:
+        Util.info_print("已安装的版本与最新版发布时间一致，无需更新")
+        Util.warning_and_exit()
 
     Util.info_print('尝试获取N网 "Stracker\'s Loader" 最新版文件下载页', 1)
     download_page_html = spider_download_file_page(last_download_url)
@@ -266,6 +285,7 @@ def run():
     Util.info_print('尝试下载"Stracker\'s Loader" 最新版文件', 1)
     downloadFile(download_url, file_type)
 
+    Util.info_print("信息处理")
     Util.info_print('尝试解压"Stracker\'s Loader" 文件', 1)
     downloaded_mod_location = Util.get_resources_folder() + 'StrackerLoader.' + file_type
     downloaded_mod_unpack_location = Util.get_resources_folder() + 'StrackerLoade\\'
@@ -273,13 +293,32 @@ def run():
         Util.unzip_all(downloaded_mod_location, downloaded_mod_unpack_location, '')
 
     Util.info_print('尝试获取刚下载的"Stracker\'s Loader" 文件MD5', 1)
-    download_dll_location = Util.get_resources_folder + '\\StrackerLoade\\dinput8.dll'
+    download_dll_location = Util.get_resources_folder() + '\\StrackerLoade\\dinput8.dll'
     download_dll_md5 = Util.get_file_MD5(download_dll_location)
-    Util.info_print('刚下载的"Stracker\'s Loader" dll-MD5:' + download_dll_md5, 2)
+    Util.info_print('刚下载的"Stracker\'s Loader" dll-MD5:\t' + download_dll_md5, 2)
+    if is_installed and conf_ini.get_installed_mod_ddl_md5() == download_dll_md5:
+        Util.info_print('刚下载MD5 与 已安装MD5一致,无需更新', 2)
+        Util.info_print('更新 已安装版本DLL的MD5 信息', 3)
+        conf_ini.set_installed_mod_ddl_md5(download_dll_md5)
+        Util.info_print('更新 已安装版本N网作者上传时间信息', 3)
+        conf_ini.set_installed_SL_upload_date(last_publish_date)
+        Util.warning_and_exit()
 
-    Util.info_print('匹配刚下载的DLL文件 与 已经安装的DLL文件MD5', 1)
-    if conf_ini.get_installed_mod_ddl_md5() == download_dll_md5:
-        Util.info_print('刚下载MD5 与 已安装MD5一致', 2)
+    Util.info_print('尝试覆盖安装', 1)
+    Util.info_print('覆盖安装dinput8.dll', 2)
+    mhw_ddl_location = MHW_Install_Address+'dinput8.dll'
+    Util.copy_file(download_dll_location, mhw_ddl_location)
+    Util.info_print('覆盖安装dinput-config.json', 2)
+    download_dinputconfig_location = Util.get_resources_folder() + '\\StrackerLoade\\dinput-config.json'
+    mhw_dinputconfig_location = MHW_Install_Address + 'dinput-config.json'
+    Util.copy_file(download_dinputconfig_location, mhw_dinputconfig_location)
+    Util.info_print('更新安装信息', 2)
+    Util.info_print('更新 已安装版本N网作者上传时间信息', 3)
+    conf_ini.set_installed_SL_upload_date(last_publish_date)
+    Util.info_print('更新 已安装版本DLL的MD5 信息', 3)
+    conf_ini.set_installed_mod_ddl_md5(download_dll_md5)
+
+
 
 if __name__ == "__main__":
     run()
