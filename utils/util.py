@@ -21,13 +21,13 @@ import datetime
 
 class Util(object):
     @staticmethod
-    def creat_resources_folder():
+    def creat_a_folder(location):
         '''
         @summary: 在程序目录下创建resources文件夹
         '''
-        location = Util.get_resources_folder()[:-1]
         if os.path.exists(location) == False:
             os.mkdir(location)
+    
 
     @staticmethod
     def get_MHW_Install_Address():
@@ -190,9 +190,18 @@ class Util(object):
         '''
         timeStamp = int(time.mktime(d_time.timetuple()))
         return timeStamp
+    
+    @staticmethod
+    def is_win_x64():
+        '''
+        @staticmethod
+        @summary: 返回操作系统是64位还是32位
+        @return: bool
+        '''
+        return 'PROGRAMFILES(X86)' in os.environ
 
 if __name__ == "__main__":
     # lacate = Util.get_run_folder()
     # print(lacate)
-    a = Util.get_Firefox_Install_Address()
+    a = Util.is_win_x64()
     print(a)

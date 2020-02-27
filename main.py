@@ -201,7 +201,7 @@ def spider_download_file(file_id, game_id):
         print("失败", e)
 
 
-def downloadFile(url, file_type):
+def downloadFile(url, location):
     '''
     @summary: 下载MOD文件
     '''
@@ -211,10 +211,9 @@ def downloadFile(url, file_type):
 
     response = requests.get(url, stream=True, verify=False, headers=download_head, cookies=get_cookies_from_file())
 
-    location = Util.get_resources_folder() + 'StrackerLoader.' + file_type
     with open(location, 'wb')as f:
         f.write(response.content)
-    Util.info_print("文件已保存为\t" + 'resources/StrackerLoader.'+file_type, 3)
+    Util.info_print("文件已保存为\t" + location, 3)
     time.sleep(1)
 
 
@@ -224,9 +223,16 @@ def run():
     print("本程序不会用于盗号, 偷取信息 等非法操作")
     print("但由于源码是公开的, 可能存在被魔改成盗号程序的可能。故建议从github获取本程序。")
     print("github地址：https://github.com/RecluseXU/CheckStrackerLoader")
-    print("输入任意键开始")
+    print("输入回车键开始")
     input()
-    Util.creat_resources_folder()
+
+    Util.info_print('初始化')
+    Util.info_print('创建resources目录', 1)
+    location = Util.get_resources_folder()[:-1]
+    Util.creat_a_folder(location)
+    Util.info_print('创建lib目录', 1)
+    location = Util.get_lib_folder()[:-1]
+    Util.creat_a_folder(location)
 
     # 信息获取
     Util.info_print("获取本地信息")
@@ -251,6 +257,7 @@ def run():
     Util.info_print('尝试获取 conf.ini信息', 1)
     if not Util.is_file_exists(run_folder_location+'conf.ini'):
         Util.info_print('conf.ini不存在,创建conf.ini', 2)
+        print('这次输入的信息会记录在conf.ini中，如果需要更改，用记事本修改conf.ini的内容即可')
         N_name = input('请输入N网账号或邮箱:')
         N_pwd = input('请输N网密码:')
         Conf_ini.creat_new_conf_ini(run_folder_location+'conf.ini', dinput8_dll_md5, N_name, N_pwd)
@@ -290,7 +297,8 @@ def run():
     Util.info_print("最新版文件类型\t" + file_type, 2)
 
     Util.info_print('尝试下载"Stracker\'s Loader" 最新版文件', 1)
-    downloadFile(download_url, file_type)
+    location = Util.get_resources_folder() + 'StrackerLoader.' + file_type
+    downloadFile(download_url, location)
 
     Util.info_print("信息处理")
     Util.info_print('尝试解压"Stracker\'s Loader" 文件', 1)
@@ -325,17 +333,53 @@ def run():
     Util.info_print('更新 已安装版本DLL的MD5 信息', 3)
     conf_ini.set_installed_mod_ddl_md5(download_dll_md5)
 
-    print('程序运行完毕  输入任意键退出   3DM biss')
+    print('程序运行完毕  输入回车键退出   3DM biss')
     input()
     
 
+# def init_webbrowser_driver(): 
+#     # chrome 尝试
+#     import requests
+#     from lxml import etree
+#     url_base = "http://npm.taobao.org"
 
+#     r = requests.get("http://npm.taobao.org/mirrors/chromedriver/")
+#     html = r.content.decode()
+#     xpath_data = etree.HTML(html)
+#     a = xpath_data.xpath('///html/body/div[1]/pre/a')[2:]
+
+#     download_page_url_list = list()
+#     for i in a:
+#         if i.xpath('./text()')[0].find("icon") != -1:
+#             break
+#         download_page_url_list.append(url_base + i.xpath('./@href')[0] + "chromedriver_win32.zip")
+    
+#     for i in download_page_url_list:
+#         print(i)
+
+#     Util.creat_a_folder(Util.get_lib_folder()+'chromedriver')
+#     i = 0
+#     Util.creat_a_folder(Util.get_lib_folder()+'chromedriver\\buffer')
+#     for url in download_page_url_list:
+#         location = Util.get_lib_folder()+'chromedriver\\buffer\\' + str(i) + '.zip'
+#         t_headers = {
+#             'Host': "cdn.npm.taobao.org",
+#             'Accept': "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"}
+#         response = requests.get(url, stream=True, headers=t_headers)
+#         with open(location, 'wb')as f:
+#             f.write(response.content)
+#         i = i+1
+
+#         unzip_location = Util.get_lib_folder()+'chromedriver\\' + str(i) + '.zip'
+#         Util.unzip_all(location, unzip_location, '')   
+
+        
 if __name__ == "__main__":
     run()
     
     # is_login(get_cookies_from_file())
     # print()
-
+    # init_webbrowser_driver()
     # spider_download_file(9908, 2531)
     
     # run_folder_location = Util.get_run_folder()

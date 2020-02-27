@@ -13,14 +13,16 @@
 # here put the import lib
 
 import time
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium import webdriver
-from utils.util import Util
 import json
-# from util import Util
 import os
+from utils.util import Util
+# from util import Util
+
 
 cookies_json_location = Util.get_resources_folder()+'Nexus_Cookies.txt'
 
@@ -29,7 +31,6 @@ def init_selenium_chrome_driver():
     '''
     @summary: 配置selenium.webdriver   chrome
     '''
-    Util.info_print('正在初始化浏览器', 3)
     chromedriver = Util.get_lib_folder() + "chromedriver.exe"
     drivePath = os.path.join(os.path.dirname(__file__), chromedriver)
     options = webdriver.ChromeOptions()
@@ -43,12 +44,41 @@ def init_selenium_chrome_driver():
     driver = webdriver.Chrome(executable_path=drivePath, chrome_options=options)
     return driver
 
+
+def init_selenium_ie_driver():
+    '''
+    @summary: 配置selenium.webdriver   IE
+    '''
+    iedriver = Util.get_lib_folder() + "IEDriverServer_x32.exe"
+    drivePath = os.path.join(os.path.dirname(__file__), iedriver)
+
+    capabilities = DesiredCapabilities.INTERNETEXPLORER
+    capabilities["ignoreProtectedModeSettings"] = True  # 无视保护模式
+    capabilities["ignoreZoomSetting"] = True  # 不检查界面缩放
+    driver = webdriver.Ie(executable_path=drivePath, capabilities=capabilities)
+    return driver
+
+
+def init_selenium_driver():
+    # try:
+    #     Util.info_print('尝试初始化chrome浏览器', 3)
+    #     return init_selenium_chrome_driver()
+    # except Exception as e:
+    #     print(e)
+    
+    try:
+        Util.info_print('尝试初始化IE浏览器', 3)
+        return init_selenium_ie_driver()
+    except Exception as e:
+        print(e)
+
+
 def get_cookies_by_selenium_login(user_name, user_password):
     '''
     @summary: 通过selenium获取cookies信息，并记录下来，返回
     @return: cookies:dict
     '''
-    driver = init_selenium_chrome_driver()
+    driver = init_selenium_driver()
 
     # 登录界面
     driver.get('https://users.nexusmods.com/auth/sign_in')
@@ -61,24 +91,22 @@ def get_cookies_by_selenium_login(user_name, user_password):
     try:
         username_inputer = WebDriverWait(driver, 30).until(
             EC.presence_of_element_located((By.ID, "user_login")))
-    finally:
-        username_inputer.send_keys(user_name)
-    try:
         userpassword_inputer = WebDriverWait(driver, 30).until(
             EC.presence_of_element_located((By.ID, "user_password")))
     finally:
+        username_inputer.send_keys(user_name)
         userpassword_inputer.send_keys(user_password)
 
     commit_button = driver.find_element_by_xpath('//input[@type="submit"]')
     commit_button.click()
 
-    while driver.current_url == "https://users.nexusmods.com/auth/sign_i":
+    while driver.current_url == "https://users.nexusmods.com/auth/sign_in":
         time.sleep(1)
 
     # 欢迎界面
     try:
         index_a = WebDriverWait(driver, 30).until(
-            EC.presence_of_element_located((By.XPATH, '//div[@class="left-link"]/a[@class="d-none d-md-block"]')))
+            EC.presence_of_element_located((By.XPATH, '//div[@class="links"]/div[@class="left-link"]/a[1]')))
         index_a.click()
     finally:
         Util.info_print('等待进入首页，请勿操作', 3)
@@ -117,9 +145,10 @@ def get_cookies_from_file():
 
 if __name__ == "__main__":
     # host = ".baidu.com"
+    # init_selenium_driver()
     # a = get_cookie_from_chrome(host)
     # b = get_cookies_by_selenium_login("", "")
-    b = get_cookies_by_selenium_login("444640050@qq.com", "")
-
+    # b = get_cookies_by_selenium_login("444640050@qq.com", "Recluse444640050")
+    # init_webbrowser_driver()
     # print(b)
-
+    pass
