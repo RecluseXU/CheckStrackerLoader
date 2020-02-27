@@ -89,12 +89,14 @@ def get_cookies_by_selenium_login(user_name, user_password):
 
     # 登录界面
     try:
-        username_inputer = WebDriverWait(driver, 30).until(
+        WebDriverWait(driver, 30).until(
             EC.presence_of_element_located((By.ID, "user_login")))
-        userpassword_inputer = WebDriverWait(driver, 30).until(
+        WebDriverWait(driver, 30).until(
             EC.presence_of_element_located((By.ID, "user_password")))
     finally:
+        username_inputer = driver.find_element_by_id("user_login")
         username_inputer.send_keys(user_name)
+        userpassword_inputer = driver.find_element_by_id("user_password")
         userpassword_inputer.send_keys(user_password)
 
     commit_button = driver.find_element_by_xpath('//input[@type="submit"]')
