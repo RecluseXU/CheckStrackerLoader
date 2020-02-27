@@ -60,17 +60,20 @@ def init_selenium_ie_driver():
 
 
 def init_selenium_driver():
-    # try:
-    #     Util.info_print('尝试初始化chrome浏览器', 3)
-    #     return init_selenium_chrome_driver()
-    # except Exception as e:
-    #     print(e)
+    try:
+        Util.info_print('尝试初始化chrome浏览器', 3)
+        return init_selenium_chrome_driver()
+    except Exception as e:
+        print(e)
     
     try:
         Util.info_print('尝试初始化IE浏览器', 3)
         return init_selenium_ie_driver()
     except Exception as e:
         print(e)
+    
+    print("初始化浏览器失败")
+    Util.warning_and_exit(1)
 
 
 def get_cookies_by_selenium_login(user_name, user_password):
@@ -88,16 +91,10 @@ def get_cookies_by_selenium_login(user_name, user_password):
     Util.info_print('每一步操作都设置了30s的可行时间，超过时间程序就会退出', 3)
 
     # 登录界面
-    try:
-        WebDriverWait(driver, 30).until(
-            EC.presence_of_element_located((By.ID, "user_login")))
-        WebDriverWait(driver, 30).until(
-            EC.presence_of_element_located((By.ID, "user_password")))
-    finally:
-        username_inputer = driver.find_element_by_id("user_login")
-        username_inputer.send_keys(user_name)
-        userpassword_inputer = driver.find_element_by_id("user_password")
-        userpassword_inputer.send_keys(user_password)
+    username_inputer = driver.find_element_by_id("user_login")
+    username_inputer.send_keys(user_name)
+    userpassword_inputer = driver.find_element_by_id("password")
+    userpassword_inputer.send_keys(user_password)
 
     commit_button = driver.find_element_by_xpath('//input[@type="submit"]')
     commit_button.click()
