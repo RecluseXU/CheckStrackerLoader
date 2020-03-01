@@ -12,13 +12,14 @@
 
 # here put the import lib
 
-import time
+from selenium.webdriver.support.expected_conditions import presence_of_element_located
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium import webdriver
 import json
+# import time
 import os
 from utils.util import Util
 # from util import Util
@@ -36,15 +37,24 @@ def _init_selenium_chrome_driver():
     drivePath = os.path.join(os.path.dirname(__file__), chromedriver)
     options = webdriver.ChromeOptions()
     # 禁止图片加载
-    prefs = {"profile.managed_default_content_settings.images": 2}
-    options.add_experimental_option("prefs", prefs)
+    # prefs = {"profile.managed_default_content_settings.images": 2}
+    # options.add_experimental_option("prefs", prefs)
     # 不显示图片
-    options.add_argument('--blink-settings=imagesEnabled=false')
+    # options.add_argument('--blink-settings=imagesEnabled=false')
     # 非沙盒模式
     options.add_argument('no-sandbox')
     driver = webdriver.Chrome(executable_path=drivePath, chrome_options=options)
     return driver
 
+def _init_selenium_firefox_driver():
+    '''
+    @summary: 配置selenium.webdriver   firefoxdriver
+    @return: selenium.webdriver firefoxdriver
+    '''
+    firefoxdriver = Util.get_lib_folder() + "geckodriver.exe"
+    drivePath = os.path.join(os.path.dirname(__file__), firefoxdriver)
+    driver = webdriver.Firefox(executable_path=drivePath)
+    return driver
 
 def _init_selenium_ie_driver():
     '''
@@ -75,6 +85,12 @@ def _init_selenium_driver():
         print("失败", e)
 
     try:
+        Util.info_print('尝试初始化火狐浏览器', 4)
+        return _init_selenium_firefox_driver()
+    except Exception as e:
+        print("失败", e)
+
+    try:
         Util.info_print('尝试初始化IE浏览器', 4)
         return _init_selenium_ie_driver()
     except Exception as e:
@@ -83,55 +99,39 @@ def _init_selenium_driver():
 
 def _selenium_operations(driver: webdriver, user_name: str, user_password: str):
     # 登录界面
+    Util.info_print('登录界面', 3)
     driver.get('https://users.nexusmods.com/auth/sign_in')
     Util.info_print('请在页面中登录N网账户', 3)
     Util.info_print('如果设置在conf.ini的账户密码正确，这个过程会自动完成。', 3)
     Util.info_print('如果不正确，请手动输入账户密码', 3)
-    Util.info_print('每一步操作都设置了30s的可行时间，超过时间程序就会退出', 3)
+    Util.info_print('每一步操作都设置了一定的的可行时间，超过时间程序就会退出', 3)
 
-    # 登录界面
-    try:
-        username_inputer = WebDriverWait(driver, 30).until(
-            EC.presence_of_element_located((By.ID, "user_login"))
-        )
-        userpassword_inputer = WebDriverWait(driver, 30).until(
-            EC.presence_of_element_located((By.ID, "password"))
-        )
-        commit_button = WebDriverWait(driver, 30).until(
-            EC.presence_of_element_located((By.XPATH, '//input[@type="submit"]'))
-        )
+    wait = WebDriverWait(driver, 300)
+    username_inputer = wait.until(presence_of_element_located((By.ID, "user_login")))
+    userpassword_inputer = wait.until(presence_of_element_located((By.ID, "password")))
+    commit_button = wait.until(presence_of_element_located((By.XPATH, '//input[@type="submit"]')))
+    
+    username_inputer.send_keys(user_name)
+    userpassword_inputer.send_keys(user_password)
+    commit_button.click()
 
-    finally:
-        username_inputer.send_keys(user_name)
-        userpassword_inputer.send_keys(user_password)
-        commit_button.click()
-
-    while driver.current_url == "https://users.nexusmods.com/auth/sign_in":
-        driver.implicitly_wait(1)
-
+    wait.until(EC.url_changes)
     # 欢迎界面
-    try:
-        index_a = WebDriverWait(driver, 30).until(
-            EC.presence_of_element_located((By.XPATH, '//div[@class="links"]/div[@class="left-link"]/a[1]')))
-    finally:
-        index_a.click()
-        Util.info_print('等待进入首页，请勿操作', 3)
+    
+    index_a = wait.until(EC.presence_of_element_located((By.XPATH, '//div[@class="links"]/div[@class="left-link"]/a[1]')))
+    index_a.click()
+    Util.info_print('等待进入首页，请勿操作', 3)
 
     # 返回首页后
-    while driver.current_url != "https://www.nexusmods.com/":
-        time.sleep(1)
-    Util.info_print('等待从首页中获取cookies', 3)
-    try:
-        WebDriverWait(driver, 30).until(
-            EC.presence_of_element_located((By.XPATH, '/html/body')))
-    finally:
-        nexus_cookies_list = driver.get_cookies()
+    # Util.info_print('等待从首页中获取cookies', 3)
+    wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, ".intro > h1:nth-child(1)")))
+    nexus_cookies_list = driver.get_cookies()
+    driver.quit()
 
     nexus_cookies = dict()
     for cookie in nexus_cookies_list:
         nexus_cookies[cookie['name']] = cookie['value']
 
-    driver.close()
     return nexus_cookies
 
 
@@ -194,7 +194,7 @@ if __name__ == "__main__":
     # init_selenium_driver()
     # a = get_cookie_from_chrome(host)
     # b = get_cookies_by_selenium_login("", "")
-    b = get_cookies_by_selenium_login("444640050@qq.com", "")
-    # init_webbrowser_driver()
+    # b = get_cookies_by_selenium_login("444640050@qq.com", "")
+    _init_selenium_driver()
     # print(b)
     pass
