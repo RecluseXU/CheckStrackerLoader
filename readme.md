@@ -39,7 +39,7 @@ v1.1
 
 
 
-自己家里打包代码：F:\Environment\Python\envs\CheckStrackerLoader\Scripts\pyinstaller --workpath F:\Workspace\CheckStrackerLoader\rubbish -y -F -i F:\Workspace\CheckStrackerLoader\1.ico main.py
+自己家里打包代码：F:\Environment\Python\envs\CheckStrackerLoader\Scripts\pyinstaller --workpath F:\Workspace\CheckStrackerLoader\pyinstaller_rubbish -y -F -i F:\Workspace\CheckStrackerLoader\1.ico main.py
 
 
 2020-2-26 10:12:42

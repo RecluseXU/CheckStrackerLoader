@@ -19,7 +19,7 @@ from lxml import etree
 import re
 from utils.util import Util
 from utils.ini import Conf_ini
-from utils.nexus_cookies import get_cookies_by_selenium_login, get_cookies_from_file
+from utils.nexus_cookies import get_cookies_by_selenium_login, get_cookies_from_file, get_cookies_by_input
 import json
 
 
@@ -74,8 +74,17 @@ def get_cookies_info(run_location, user_name, user_pwd):
             return
         else:
             Util.info_print('Cookies信息验证失败，', 4)
+
     Util.info_print('尝试通过登录N网记录Cookies信息', 2)
     my_cookies = get_cookies_by_selenium_login(user_name, user_pwd)
+
+    Util.info_print('尝试通过手动输入, 获知Cookies信息', 2)
+    my_cookies = get_cookies_by_input()
+    if is_login(my_cookies):
+        Util.info_print('Cookies信息验证成功，', 4)
+    else:
+        Util.info_print('Cookies信息验证失败，', 4)
+        Util.warning_and_exit(1)
     return my_cookies
 
 

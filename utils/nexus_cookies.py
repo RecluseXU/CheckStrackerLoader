@@ -20,16 +20,17 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium import webdriver
 import json
 import os
-# from utils.util import Util
-from util import Util
+from utils.util import Util
+# from util import Util
 
 
 cookies_json_location = Util.get_resources_folder()+'Nexus_Cookies.txt'
 
 
-def init_selenium_chrome_driver():
+def _init_selenium_chrome_driver():
     '''
     @summary: 配置selenium.webdriver   chrome
+    @return: selenium.webdriver chrome
     '''
     chromedriver = Util.get_lib_folder() + "chromedriver.exe"
     drivePath = os.path.join(os.path.dirname(__file__), chromedriver)
@@ -45,9 +46,10 @@ def init_selenium_chrome_driver():
     return driver
 
 
-def init_selenium_ie_driver():
+def _init_selenium_ie_driver():
     '''
     @summary: 配置selenium.webdriver   IE
+    @return: selenium.webdriver IE
     '''
     iedriver = Util.get_lib_folder() + "IEDriverServer_x32.exe"
     drivePath = os.path.join(os.path.dirname(__file__), iedriver)
@@ -59,30 +61,27 @@ def init_selenium_ie_driver():
     return driver
 
 
-def init_selenium_driver():
-    try:
-        Util.info_print('尝试初始化chrome浏览器', 3)
-        return init_selenium_chrome_driver()
-    except Exception as e:
-        print(e)
-    
-    try:
-        Util.info_print('尝试初始化IE浏览器', 3)
-        return init_selenium_ie_driver()
-    except Exception as e:
-        print(e)
-    
-    print("初始化浏览器失败")
-    Util.warning_and_exit(1)
-
-
-def get_cookies_by_selenium_login(user_name, user_password):
+def _init_selenium_driver():
     '''
-    @summary: 通过selenium获取cookies信息，并记录下来，返回
-    @return: cookies:dict
+    @summary: 尝试初始化各个不同的webdriver
+    @return: webdriver
     '''
-    driver = init_selenium_driver()
+    Util.info_print('尝试初始化浏览器', 3)
 
+    try:
+        Util.info_print('尝试初始化chrome浏览器', 4)
+        return _init_selenium_chrome_driver()
+    except Exception as e:
+        print("失败", e)
+
+    try:
+        Util.info_print('尝试初始化IE浏览器', 4)
+        return _init_selenium_ie_driver()
+    except Exception as e:
+        print("失败", e)
+
+
+def _selenium_operations(driver: webdriver, user_name: str, user_password: str):
     # 登录界面
     driver.get('https://users.nexusmods.com/auth/sign_in')
     Util.info_print('请在页面中登录N网账户', 3)
@@ -132,9 +131,29 @@ def get_cookies_by_selenium_login(user_name, user_password):
     for cookie in nexus_cookies_list:
         nexus_cookies[cookie['name']] = cookie['value']
 
+    driver.close()
+    return nexus_cookies
+
+
+def save_cookies_to_file(nexus_cookies: dict):
+    '''
+    @summary: 将cookies信息保存到resources/Nexus_Cookies.txt
+    '''
     with open(cookies_json_location, 'w', encoding="utf-8")as f:
         json.dump(nexus_cookies, f)
-    driver.close()
+
+
+def get_cookies_by_selenium_login(user_name, user_password):
+    '''
+    @summary: 通过selenium获取cookies信息，并记录下来，返回
+    @return: cookies:dict
+    '''
+    driver = _init_selenium_driver()
+    if not driver:
+        Util.info_print('尝试初始化浏览器失败', 3)
+        return 
+    nexus_cookies = _selenium_operations(driver, user_name, user_password)
+    save_cookies_to_file(nexus_cookies)
     return nexus_cookies
 
 
@@ -146,6 +165,26 @@ def get_cookies_from_file():
     with open(cookies_json_location, "r", encoding="utf-8")as f:
         nexus_cookies = json.load(f)
     return nexus_cookies
+
+
+def get_cookies_by_input():
+    '''
+    @summary: 让用户手工输入cookies信息
+    @return: cookies:dict
+    '''
+    a = input("尝试手动获取Cookies信息？(输入y代表尝试，输入其他东西代表不尝试并退出)\n")
+    if a == "y":
+        cookes_dict = dict()
+        try:
+            cookies_str = input("请输入手动获取的cookies:")
+            for cookie in cookies_str.split(';'):
+                cookie_one_list = cookie.split('=')
+                cookes_dict[cookie_one_list[0]] = cookie_one_list[1]
+            save_cookies_to_file(cookes_dict)
+            return cookes_dict
+        except Exception as e:
+            print("失败", e)
+    Util.warning_and_exit(1)
 
 
 
