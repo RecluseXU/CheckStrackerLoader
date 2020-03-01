@@ -236,7 +236,7 @@ def run():
 
     # 信息获取
     Util.info_print("获取本地信息")
-    Util.info_print('尝试从注册表获取 MHW 目录', 1)
+    Util.info_print('尝试获取 MHW 目录', 1)
     MHW_Install_Address = Util.get_MHW_Install_Address()
     Util.info_print('MHW 目录:\t'+MHW_Install_Address, 2)
 
@@ -333,9 +333,9 @@ def run():
     Util.info_print('更新 已安装版本DLL的MD5 信息', 3)
     conf_ini.set_installed_mod_ddl_md5(download_dll_md5)
 
-    print('程序运行完毕  输入回车键退出   3DM biss')
-    input()
-    
+    print('程序运行完毕   3DM biss')
+    Util.warning_and_exit(0)
+
 
 # def init_webbrowser_driver(): 
 #     # chrome 尝试

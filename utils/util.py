@@ -18,6 +18,8 @@ import time
 import zipfile
 import shutil
 import datetime
+from tkinter.filedialog import askdirectory
+
 
 class Util(object):
     @staticmethod
@@ -34,15 +36,31 @@ class Util(object):
         '''
         @return: MHW目录:str
         '''
+        
         try:
+            Util.info_print('尝试从注册表获取 MHW 目录', 1)
             aReg = winreg.ConnectRegistry(None, winreg.HKEY_LOCAL_MACHINE)
             aKey = winreg.OpenKey(
                 aReg, r"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 582010")
             data = winreg.QueryValueEx(aKey, "InstallLocation")[0]
-            return data+'\\'
+            location = data + '\\'
+            # 验证是否真的是存在的
+            if Util.is_file_exists(location+"MonsterHunterWorld.exe"):
+                return location
         except Exception as e:
-            print("->Fail", e)
-            Util.warning_and_exit(1)
+            print("失败", e)
+        
+        try:
+            Util.info_print('请手动选择 MHW 目录', 1)
+            location = askdirectory()
+            if Util.is_file_exists(location+'/'+"MonsterHunterWorld.exe"):
+                return location
+        except Exception as e:
+            print("失败", e)
+        
+        Util.info_print("尝试获取MHW路径失败")
+        Util.warning_and_exit(1)
+        
 
     @staticmethod
     def get_Firefox_Install_Address():
@@ -56,7 +74,7 @@ class Util(object):
             i = 0
             while 1:
                 i = i+1
-                keyname = winreg.EnumKey(aKey,i)
+                keyname = winreg.EnumKey(aKey, i)
                 if(keyname.find('Firefox') != -1):  # 因为firefox在注册表里的键带着一个版本号，所以不能写死，这里通过关键词找到键名
                     print(keyname)
                     break
@@ -203,5 +221,5 @@ class Util(object):
 if __name__ == "__main__":
     # lacate = Util.get_run_folder()
     # print(lacate)
-    a = Util.is_win_x64()
+    a = Util.get_MHW_Install_Address()
     print(a)

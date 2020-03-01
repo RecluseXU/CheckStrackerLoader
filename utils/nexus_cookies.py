@@ -20,8 +20,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium import webdriver
 import json
 import os
-from utils.util import Util
-# from util import Util
+# from utils.util import Util
+from util import Util
 
 
 cookies_json_location = Util.get_resources_folder()+'Nexus_Cookies.txt'
@@ -91,23 +91,31 @@ def get_cookies_by_selenium_login(user_name, user_password):
     Util.info_print('每一步操作都设置了30s的可行时间，超过时间程序就会退出', 3)
 
     # 登录界面
-    username_inputer = driver.find_element_by_id("user_login")
-    username_inputer.send_keys(user_name)
-    userpassword_inputer = driver.find_element_by_id("password")
-    userpassword_inputer.send_keys(user_password)
+    try:
+        username_inputer = WebDriverWait(driver, 30).until(
+            EC.presence_of_element_located((By.ID, "user_login"))
+        )
+        userpassword_inputer = WebDriverWait(driver, 30).until(
+            EC.presence_of_element_located((By.ID, "password"))
+        )
+        commit_button = WebDriverWait(driver, 30).until(
+            EC.presence_of_element_located((By.XPATH, '//input[@type="submit"]'))
+        )
 
-    commit_button = driver.find_element_by_xpath('//input[@type="submit"]')
-    commit_button.click()
+    finally:
+        username_inputer.send_keys(user_name)
+        userpassword_inputer.send_keys(user_password)
+        commit_button.click()
 
     while driver.current_url == "https://users.nexusmods.com/auth/sign_in":
-        time.sleep(1)
+        driver.implicitly_wait(1)
 
     # 欢迎界面
     try:
         index_a = WebDriverWait(driver, 30).until(
             EC.presence_of_element_located((By.XPATH, '//div[@class="links"]/div[@class="left-link"]/a[1]')))
-        index_a.click()
     finally:
+        index_a.click()
         Util.info_print('等待进入首页，请勿操作', 3)
 
     # 返回首页后
@@ -147,7 +155,7 @@ if __name__ == "__main__":
     # init_selenium_driver()
     # a = get_cookie_from_chrome(host)
     # b = get_cookies_by_selenium_login("", "")
-    # b = get_cookies_by_selenium_login("444640050@qq.com", "Recluse444640050")
+    b = get_cookies_by_selenium_login("444640050@qq.com", "Recluse444640050")
     # init_webbrowser_driver()
     # print(b)
     pass
