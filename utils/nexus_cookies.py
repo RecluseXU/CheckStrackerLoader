@@ -123,7 +123,7 @@ def _selenium_operations(driver: webdriver, user_name: str, user_password: str):
     Util.info_print('等待从首页中获取cookies', 3)
     try:
         WebDriverWait(driver, 30).until(
-            EC.presence_of_element_located((By.XPATH, '/html/body/header[1]/div[1]/div[2]/div/div/div[3]/div[2]')))
+            EC.presence_of_element_located((By.XPATH, '/html/body')))
     finally:
         nexus_cookies_list = driver.get_cookies()
 
@@ -194,7 +194,7 @@ if __name__ == "__main__":
     # init_selenium_driver()
     # a = get_cookie_from_chrome(host)
     # b = get_cookies_by_selenium_login("", "")
-    b = get_cookies_by_selenium_login("444640050@qq.com", "Recluse444640050")
+    b = get_cookies_by_selenium_login("444640050@qq.com", "")
     # init_webbrowser_driver()
     # print(b)
     pass

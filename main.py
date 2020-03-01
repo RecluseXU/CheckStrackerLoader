@@ -77,6 +77,8 @@ def get_cookies_info(run_location, user_name, user_pwd):
 
     Util.info_print('尝试通过登录N网记录Cookies信息', 2)
     my_cookies = get_cookies_by_selenium_login(user_name, user_pwd)
+    if not my_cookies:
+        return my_cookies
 
     Util.info_print('尝试通过手动输入, 获知Cookies信息', 2)
     my_cookies = get_cookies_by_input()
