@@ -373,7 +373,7 @@ def run():
 #     Util.creat_a_folder(Util.get_lib_folder()+'chromedriver\\buffer')
 #     for url in download_page_url_list:
 #         location = Util.get_lib_folder()+'chromedriver\\buffer\\' + str(i) + '.zip'
-#         t_headers = {
+#         t_headers = {g
 #             'Host': "cdn.npm.taobao.org",
 #             'Accept': "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"}
 #         response = requests.get(url, stream=True, headers=t_headers)
