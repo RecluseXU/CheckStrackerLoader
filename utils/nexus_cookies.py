@@ -12,17 +12,18 @@
 
 # here put the import lib
 
-from selenium.webdriver.support.expected_conditions import presence_of_element_located
+
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.expected_conditions import presence_of_element_located
 from selenium import webdriver
 import json
 # import time
 import os
-from utils.util import Util
-# from util import Util
+# from utils.util import Util
+from util import Util
 
 
 cookies_json_location = Util.get_resources_folder()+'Nexus_Cookies.txt'
@@ -46,6 +47,7 @@ def _init_selenium_chrome_driver():
     driver = webdriver.Chrome(executable_path=drivePath, chrome_options=options)
     return driver
 
+
 def _init_selenium_firefox_driver():
     '''
     @summary: 配置selenium.webdriver   firefoxdriver
@@ -55,6 +57,7 @@ def _init_selenium_firefox_driver():
     drivePath = os.path.join(os.path.dirname(__file__), firefoxdriver)
     driver = webdriver.Firefox(executable_path=drivePath)
     return driver
+
 
 def _init_selenium_ie_driver():
     '''
@@ -110,14 +113,14 @@ def _selenium_operations(driver: webdriver, user_name: str, user_password: str):
     username_inputer = wait.until(presence_of_element_located((By.ID, "user_login")))
     userpassword_inputer = wait.until(presence_of_element_located((By.ID, "password")))
     commit_button = wait.until(presence_of_element_located((By.XPATH, '//input[@type="submit"]')))
-    
+
     username_inputer.send_keys(user_name)
     userpassword_inputer.send_keys(user_password)
     commit_button.click()
 
     wait.until(EC.url_changes)
     # 欢迎界面
-    
+
     index_a = wait.until(EC.presence_of_element_located((By.XPATH, '//div[@class="links"]/div[@class="left-link"]/a[1]')))
     index_a.click()
     Util.info_print('等待进入首页，请勿操作', 3)
@@ -194,7 +197,7 @@ if __name__ == "__main__":
     # init_selenium_driver()
     # a = get_cookie_from_chrome(host)
     # b = get_cookies_by_selenium_login("", "")
-    # b = get_cookies_by_selenium_login("444640050@qq.com", "")
-    _init_selenium_driver()
+    b = get_cookies_by_selenium_login("444640050@qq.com", "XuGuoHao444640050")
+    # _init_selenium_driver()
     # print(b)
     pass
