@@ -1,6 +1,6 @@
 特别禁止3DM所属人员 对程序，源码，MOD页等的转载，二配，魔改行为。
 
-基本信息
+## 基本信息
 由于卡表收紧了对MOD的接口，导致很多文件不再支持。
 为了应对这种情况，国外有大佬利用逆向技术，制造了一个名为 StrackerLoader 的插件来重新开放这些接口。
 StrackerLoader：https://www.nexusmods.com/monsterhunterworld/mods/1982
@@ -14,7 +14,7 @@ github地址：https://github.com/RecluseXU/CheckStrackerLoader
 故建议从github或者N网获取本程序
 
 
-这个程序做了什么
+## 这个程序做了什么
 在你运行这个程序的时候，它会自动的检查你电脑的注册表，获知你MHW目录路径。
 然后检查你是否装了 StrackerLoader ，记录一些有用的信息。
 程序会通过selenium模拟浏览器，通过账户和密码登录并进行一些操作后，获取cookies信息。
@@ -29,11 +29,11 @@ github地址：https://github.com/RecluseXU/CheckStrackerLoader
 在你下一次使用这个程序的时候，程序并不会立刻通过网页登录，而是先检查本地信息是否有效，若是有效则使用旧信息访问，以此减少不必要的访问。
 
 
-为什么要做这个？
+## 为什么要做这个？
 爬虫的技术不够好，在广州找不到相关的工作，在家里闲着，毕业在家里无所事事了一年，现在想找份工作，难上加难。闲的发荒，又想玩游戏，又想锻炼技术，于是做了这个。
 （要是有人给我提供offer就好了~）这显然不可能。
 
-版本信息
+## 版本信息
 v1.1
    紧急修复了输入密码后会崩溃的BUG
 v1.2
@@ -48,8 +48,8 @@ v1.4
   修正了使用手动输入MHW路径安装的时候出现安装错误的情况
   添加了下载进度显示
 
-
+## 其他
 自己家里打包代码：F:\Environment\Python\envs\CheckStrackerLoader\Scripts\pyinstaller --workpath F:\Workspace\CheckStrackerLoader\pyinstaller_rubbish -y -F -i F:\Workspace\CheckStrackerLoader\1.ico main.py
 
 
-2020-2-26 10:12:42
+2020年3月3日15:37:25
