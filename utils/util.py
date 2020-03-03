@@ -54,7 +54,7 @@ class Util(object):
             Util.info_print('请手动选择 MHW 目录', 1)
             location = askdirectory()
             if Util.is_file_exists(location+'/'+"MonsterHunterWorld.exe"):
-                return location
+                return location+'/'
         except Exception as e:
             print("失败", e)
         

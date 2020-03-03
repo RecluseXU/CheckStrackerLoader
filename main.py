@@ -217,13 +217,30 @@ def downloadFile(url, location):
     @summary: 下载MOD文件
     '''
     Util.info_print("开始下载\t", 2)
+
+    def formatFloat(num):
+        return '{:.2f}'.format(num)
+
     download_head = headers.copy()
     download_head['Host'] = 'cf-files.nexusmods.com'
 
-    response = requests.get(url, stream=True, verify=False, headers=download_head, cookies=get_cookies_from_file())
-
     with open(location, 'wb')as f:
-        f.write(response.content)
+        count = 0
+        count_tmp = 0
+        time_1 = time.time()
+        response = my_session.get(url, stream=True, headers=download_head, cookies=get_cookies_from_file())
+        content_length = float(response.headers['content-length'])
+        for chunk in response.iter_content(chunk_size=1):
+            if chunk:
+                f.write(chunk)
+                count += len(chunk)
+                if time.time() - time_1 > 2:
+                    p = count / content_length * 100
+                    speed = (count - count_tmp) / 1024 /2
+                    count_tmp = count
+                    Util.info_print(formatFloat(p) + '%' + ' Speed: ' + formatFloat(speed) + 'KB/S', 3)
+                    time_1 = time.time()
+
     Util.info_print("文件已保存为\t" + location, 3)
     time.sleep(1)
 
@@ -234,6 +251,7 @@ def run():
     print("本程序不会用于盗号, 偷取信息 等非法操作")
     print("但由于源码是公开的, 可能存在被魔改成盗号程序的可能。故建议从github获取本程序。")
     print("github地址：https://github.com/RecluseXU/CheckStrackerLoader")
+    print("B站联系地址：https://www.bilibili.com/video/av91993651")
     print("输入回车键开始")
     input()
 
@@ -344,7 +362,7 @@ def run():
     Util.info_print('更新 已安装版本DLL的MD5 信息', 3)
     conf_ini.set_installed_mod_ddl_md5(download_dll_md5)
 
-    print('程序运行完毕   3DM biss')
+    print('程序运行完毕\n3DM biss')
     Util.warning_and_exit(0)
 
 

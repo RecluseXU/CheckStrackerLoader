@@ -35,8 +35,18 @@ github地址：https://github.com/RecluseXU/CheckStrackerLoader
 
 版本信息
 v1.1
-  \紧急修复了输入密码后会崩溃的BUG
-
+   紧急修复了输入密码后会崩溃的BUG
+v1.2
+  添加IE webdriver作为兜底，从而修复没Chrome就会崩溃的情况。
+  修改一些参数。
+v1.3
+  添加了手动输入cookies项
+  添加了手动输入MHW路径项
+  添加了firefox webdriver
+  更改部分代码结构
+v1.4
+  修正了使用手动输入MHW路径安装的时候出现安装错误的情况
+  添加了下载进度显示
 
 
 自己家里打包代码：F:\Environment\Python\envs\CheckStrackerLoader\Scripts\pyinstaller --workpath F:\Workspace\CheckStrackerLoader\pyinstaller_rubbish -y -F -i F:\Workspace\CheckStrackerLoader\1.ico main.py

@@ -22,8 +22,8 @@ from selenium import webdriver
 import json
 # import time
 import os
-# from utils.util import Util
-from util import Util
+from utils.util import Util
+# from util import Util
 
 
 cookies_json_location = Util.get_resources_folder()+'Nexus_Cookies.txt'
