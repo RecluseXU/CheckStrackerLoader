@@ -22,44 +22,21 @@ from tkinter.filedialog import askdirectory
 
 
 class Util(object):
+
+    @staticmethod
+    def run_a_exe(location: str):
+        '''
+        @summary: 运行一个exe文件
+        '''
+        os.system(location)
+
     @staticmethod
     def creat_a_folder(location: str):
         '''
         @summary: 在程序目录下创建resources文件夹
         '''
-        if os.path.exists(location) == False:
+        if os.path.exists(location) is False:
             os.mkdir(location)
-
-
-    @staticmethod
-    def get_MHW_Install_Address():
-        '''
-        @return: MHW目录:str
-        '''
-
-        try:
-            Util.info_print('尝试从注册表获取 MHW 目录', 1)
-            aReg = winreg.ConnectRegistry(None, winreg.HKEY_LOCAL_MACHINE)
-            aKey = winreg.OpenKey(
-                aReg, r"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 582010")
-            data = winreg.QueryValueEx(aKey, "InstallLocation")[0]
-            location = data + '\\'
-            # 验证是否真的是存在的
-            if Util.is_file_exists(location+"MonsterHunterWorld.exe"):
-                return location
-        except Exception as e:
-            print("失败", e)
-
-        try:
-            Util.info_print('请手动选择 MHW 目录', 1)
-            location = askdirectory()
-            if Util.is_file_exists(location+'/'+"MonsterHunterWorld.exe"):
-                return location+'/'
-        except Exception as e:
-            print("失败", e)
-
-        Util.info_print("尝试获取MHW路径失败")
-        Util.warning_and_exit(1)
 
 
     @staticmethod
@@ -94,33 +71,6 @@ class Util(object):
         @return: :bool
         '''
         return os.path.exists(file_path)
-
-    @staticmethod
-    def get_run_folder():
-        '''
-        @staticmethod
-        @return: 返回程序运行的目录:str
-        '''
-        location = os.path.abspath(os.curdir)+"\\"
-        return location
-
-    @staticmethod
-    def get_resources_folder():
-        '''
-        @staticmethod
-        @return: 返回程序运行目录下的resources目录:str
-        '''
-        location = Util.get_run_folder()+'resources\\'
-        return location
-
-    @staticmethod
-    def get_lib_folder():
-        '''
-        @staticmethod
-        @return: 返回程序运行目录下的lib目录:str
-        '''
-        location = Util.get_run_folder()+'lib\\'
-        return location
 
     @staticmethod
     def get_file_MD5(file_location):
@@ -174,7 +124,7 @@ class Util(object):
         zf.close()
 
     @staticmethod
-    def unzip_all(source_dir, dest_dir, password):
+    def unzip_all(source_dir: str, dest_dir: str, password: str):
         '''
         @staticmethod
         @summary: 从zip压缩包中解压多个文件

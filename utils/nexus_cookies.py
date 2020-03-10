@@ -26,7 +26,12 @@ from utils.util import Util
 # from util import Util
 
 
-cookies_json_location = Util.get_resources_folder()+'Nexus_Cookies.txt'
+cookies_json_location = None
+
+
+def set_cookies_json_location(location):
+    global cookies_json_location
+    cookies_json_location = location
 
 
 def _init_selenium_chrome_driver():

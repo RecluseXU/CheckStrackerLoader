@@ -47,6 +47,9 @@ v1.3
 v1.4  
   修正了使用手动输入MHW路径安装的时候出现安装错误的情况  
   添加了下载进度显示  
+v1.5
+  去除调整 utils.ini.py 结构 
+  增加 utils.location_helper.py 用来处理路径
 
 ## 其他
 自己家里打包代码：F:\Environment\Python\envs\CheckStrackerLoader\Scripts\pyinstaller --workpath F:\Workspace\CheckStrackerLoader\pyinstaller_rubbish -y -F -i F:\Workspace\CheckStrackerLoader\1.ico main.py
