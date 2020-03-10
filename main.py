@@ -140,7 +140,7 @@ def analyze_mod_file_page(html: str):
         a = xpath_data.xpath('//*[@id="file-expander-header-9908"]//div[@class="stat"]/text()')
         a = a[0].strip()
         last_publish_date = datetime.datetime.strptime(a, r"%d %b %Y, %I:%M%p")
-        
+
         a = xpath_data.xpath('//*[@id="file-expander-header-9908"]')[0]
         last_download_url = a.xpath('..//a[@class="btn inline-flex"]/@href')[1]
 
@@ -206,7 +206,7 @@ def spider_download_file(file_id, game_id):
         location = Util.get_resources_folder() + "download_file_url.json"
         with open(location, 'w', encoding='utf-8')as f:
             f.write(file_type+"="+download_url)
-        
+
         return download_url, file_type
     except Exception as e:
         print("失败", e)

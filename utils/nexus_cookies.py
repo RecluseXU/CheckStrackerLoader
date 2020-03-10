@@ -146,7 +146,7 @@ def save_cookies_to_file(nexus_cookies: dict):
         json.dump(nexus_cookies, f)
 
 
-def get_cookies_by_selenium_login(user_name, user_password):
+def get_cookies_by_selenium_login(user_name: str, user_password: str):
     '''
     @summary: 通过selenium获取cookies信息，并记录下来，返回
     @return: cookies:dict
@@ -154,7 +154,7 @@ def get_cookies_by_selenium_login(user_name, user_password):
     driver = _init_selenium_driver()
     if not driver:
         Util.info_print('尝试初始化浏览器失败', 3)
-        return 
+        return
     nexus_cookies = _selenium_operations(driver, user_name, user_password)
     save_cookies_to_file(nexus_cookies)
     return nexus_cookies
@@ -188,8 +188,6 @@ def get_cookies_by_input():
         except Exception as e:
             print("失败", e)
     Util.warning_and_exit(1)
-
-
 
 
 if __name__ == "__main__":
