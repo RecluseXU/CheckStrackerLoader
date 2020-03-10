@@ -295,7 +295,6 @@ def to_install_VC():
     if a == "y":
         vc_x64_url = "https://download.visualstudio.microsoft.com/download/pr/3b070396-b7fb-4eee-aa8b-102a23c3e4f4/40EA2955391C9EAE3E35619C4C24B5AAF3D17AEAA6D09424EE9672AA9372AEED/VC_redist.x64.exe"
         vc_location = locate.get_resources_folder() + 'VCx64.exe'
-        return 
         downloadFile(vc_x64_url, vc_location, "download.visualstudio.microsoft.com")
         Util.run_a_exe(vc_location)
 
