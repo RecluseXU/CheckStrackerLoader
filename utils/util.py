@@ -23,20 +23,20 @@ from tkinter.filedialog import askdirectory
 
 class Util(object):
     @staticmethod
-    def creat_a_folder(location):
+    def creat_a_folder(location: str):
         '''
         @summary: 在程序目录下创建resources文件夹
         '''
         if os.path.exists(location) == False:
             os.mkdir(location)
-    
+
 
     @staticmethod
     def get_MHW_Install_Address():
         '''
         @return: MHW目录:str
         '''
-        
+
         try:
             Util.info_print('尝试从注册表获取 MHW 目录', 1)
             aReg = winreg.ConnectRegistry(None, winreg.HKEY_LOCAL_MACHINE)
@@ -49,7 +49,7 @@ class Util(object):
                 return location
         except Exception as e:
             print("失败", e)
-        
+
         try:
             Util.info_print('请手动选择 MHW 目录', 1)
             location = askdirectory()
@@ -57,10 +57,10 @@ class Util(object):
                 return location+'/'
         except Exception as e:
             print("失败", e)
-        
+
         Util.info_print("尝试获取MHW路径失败")
         Util.warning_and_exit(1)
-        
+
 
     @staticmethod
     def get_Firefox_Install_Address():
@@ -112,7 +112,7 @@ class Util(object):
         '''
         location = Util.get_run_folder()+'resources\\'
         return location
-    
+
     @staticmethod
     def get_lib_folder():
         '''
@@ -208,18 +208,19 @@ class Util(object):
         '''
         timeStamp = int(time.mktime(d_time.timetuple()))
         return timeStamp
-    
+
     @staticmethod
     def is_win_x64():
         '''
         @staticmethod
-        @summary: 返回操作系统是64位还是32位
+        @summary: 返回操作系统是否是64位
         @return: bool
         '''
         return 'PROGRAMFILES(X86)' in os.environ
 
+
 if __name__ == "__main__":
     # lacate = Util.get_run_folder()
     # print(lacate)
-    a = Util.get_MHW_Install_Address()
+    a = Util.is_win_x64()
     print(a)
