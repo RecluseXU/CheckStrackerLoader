@@ -27,11 +27,17 @@ from utils.util import Util
 
 
 cookies_json_location = None
+lib_location = None
 
 
-def set_cookies_json_location(location):
+def set_cookies_json_location(location: str):
     global cookies_json_location
     cookies_json_location = location
+
+
+def set_lib_location_location(location: str):
+    global lib_location
+    lib_location = location
 
 
 def _init_selenium_chrome_driver():
@@ -39,7 +45,7 @@ def _init_selenium_chrome_driver():
     @summary: 配置selenium.webdriver   chrome
     @return: selenium.webdriver chrome
     '''
-    chromedriver = Util.get_lib_folder() + "chromedriver.exe"
+    chromedriver = lib_location + "chromedriver.exe"
     drivePath = os.path.join(os.path.dirname(__file__), chromedriver)
     options = webdriver.ChromeOptions()
     # 禁止图片加载
@@ -58,7 +64,7 @@ def _init_selenium_firefox_driver():
     @summary: 配置selenium.webdriver   firefoxdriver
     @return: selenium.webdriver firefoxdriver
     '''
-    firefoxdriver = Util.get_lib_folder() + "geckodriver.exe"
+    firefoxdriver = lib_location + "geckodriver.exe"
     drivePath = os.path.join(os.path.dirname(__file__), firefoxdriver)
     driver = webdriver.Firefox(executable_path=drivePath)
     return driver
@@ -69,7 +75,7 @@ def _init_selenium_ie_driver():
     @summary: 配置selenium.webdriver   IE
     @return: selenium.webdriver IE
     '''
-    iedriver = Util.get_lib_folder() + "IEDriverServer_x32.exe"
+    iedriver = lib_location + "IEDriverServer_x32.exe"
     drivePath = os.path.join(os.path.dirname(__file__), iedriver)
 
     capabilities = DesiredCapabilities.INTERNETEXPLORER

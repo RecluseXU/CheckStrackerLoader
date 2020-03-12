@@ -19,7 +19,7 @@ from lxml import etree
 import re
 from utils.util import Util
 from utils.ini import Conf_ini
-from utils.nexus_cookies import get_cookies_by_selenium_login, get_cookies_from_file, get_cookies_by_input, set_cookies_json_location
+from utils.nexus_cookies import get_cookies_by_selenium_login, get_cookies_from_file, get_cookies_by_input, set_cookies_json_location, set_lib_location_location
 from utils.location_helper import Location
 import json
 
@@ -306,6 +306,7 @@ def init_locate():
     global locate
     locate = Location()
     set_cookies_json_location(locate.get_resources_folder()+'Nexus_Cookies.txt')
+    set_lib_location_location(locate.get_lib_folder)
 
 
 def run():
