@@ -81,17 +81,26 @@ class Conf_ini(object):
         self.config.set('NexusAccount', 'user_password', user_password)
         self.write_conf()
 
-    def get_installed_mod_ddl_md5(self):
+    def get_mod_file_list(self):
         '''
-        @summary: 得到已经安装了的前置MOD的 dll 的MD5
+        @summary: 得到已经安装了的前置MOD的 文件列表
+        @return: list
         '''
-        return self.config.get('StrackerLoader', 'installed_mod_ddl_md5')
+        file_list = self.config.get('StrackerLoader', 'mod_files')
+        if len(file_list) == 0:
+            return []
+        if isinstance(file_list, str):
+            file_list = file_list.replace(' ', '')
+            if len(file_list) == 0:
+                return []
+            file_list = file_list.replace('\'', '').replace('\"', '').split(',')
+        return file_list
 
-    def set_installed_mod_ddl_md5(self, dll_md5):
+    def set_mod_file_list(self, file_list: list):
         '''
-        @summary: 设置已经安装了的前置MOD的 dll 的MD5
+        @summary: 设置已经安装了的前置MOD的 文件的信息
         '''
-        self.config.set('StrackerLoader', 'installed_mod_ddl_md5', dll_md5)
+        self.config.set('StrackerLoader', 'mod_files', str(file_list)[1:-1])
         self.write_conf()
 
     def write_conf(self):
@@ -102,7 +111,7 @@ class Conf_ini(object):
             self.config.write(f)
 
     @staticmethod
-    def creat_new_conf_ini(loaction, dll_md5, N_name, N_pwd):
+    def creat_new_conf_ini(loaction, N_name, N_pwd):
         '''
         @summary: 初始化,创建 conf.ini
         '''
@@ -110,8 +119,8 @@ class Conf_ini(object):
 
         config.add_section("StrackerLoader")
         config.set("StrackerLoader", "installed_mod_upload_date", "0")
-        config.set("StrackerLoader", "installed_mod_ddl_md5", dll_md5)
         config.set("StrackerLoader", 'last_spide_time', "0")
+        config.set("StrackerLoader", 'mod_files', "")
 
         config.add_section("NexusAccount")
         config.set("NexusAccount", "user_name", N_name)

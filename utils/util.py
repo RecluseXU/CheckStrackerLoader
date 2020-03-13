@@ -82,7 +82,6 @@ class Util(object):
             with open(file_location, 'rb')as f:
                 file_bytes = f.read()
             md5_str = hashlib.md5(file_bytes).hexdigest()
-            Util.info_print(md5_str, 2)
             return md5_str
         except Exception as e:
             print("->失败", e)
@@ -148,6 +147,28 @@ class Util(object):
         except Exception as e:
             print(e)
             Util.warning_and_exit(1)
+    
+    @staticmethod
+    def delete_file(del_file_location):
+        '''
+        @staticmethod
+        @summary: 复制一个文件到目标路径, 若已经存在，则覆盖
+        '''
+        try:
+            os.remove(del_file_location)
+        except Exception as e:
+            print(e)
+            Util.warning_and_exit(1)
+
+    @staticmethod
+    def get_file_list_in_folder(folder_location: str):
+        '''
+        @staticmethod
+        @summary: 返回目录下所有文件的文件名
+        @return: filenames:list
+        '''
+        files = os.listdir(folder_location)
+        return files
 
     @staticmethod
     def transform_datetime_to_timeStamp(d_time: datetime):

@@ -29,7 +29,6 @@ class Location(object):
         self.dl_loader_folder = self.resources_folder + 'StrackerLoade\\'
 
         self.mhw_folder = _get_MHW_Install_Address(self.conf_ini_file)
-        self.mhw_dinput8_dll_file = self.mhw_folder+'dinput8.dll'
 
     def get_run_folder(self):
         '''
@@ -60,12 +59,6 @@ class Location(object):
         @return: 返回程序运行目录下的lib目录的路径:str
         '''
         return self.mhw_folder
-
-    def get_mhw_dinput8_file(self):
-        '''
-        @return: MHW目录下的dinput8.dll路径
-        '''
-        return self.mhw_dinput8_dll_file
 
     def get_cookies_txt_file(self):
         '''
@@ -123,7 +116,7 @@ def _get_MHW_Install_Address(conf_ini_file):
     @return: MHW目录:str
     '''
     print('尝试获取MHW目录')
-    print('尝试从conf.ini中获取 MHW 目录')
+    print('\t尝试从conf.ini中获取 MHW 目录')
     if _is_file_exists(conf_ini_file):
         try:
             config = configparser.ConfigParser()
@@ -134,7 +127,7 @@ def _get_MHW_Install_Address(conf_ini_file):
         except Exception as e:
             print("失败", e)
 
-    print('尝试从注册表获取 MHW 目录')
+    print('\t尝试从注册表获取 MHW 目录')
     try:
         aReg = winreg.ConnectRegistry(None, winreg.HKEY_LOCAL_MACHINE)
         aKey = winreg.OpenKey(

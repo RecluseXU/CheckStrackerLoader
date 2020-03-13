@@ -139,11 +139,11 @@ def analyze_mod_file_page(html: str):
     '''
     try:
         xpath_data = etree.HTML(html)
-        a = xpath_data.xpath('//*[@id="file-expander-header-9908"]//div[@class="stat"]/text()')
+        a = xpath_data.xpath('//*[@id="file-container-main-files"]//div[@class="stat"]/text()')
         a = a[0].strip()
         last_publish_date = datetime.datetime.strptime(a, r"%d %b %Y, %I:%M%p")
 
-        a = xpath_data.xpath('//*[@id="file-expander-header-9908"]')[0]
+        a = xpath_data.xpath('//*[@id="file-container-main-files"]')[0]
         last_download_url = a.xpath('..//a[@class="btn inline-flex"]/@href')[1]
 
         return last_publish_date, last_download_url
@@ -260,19 +260,13 @@ def first_time_run():
     location = locate.get_lib_folder()[:-1]
     Util.creat_a_folder(location)
 
-    if Util.is_file_exists(locate.get_mhw_dinput8_file()):
-        Util.info_print('尝试获取 StrackerLoader-dinput8.dll 的 MD5', 2)
-        dinput8_dll_md5 = Util.get_file_MD5(locate.get_mhw_dinput8_file()) 
-    else:
-        dinput8_dll_md5 = ""
-
     to_install_VC()
 
     Util.info_print('创建conf.ini', 1)
     print('这次输入的信息会记录在conf.ini中，如果需要更改，用记事本修改conf.ini的内容即可')
     N_name = input('请输入N网账号或邮箱:')
     N_pwd = input('请输N网密码:')
-    Conf_ini.creat_new_conf_ini(locate.get_conf_file(), dinput8_dll_md5, N_name, N_pwd)
+    Conf_ini.creat_new_conf_ini(locate.get_conf_file(), N_name, N_pwd)
 
 
 def is_first_time_run():
@@ -306,7 +300,7 @@ def init_locate():
     global locate
     locate = Location()
     set_cookies_json_location(locate.get_resources_folder()+'Nexus_Cookies.txt')
-    set_lib_location_location(locate.get_lib_folder)
+    set_lib_location_location(locate.get_lib_folder())
 
 
 def run():
@@ -324,10 +318,6 @@ def run():
     # 信息获取
     if is_first_time_run():
         first_time_run()
-
-    Util.info_print('检查StrackerLoader安装状态', 1)
-    is_installed = Util.is_file_exists(locate.get_mhw_dinput8_file())
-    Util.info_print('安装状态:\t'+str(is_installed), 2)
 
     Util.info_print('尝试获取 conf.ini信息', 1)
     Util.info_print('读取conf.ini', 2)
@@ -349,7 +339,7 @@ def run():
     Util.info_print("最新版本下载地址\t" + last_download_url, 2)
     last_publish_timeStamp = Util.transform_datetime_to_timeStamp(last_publish_date)
     installed_version_timeStamp = conf_ini.get_installed_SL_upload_date()
-    if is_installed and last_publish_timeStamp == installed_version_timeStamp:
+    if last_publish_timeStamp == installed_version_timeStamp:
         Util.info_print("已安装的版本与最新版发布时间一致，无需更新")
         Util.warning_and_exit()
 
@@ -369,30 +359,39 @@ def run():
     dl_loader_location = locate.get_resources_folder() + 'StrackerLoader.' + file_type
     downloadFile(download_url, dl_loader_location, 'cf-files.nexusmods.com')
 
-    Util.info_print("信息处理")
+#
     Util.info_print('尝试解压"Stracker\'s Loader" 文件', 1)
     if file_type == 'zip':
         Util.unzip_all(dl_loader_location, locate.get_dl_loader_folder(), '')
-
-    Util.info_print('尝试获取刚下载的"Stracker\'s Loader" 文件MD5', 1)
-    dl_dll_location = locate.get_dl_loader_folder() + 'dinput8.dll'
-    download_dll_md5 = Util.get_file_MD5(dl_dll_location)
-    Util.info_print('刚下载的"Stracker\'s Loader" dll-MD5:\t'+download_dll_md5, 2)
-    if is_installed and conf_ini.get_installed_mod_ddl_md5() == download_dll_md5:
-        Util.info_print('刚下载的文件MD5 与 已安装的文件MD5一致, 无需更新', 2)
     else:
-        Util.info_print('尝试覆盖安装', 1)
-        Util.info_print('覆盖安装dinput8.dll', 2)
-        Util.copy_file(dl_dll_location, locate.get_mhw_dinput8_file())
-        Util.info_print('覆盖安装dinput-config.json', 2)
-        dl_dinputconfig_location = locate.get_dl_loader_folder() + 'dinput-config.json'
-        mhw_dinputconfig_location = locate.get_mhw_folder() + 'dinput-config.json'
-        Util.copy_file(dl_dinputconfig_location, mhw_dinputconfig_location)
-    Util.info_print('更新安装信息', 2)
-    Util.info_print('更新 已安装版本N网作者上传时间信息', 3)
+        Util.info_print("尚未编写该压缩文件类型解压方法", file_type)
+        Util.warning_and_exit(1)
+
+    Util.info_print('检查是否要删除旧文件', 1)
+    old_mod_file_list = conf_ini.get_mod_file_list()
+    if len(old_mod_file_list) > 0:
+        Util.info_print('尝试删除旧版\"Stracker\'s Loader\"文件', 2)
+        for file in old_mod_file_list:
+            Util.info_print('尝试删除 '+file, 3)
+            if Util.is_file_exists(locate.get_mhw_folder()+file):
+                Util.delete_file(locate.get_mhw_folder()+file)
+            else:
+                Util.info_print('文件不存在 ', 4)
+
+    Util.info_print('尝试获取\"Stracker\'s Loader\"文件信息', 1)
+    sl_file_list = Util.get_file_list_in_folder(locate.get_dl_loader_folder())
+    Util.info_print('新下载的\"Stracker\'s Loader\"所包含的文件: '+str(sl_file_list), 2)
+
+    Util.info_print('尝试覆盖安装\"Stracker\'s Loader\"文件', 1)
+    for file in sl_file_list:
+        Util.info_print('尝试覆盖安装 '+file, 2)
+        Util.copy_file(locate.get_dl_loader_folder()+file, locate.get_mhw_folder()+file)
+
+    Util.info_print('更新安装信息', 1)
+    Util.info_print('更新 已安装版本N网作者上传时间信息', 2)
     conf_ini.set_installed_SL_upload_date(last_publish_date)
-    Util.info_print('更新 已安装版本DLL的MD5 信息', 3)
-    conf_ini.set_installed_mod_ddl_md5(download_dll_md5)
+    Util.info_print('更新 已安装版本文件 信息', 2)
+    conf_ini.set_mod_file_list(sl_file_list)
 
     locate.save_to_conf_ini_file()
     print('程序运行完毕\n3DM biss\n')
@@ -439,6 +438,16 @@ def run():
 if __name__ == "__main__":
     run()
     
+    # init_locate()
+
+    # conf_ini = Conf_ini(locate.get_run_folder())
+    # l = conf_ini.get_mod_file_list()
+    # print(l)
+    # conf_ini.set_mod_file_list(['123.json',"678.json"])
+    # l = conf_ini.get_mod_file_list()
+
+
+    # print(l)
     # is_login(get_cookies_from_file())
     # print()
     # init_webbrowser_driver()
@@ -451,3 +460,10 @@ if __name__ == "__main__":
     # a = is_first_time_run()
     # print(a)
     # print('3DM Biss')
+    # Util.get_file_list_in_folder("F:\\Workspace\\CheckStrackerLoader")
+
+
+
+    # with open(r'F:\Workspace\CheckStrackerLoader\dist\resources\mod_file_page.html')as f:
+    #     html = f.read()
+    # analyze_mod_file_page(html)

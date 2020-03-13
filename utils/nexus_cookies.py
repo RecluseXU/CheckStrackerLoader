@@ -45,6 +45,7 @@ def _init_selenium_chrome_driver():
     @summary: 配置selenium.webdriver   chrome
     @return: selenium.webdriver chrome
     '''
+    Util.info_print('尝试初始化 Chrome 浏览器', 4)
     chromedriver = lib_location + "chromedriver.exe"
     drivePath = os.path.join(os.path.dirname(__file__), chromedriver)
     options = webdriver.ChromeOptions()
@@ -64,6 +65,7 @@ def _init_selenium_firefox_driver():
     @summary: 配置selenium.webdriver   firefoxdriver
     @return: selenium.webdriver firefoxdriver
     '''
+    Util.info_print('尝试初始化 Firefox 浏览器', 4)
     firefoxdriver = lib_location + "geckodriver.exe"
     drivePath = os.path.join(os.path.dirname(__file__), firefoxdriver)
     driver = webdriver.Firefox(executable_path=drivePath)
@@ -75,6 +77,7 @@ def _init_selenium_ie_driver():
     @summary: 配置selenium.webdriver   IE
     @return: selenium.webdriver IE
     '''
+    Util.info_print('尝试初始化 IE 浏览器', 4)
     iedriver = lib_location + "IEDriverServer_x32.exe"
     drivePath = os.path.join(os.path.dirname(__file__), iedriver)
 
@@ -83,32 +86,6 @@ def _init_selenium_ie_driver():
     capabilities["ignoreZoomSetting"] = True  # 不检查界面缩放
     driver = webdriver.Ie(executable_path=drivePath, capabilities=capabilities)
     return driver
-
-
-def _init_selenium_driver():
-    '''
-    @summary: 尝试初始化各个不同的webdriver
-    @return: webdriver
-    '''
-    Util.info_print('尝试初始化浏览器', 3)
-
-    try:
-        Util.info_print('尝试初始化chrome浏览器', 4)
-        return _init_selenium_chrome_driver()
-    except Exception as e:
-        print("失败", e)
-
-    try:
-        Util.info_print('尝试初始化火狐浏览器', 4)
-        return _init_selenium_firefox_driver()
-    except Exception as e:
-        print("失败", e)
-
-    try:
-        Util.info_print('尝试初始化IE浏览器', 4)
-        return _init_selenium_ie_driver()
-    except Exception as e:
-        print("失败", e)
 
 
 def _selenium_operations(driver: webdriver, user_name: str, user_password: str):
@@ -162,13 +139,20 @@ def get_cookies_by_selenium_login(user_name: str, user_password: str):
     @summary: 通过selenium获取cookies信息，并记录下来，返回
     @return: cookies:dict
     '''
-    driver = _init_selenium_driver()
-    if not driver:
+    Util.info_print('尝试初始化浏览器', 3)
+
+    nexus_cookies = None
+    for _init_selenium_func in [_init_selenium_chrome_driver, _init_selenium_firefox_driver, _init_selenium_ie_driver]:
+        try:
+            driver = _init_selenium_func()
+            nexus_cookies = _selenium_operations(driver, user_name, user_password)
+            save_cookies_to_file(nexus_cookies)
+            return nexus_cookies
+        except Exception as e:
+            print("失败", e)
+    if not nexus_cookies:
         Util.info_print('尝试初始化浏览器失败', 3)
         return
-    nexus_cookies = _selenium_operations(driver, user_name, user_password)
-    save_cookies_to_file(nexus_cookies)
-    return nexus_cookies
 
 
 def get_cookies_from_file():
@@ -206,7 +190,10 @@ if __name__ == "__main__":
     # init_selenium_driver()
     # a = get_cookie_from_chrome(host)
     # b = get_cookies_by_selenium_login("", "")
+    
+    set_lib_location_location("F:\\Workspace\\CheckStrackerLoader\\lib\\")
+    set_cookies_json_location("F:\\Workspace\\CheckStrackerLoader\\dist\\resources\\Nexus_Cookies.txt")
+
     b = get_cookies_by_selenium_login("444640050@qq.com", "XuGuoHao444640050")
-    # _init_selenium_driver()
     # print(b)
     pass
