@@ -54,11 +54,11 @@ v1.5
   添加 VC 下载功能
   修复了lib地址传递错误的问题
 v1.6
-  尝试适配新的“StrackerLoader”  
+  适配新的“StrackerLoader”  
   调整获取cookies的逻辑，使得多个浏览器都能尝试  
   添加MOD文件记录，在安装新版本的时候会删除旧版本的文件  
   删除了dll的MD5校验比对功能，因为“StrackerLoader”以后可能会经常变。
-
+  更改安装逻辑
 
 ## 其他
 自己家里打包代码：F:\Environment\Python\envs\CheckStrackerLoader\Scripts\pyinstaller --workpath F:\Workspace\CheckStrackerLoader\pyinstaller_rubbish -y -F -i F:\Workspace\CheckStrackerLoader\1.ico main.py
