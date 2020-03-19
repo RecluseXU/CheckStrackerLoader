@@ -1,6 +1,6 @@
 特别禁止3DM所属人员 对程序，源码，MOD页等的转载，二配，魔改行为。  
 
-## 基本信息
+## 基本信息  
 由于卡表收紧了对MOD的接口，导致很多文件不再支持。  
 为了应对这种情况，国外有大佬利用逆向技术，制造了一个名为 StrackerLoader 的插件来重新开放这些接口。  
 StrackerLoader：https://www.nexusmods.com/monsterhunterworld/mods/1982  
@@ -14,7 +14,7 @@ github地址：https://github.com/RecluseXU/CheckStrackerLoader
 故建议从github或者N网获取本程序  
 
 
-## 这个程序做了什么
+## 这个程序做了什么  
 在你运行这个程序的时候，它会自动的检查你电脑的注册表，获知你MHW目录路径。  
 然后检查你是否装了 StrackerLoader ，记录一些有用的信息。  
 程序会通过selenium模拟浏览器，通过账户和密码登录并进行一些操作后，获取cookies信息。  
@@ -59,9 +59,12 @@ v1.6
   添加MOD文件记录，在安装新版本的时候会删除旧版本的文件  
   删除了dll的MD5校验比对功能，因为“StrackerLoader”以后可能会经常变  
   更改安装逻辑  
+v1.7
+  
+
 
 ## 其他
-自己家里打包代码：F:\Environment\Python\envs\CheckStrackerLoader\Scripts\pyinstaller --workpath F:\Workspace\CheckStrackerLoader\pyinstaller_rubbish -y -F -i F:\Workspace\CheckStrackerLoader\1.ico main.py
+自己家里打包代码：F:\Environment\Python\envs\CheckStrackerLoader\Scripts\pyinstaller --workpath F:\Workspace\CheckStrackerLoader\pyinstaller_rubbish -y -F -i F:\Workspace\CheckStrackerLoader\1.ico main.py  
 
 
 2020年3月10日18:04:01

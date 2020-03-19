@@ -20,7 +20,10 @@ import re
 from utils.util import Util
 from utils.ini import Conf_ini
 from utils.nexus_cookies import get_cookies_by_selenium_login, get_cookies_from_file, get_cookies_by_input, set_cookies_json_location, set_lib_location_location
+from utils.nexus_cookies import set_info_print_func as set_coo_my_print_func
 from utils.location_helper import Location
+from utils.location_helper import set_info_print_func as set_loc_my_print_func
+from utils.my_print import info_print
 import json
 
 
@@ -36,6 +39,7 @@ headers = {
     'User-Agent': ua.firefox,
     }
 locate = None
+
 
 def is_login(my_cookies):
     '''
@@ -64,30 +68,30 @@ def get_cookies_info(user_name: str, user_pwd: str):
     @summary: 获取cookies信息
     @return: cookies:dict
     '''
-    
+
     nexus_cookies_location = locate.get_cookies_txt_file()
     if Util.is_file_exists(nexus_cookies_location):
-        Util.info_print('Nexus_Cookies.json存在', 2)
-        Util.info_print('尝试通过Nexus_Cookies.json获取Cookies信息', 3)
+        info_print("110")
+        info_print("111")
         my_cookies = get_cookies_from_file()
         # print(my_cookies)
         if is_login(my_cookies):
-            Util.info_print('Cookies信息验证成功，', 4)
+            info_print("112")
             return
         else:
-            Util.info_print('Cookies信息验证失败，', 4)
+            info_print("113")
 
-    Util.info_print('尝试通过登录N网记录Cookies信息', 2)
+    info_print("114")
     my_cookies = get_cookies_by_selenium_login(user_name, user_pwd)
     if my_cookies is not None:
         return my_cookies
 
-    Util.info_print('尝试通过手动输入, 获知Cookies信息', 2)
+    info_print("115")
     my_cookies = get_cookies_by_input()
     if is_login(my_cookies):
-        Util.info_print('Cookies信息验证成功，', 4)
+        info_print("116")
     else:
-        Util.info_print('Cookies信息验证失败，', 4)
+        info_print("117")
         Util.warning_and_exit(1)
     return my_cookies
 
@@ -119,16 +123,16 @@ def get_mod_file_page(is_safe_to_spide: bool):
     @return: 网页:str, 使用了爬虫:bool
     '''
     if is_safe_to_spide:
-        Util.info_print('通过爬虫得到 "Stracker\'s Loader" 文件页', 2)
+        info_print('202')
         page_html = spider_mod_file_page()
         is_spider = True
     else:
-        Util.info_print('由于爬虫等待时间未过，从本地记录中获取', 2)
+        info_print('203')
         location = locate.get_resources_folder() + 'mod_file_page.html'
         with open(location, 'r')as f:
             page_html = f.read()
             is_spider = False
-    Util.info_print('获取成功', 3)
+    info_print('204')
     return page_html, is_spider
 
 
@@ -218,8 +222,6 @@ def downloadFile(url, location, dl_host):
     '''
     @summary: 下载MOD文件
     '''
-    Util.info_print("开始下载\t", 2)
-
     def formatFloat(num):
         return '{:.2f}'.format(num)
 
@@ -230,20 +232,24 @@ def downloadFile(url, location, dl_host):
         count = 0
         count_tmp = 0
         time_1 = time.time()
-        response = my_session.get(url, stream=True, headers=download_head, cookies=get_cookies_from_file())
-        content_length = float(response.headers['content-length'])
-        for chunk in response.iter_content(chunk_size=1):
-            if chunk:
-                f.write(chunk)
-                count += len(chunk)
-                if time.time() - time_1 > 2:
-                    p = count / content_length * 100
-                    speed = (count - count_tmp) / 1024 /2
-                    count_tmp = count
-                    Util.info_print(formatFloat(p) + '%' + ' Speed: ' + formatFloat(speed) + 'KB/S', 3)
-                    time_1 = time.time()
+        try:
+            response = my_session.get(url, stream=True, headers=download_head, cookies=get_cookies_from_file())
+            content_length = float(response.headers['content-length'])
+            for chunk in response.iter_content(chunk_size=1):
+                if chunk:
+                    f.write(chunk)
+                    count += len(chunk)
+                    if time.time() - time_1 > 2:
+                        p = count / content_length * 100
+                        speed = (count - count_tmp) / 1024 /2
+                        count_tmp = count
+                        print("\t\t" + formatFloat(p) + '%' + ' Speed: ' + formatFloat(speed) + 'KB/S')
+                        time_1 = time.time()
+        except Exception as e:
+            print('失败', e)
 
-    Util.info_print("文件已保存为\t" + location, 3)
+    info_print('214')
+    print("\t\t\t" + location)
     time.sleep(1)
 
 
@@ -251,21 +257,21 @@ def first_time_run():
     '''
     @summary: 第一次运行的工作
     '''
-    Util.info_print('初始化')
-    Util.info_print('创建resources目录', 1)
+    info_print('100')
+    info_print('101')
     location = locate.get_resources_folder()[:-1]
     Util.creat_a_folder(location)
 
-    Util.info_print('创建lib目录', 1)
+    info_print('102')
     location = locate.get_lib_folder()[:-1]
     Util.creat_a_folder(location)
 
-    to_install_VC()
-
-    Util.info_print('创建conf.ini', 1)
-    print('这次输入的信息会记录在conf.ini中，如果需要更改，用记事本修改conf.ini的内容即可')
-    N_name = input('请输入N网账号或邮箱:')
-    N_pwd = input('请输N网密码:')
+    info_print('103')
+    info_print('104')
+    info_print('105')
+    N_name = input()
+    info_print('106')
+    N_pwd = input()
     Conf_ini.creat_new_conf_ini(locate.get_conf_file(), N_name, N_pwd)
 
 
@@ -281,10 +287,10 @@ def to_install_VC():
     '''
     @summary: 询问安装VC
     '''
-    Util.info_print('需要安装VC吗？', 1)
-    Util.info_print('这个是StrackerLoade的运行库。没有安装这个,但安装了StrackerLoade，会进不了游戏。', 2)
-    Util.info_print('要是你不确定是否已经安装，那么建议安装.', 2)
-    Util.info_print('输入y开始下载安装，输入其他跳过', 2)
+    info_print('vc_0')
+    info_print('vc_1')
+    info_print('vc_2')
+    info_print('vc_3')
     a = input('->')
     if a == "y":
         vc_x64_url = "https://download.visualstudio.microsoft.com/download/pr/3b070396-b7fb-4eee-aa8b-102a23c3e4f4/40EA2955391C9EAE3E35619C4C24B5AAF3D17AEAA6D09424EE9672AA9372AEED/VC_redist.x64.exe"
@@ -303,98 +309,121 @@ def init_locate():
     set_lib_location_location(locate.get_lib_folder())
 
 
+def init_inject_func():
+    '''
+    @summary: 将一些函数分发到需要的地方
+    '''
+    set_loc_my_print_func(info_print)
+    set_coo_my_print_func(info_print)
+
+
 def run():
-    print("本程序由Recluse制作")
-    print("本程序用于一键更新前置MOD-StrackerLoader")
-    print("本程序不会用于盗号, 偷取信息 等非法操作")
-    print("但由于源码是公开的, 可能存在被魔改成盗号程序的可能。故建议从github获取本程序。")
-    print("github地址：https://github.com/RecluseXU/CheckStrackerLoader")
-    print("B站联系地址：https://www.bilibili.com/video/av91993651")
-    print("输入回车键开始")
+    info_print('000')
+    info_print('001')
+    info_print('002')
+    info_print('003')
+    info_print('004')
+    info_print('005')
+    info_print('006')
+    info_print('007')
     input('->')
 
+    init_inject_func()
     init_locate()
 
     # 信息获取
-    if is_first_time_run():
+    is_first_time = is_first_time_run()
+    if is_first_time:
         first_time_run()
 
-    Util.info_print('尝试获取 conf.ini信息', 1)
-    Util.info_print('读取conf.ini', 2)
+    info_print('107')
+    info_print('108')
     conf_ini = Conf_ini(locate.get_run_folder())
 
-    Util.info_print('尝试获取 Cookies 信息', 1)
+    info_print('109')
     username, userpwd = conf_ini.get_nexus_account_info()
     get_cookies_info(username, userpwd)
 
-    Util.info_print("获取MOD信息")
-    Util.info_print('尝试获取N网 "Stracker\'s Loader" 文件信息页', 1)
+    info_print('200')
+    info_print('201')
     file_page_html, is_spider = get_mod_file_page(conf_ini.is_safe_to_spide())
     if is_spider:  # 更新最后一次爬虫的时间信息
         conf_ini.set_new_last_spide_time()
-
-    Util.info_print(r'尝试分析文件页，得到 "Stracker\'s Loader" 最新版信息', 1)
+    
+    info_print('204_1')
     last_publish_date, last_download_url = analyze_mod_file_page(file_page_html)
-    Util.info_print("最新版本上传日期\t" + str(last_publish_date), 2)
-    Util.info_print("最新版本下载地址\t" + last_download_url, 2)
+    info_print('205')
+    print("\t\t\t" + str(last_publish_date))
+    info_print('206')
+    print("\t\t\t" + last_download_url)
     last_publish_timeStamp = Util.transform_datetime_to_timeStamp(last_publish_date)
     installed_version_timeStamp = conf_ini.get_installed_SL_upload_date()
     if last_publish_timeStamp == installed_version_timeStamp:
-        Util.info_print("已安装的版本与最新版发布时间一致，无需更新")
+        info_print('207')
         Util.warning_and_exit()
 
-    Util.info_print('尝试获取N网 "Stracker\'s Loader" 最新版文件下载页', 1)
+    info_print('208')
     download_page_html = spider_download_file_page(last_download_url)
-    Util.info_print('尝试分析N网 "Stracker\'s Loader" 最新版文件下载页', 1)
+    info_print('209')
     file_id, game_id = analyze_download_file_page(download_page_html)
-    Util.info_print('game_id\t'+game_id, 2)
-    Util.info_print('file id\t'+file_id, 2)
+    print('\t\tgame_id\t'+game_id, 2)
+    print('\t\tfile id\t'+file_id, 2)
 
-    Util.info_print('尝试获取N网 "Stracker\'s Loader" 最新版文件下载url', 1)
+    info_print('210')
     download_url, file_type = spider_download_file(file_id, game_id)
-    Util.info_print("最新版文件下载url\t" + download_url, 2)
-    Util.info_print("最新版文件类型\t" + file_type, 2)
+    info_print('211')
+    print("\t\t\t" + download_url)
+    info_print('212')
+    print("\t\t\t" + file_type)
 
-    Util.info_print('尝试下载"Stracker\'s Loader" 最新版文件', 1)
+    info_print('213')
     dl_loader_location = locate.get_resources_folder() + 'StrackerLoader.' + file_type
     downloadFile(download_url, dl_loader_location, 'cf-files.nexusmods.com')
-
+# 英文化！！！！！！！！
 #
-    Util.info_print('尝试解压"Stracker\'s Loader" 文件', 1)
+    info_print('215')
     if file_type == 'zip':
         Util.unzip_all(dl_loader_location, locate.get_dl_loader_folder(), '')
     else:
-        Util.info_print("尚未编写该压缩文件类型解压方法", file_type)
+        info_print('216')
+        print('\t\t' + file_type)
+        info_print('217')
         Util.warning_and_exit(1)
 
-    Util.info_print('检查是否要删除旧文件', 1)
+    info_print('218')
     old_mod_file_list = conf_ini.get_mod_file_list()
     if len(old_mod_file_list) > 0:
-        Util.info_print('尝试删除旧版\"Stracker\'s Loader\"文件', 2)
-        for file in old_mod_file_list:
-            Util.info_print('尝试删除 '+file, 3)
-            if Util.is_file_exists(locate.get_mhw_folder()+file):
-                Util.delete_file(locate.get_mhw_folder()+file)
+        info_print('219')
+        for _file in old_mod_file_list:
+            print('\t\t\t'+_file)
+            if Util.is_file_exists(locate.get_mhw_folder()+_file):
+                Util.delete_file(locate.get_mhw_folder()+_file)
             else:
-                Util.info_print('文件不存在 ', 4)
+                info_print('220')
 
-    Util.info_print('尝试获取\"Stracker\'s Loader\"文件信息', 1)
+    info_print('221')
     sl_file_list = Util.get_file_list_in_folder(locate.get_dl_loader_folder())
-    Util.info_print('新下载的\"Stracker\'s Loader\"所包含的文件: '+str(sl_file_list), 2)
+    info_print('222')
+    print('\t\t\t' + str(sl_file_list))
 
-    Util.info_print('尝试覆盖安装\"Stracker\'s Loader\"文件', 1)
-    for file in sl_file_list:
-        Util.info_print('尝试覆盖安装 '+file, 2)
-        Util.copy_file(locate.get_dl_loader_folder()+file, locate.get_mhw_folder()+file)
+    info_print('223')
+    for _file in sl_file_list:
+        print('\t\t' + _file)
+        Util.copy_file(locate.get_dl_loader_folder()+_file, locate.get_mhw_folder()+_file)
 
-    Util.info_print('更新安装信息', 1)
-    Util.info_print('更新 已安装版本N网作者上传时间信息', 2)
+    info_print('224')
+    info_print('225')
     conf_ini.set_installed_SL_upload_date(last_publish_date)
-    Util.info_print('更新 已安装版本文件 信息', 2)
+    info_print('226')
     conf_ini.set_mod_file_list(sl_file_list)
 
     locate.save_to_conf_ini_file()
-    print('程序运行完毕\n3DM biss\n')
+    info_print('227')
+
+    if is_first_time:
+        to_install_VC()
+
+    print('3DM biss')
     Util.warning_and_exit(0)
 
 

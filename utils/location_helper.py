@@ -17,6 +17,8 @@ import time
 import configparser
 from tkinter.filedialog import askdirectory
 
+_info_print_func = None
+
 
 class Location(object):
     def __init__(self):
@@ -85,7 +87,6 @@ class Location(object):
             config.write(f)
 
 
-
 def _is_file_exists(file_path: str):
     '''
     @summary: 检测路径下的文件是否都已经存在
@@ -115,8 +116,8 @@ def _get_MHW_Install_Address(conf_ini_file):
     '''
     @return: MHW目录:str
     '''
-    print('尝试获取MHW目录')
-    print('\t尝试从conf.ini中获取 MHW 目录')
+    _info_print('loc_0')
+    _info_print('loc_1')
     if _is_file_exists(conf_ini_file):
         try:
             config = configparser.ConfigParser()
@@ -127,7 +128,7 @@ def _get_MHW_Install_Address(conf_ini_file):
         except Exception as e:
             print("失败", e)
 
-    print('\t尝试从注册表获取 MHW 目录')
+    _info_print('loc_2')
     try:
         aReg = winreg.ConnectRegistry(None, winreg.HKEY_LOCAL_MACHINE)
         aKey = winreg.OpenKey(
@@ -140,7 +141,7 @@ def _get_MHW_Install_Address(conf_ini_file):
     except Exception as e:
         print("失败", e)
 
-    print('请手动选择 MHW 目录')
+    _info_print('loc_3')
     try:
         location = askdirectory() + "/"
         if _is_effective_MHW_location(location):
@@ -148,8 +149,29 @@ def _get_MHW_Install_Address(conf_ini_file):
     except Exception as e:
         print("失败", e)
 
-    print("尝试获取MHW路径失败")
+    _info_print('loc_4')
     _warning_and_exit(1)
+
+
+'''
+for print
+'''
+
+
+def _info_print(info_num):
+    '''
+    @summary: 根据信息号码 和 是否为中文输出内容
+    '''
+    global _info_print_func
+    _info_print_func(info_num)
+
+
+def set_info_print_func(func):
+    '''
+    @return: 设置输出函数
+    '''
+    global _info_print_func
+    _info_print_func = func
 
 
 if __name__ == "__main__":

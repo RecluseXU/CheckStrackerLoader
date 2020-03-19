@@ -21,6 +21,9 @@ import datetime
 from tkinter.filedialog import askdirectory
 
 
+is_chinese = None
+
+
 class Util(object):
 
     @staticmethod
@@ -52,7 +55,8 @@ class Util(object):
             while 1:
                 i = i+1
                 keyname = winreg.EnumKey(aKey, i)
-                if(keyname.find('Firefox') != -1):  # 因为firefox在注册表里的键带着一个版本号，所以不能写死，这里通过关键词找到键名
+                # 因为firefox在注册表里的键带着一个版本号，所以不能写死，这里通过关键词找到键名
+                if(keyname.find('Firefox') != -1):
                     print(keyname)
                     break
 
@@ -103,8 +107,8 @@ class Util(object):
         @staticmethod
         @summary: 警告用户这个程序将在10s后退出
         '''
-        print('将在 10 秒后自动退出')
-        time.sleep(10)
+        print('将在 15 秒后自动退出')
+        time.sleep(15)
         exit(statue_code)
 
     @staticmethod

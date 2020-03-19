@@ -20,7 +20,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.expected_conditions import presence_of_element_located
 from selenium import webdriver
 import json
-# import time
 import os
 from utils.util import Util
 # from util import Util
@@ -28,14 +27,22 @@ from utils.util import Util
 
 cookies_json_location = None
 lib_location = None
+_info_print_func = None
 
 
 def set_cookies_json_location(location: str):
+    '''
+    @summary: 设置Cookies.json的路径
+    '''
     global cookies_json_location
     cookies_json_location = location
 
 
 def set_lib_location_location(location: str):
+    '''
+    @summary: 设置lib目录的路径
+    '''
+    
     global lib_location
     lib_location = location
 
@@ -45,7 +52,7 @@ def _init_selenium_chrome_driver():
     @summary: 配置selenium.webdriver   chrome
     @return: selenium.webdriver chrome
     '''
-    Util.info_print('尝试初始化 Chrome 浏览器', 4)
+    _info_print('Coo_1')
     chromedriver = lib_location + "chromedriver.exe"
     drivePath = os.path.join(os.path.dirname(__file__), chromedriver)
     options = webdriver.ChromeOptions()
@@ -56,7 +63,8 @@ def _init_selenium_chrome_driver():
     # options.add_argument('--blink-settings=imagesEnabled=false')
     # 非沙盒模式
     options.add_argument('no-sandbox')
-    driver = webdriver.Chrome(executable_path=drivePath, chrome_options=options)
+    driver = webdriver.Chrome(executable_path=drivePath,
+                              chrome_options=options)
     return driver
 
 
@@ -65,7 +73,7 @@ def _init_selenium_firefox_driver():
     @summary: 配置selenium.webdriver   firefoxdriver
     @return: selenium.webdriver firefoxdriver
     '''
-    Util.info_print('尝试初始化 Firefox 浏览器', 4)
+    _info_print('Coo_2')
     firefoxdriver = lib_location + "geckodriver.exe"
     drivePath = os.path.join(os.path.dirname(__file__), firefoxdriver)
     driver = webdriver.Firefox(executable_path=drivePath)
@@ -77,7 +85,7 @@ def _init_selenium_ie_driver():
     @summary: 配置selenium.webdriver   IE
     @return: selenium.webdriver IE
     '''
-    Util.info_print('尝试初始化 IE 浏览器', 4)
+    _info_print('Coo_3')
     iedriver = lib_location + "IEDriverServer_x32.exe"
     drivePath = os.path.join(os.path.dirname(__file__), iedriver)
 
@@ -90,12 +98,12 @@ def _init_selenium_ie_driver():
 
 def _selenium_operations(driver: webdriver, user_name: str, user_password: str):
     # 登录界面
-    Util.info_print('登录界面', 3)
+    _info_print('Coo_5')
     driver.get('https://users.nexusmods.com/auth/sign_in')
-    Util.info_print('请在页面中登录N网账户', 3)
-    Util.info_print('如果设置在conf.ini的账户密码正确，这个过程会自动完成。', 3)
-    Util.info_print('如果不正确，请手动输入账户密码', 3)
-    Util.info_print('每一步操作都设置了一定的的可行时间，超过时间程序就会退出', 3)
+    _info_print('Coo_6')
+    _info_print('Coo_7')
+    _info_print('Coo_8')
+    _info_print('Coo_9')
 
     wait = WebDriverWait(driver, 300)
     username_inputer = wait.until(presence_of_element_located((By.ID, "user_login")))
@@ -111,7 +119,7 @@ def _selenium_operations(driver: webdriver, user_name: str, user_password: str):
 
     index_a = wait.until(EC.presence_of_element_located((By.XPATH, '//div[@class="links"]/div[@class="left-link"]/a[1]')))
     index_a.click()
-    Util.info_print('等待进入首页，请勿操作', 3)
+    _info_print('Coo_10')
 
     # 返回首页后
     # Util.info_print('等待从首页中获取cookies', 3)
@@ -139,7 +147,7 @@ def get_cookies_by_selenium_login(user_name: str, user_password: str):
     @summary: 通过selenium获取cookies信息，并记录下来，返回
     @return: cookies:dict
     '''
-    Util.info_print('尝试初始化浏览器', 3)
+    _info_print('Coo_0')
 
     nexus_cookies = None
     for _init_selenium_func in [_init_selenium_chrome_driver, _init_selenium_firefox_driver, _init_selenium_ie_driver]:
@@ -151,7 +159,7 @@ def get_cookies_by_selenium_login(user_name: str, user_password: str):
         except Exception as e:
             print("失败", e)
     if not nexus_cookies:
-        Util.info_print('尝试初始化浏览器失败', 3)
+        _info_print('Coo_4')
         return
 
 
@@ -160,6 +168,7 @@ def get_cookies_from_file():
     @summary: 从文件中读取cookies信息
     @return: cookies:dict
     '''
+
     with open(cookies_json_location, "r", encoding="utf-8")as f:
         nexus_cookies = json.load(f)
     return nexus_cookies
@@ -170,11 +179,13 @@ def get_cookies_by_input():
     @summary: 让用户手工输入cookies信息
     @return: cookies:dict
     '''
-    a = input("尝试手动获取Cookies信息？(输入y代表尝试，输入其他东西代表不尝试并退出)\n")
+    _info_print('Coo_11')
+    a = input()
     if a == "y":
         cookes_dict = dict()
         try:
-            cookies_str = input("请输入手动获取的cookies:")
+            _info_print('Coo_12')
+            cookies_str = input()
             for cookie in cookies_str.split(';'):
                 cookie_one_list = cookie.split('=')
                 cookes_dict[cookie_one_list[0]] = cookie_one_list[1]
@@ -183,6 +194,26 @@ def get_cookies_by_input():
         except Exception as e:
             print("失败", e)
     Util.warning_and_exit(1)
+
+
+'''
+for print
+'''
+
+
+def _info_print(info_num):
+    '''
+    @summary: 根据信息号码 和 是否为中文输出内容
+    '''
+    info_print_func(info_num)
+
+
+def set_info_print_func(func):
+    '''
+    @return: 设置输出函数
+    '''
+    global info_print_func
+    info_print_func = func
 
 
 if __name__ == "__main__":
