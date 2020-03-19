@@ -60,7 +60,11 @@ v1.6
   删除了dll的MD5校验比对功能，因为“StrackerLoader”以后可能会经常变  
   更改安装逻辑  
 v1.7
-  
+  单独抽取出输出内容做为一个模块 my_print.py  
+  调整部分描述  
+  修复了VC安装功能由于Cookies导致的错误  
+  增加了英文输出，但是并没有测试(Add English log, But there was no test)
+
 
 
 ## 其他
